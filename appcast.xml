@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <item>
+      <version>1.0.0+29</version>
+      <url>https://play.google.com/store/apps/details?id=io.work24.app</url>
+      <title>version_upgrader_title</title>
+      <description>version_upgrader_description</description>
+      <platform>android</platform>
+    </item>
+    <item>
+      <version>1.0.8</version>
+      <url>https://apps.apple.com/tr/app/work24/id6742156967?l</url>
+      <title>version_upgrader_title</title>
+      <description>version_upgrader_description</description>
+      <platform>ios</platform>
+    </item>
+  </channel>
+</rss>

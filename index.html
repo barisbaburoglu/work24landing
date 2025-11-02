@@ -909,11 +909,8 @@
                             </div>
                         </div>
                         <div class="row d-flex align-items-center">
-                            <div class="col-md-12" id="plan-container"></div>
+                            <div class="col-md-6" id="plan-container"></div>
 
-                            <script>
-
-                            </script>
                             <div class="col-md-6">
                                 <div class="section__title-wrapper text-center hero mb-55">
                                     <h2 class="section__title-wrapper-title _split_text"
@@ -1001,12 +998,18 @@
                                         // Fiyatlandırma için iletişim mesajı göster
                                         function showPricingContactMessage() {
                                             const container = document.querySelector("#plan-container");
+                                            const containerParent = container.parentElement; // col-md-6
                                             // Calculator section'ı bul (plan-container'ın parent'ının kardeş elementi)
                                             const row = container.closest('.row');
                                             const calculatorSection = row ? row.querySelector('.col-md-6:last-child') : null;
 
+                                            // Container'ı tam genişlikte ve ortalanmış yap
+                                            containerParent.classList.remove('col-md-6');
+                                            containerParent.classList.add('col-md-12', 'd-flex', 'justify-content-center');
+                                            containerParent.style.margin = '0 auto';
+
                                             container.innerHTML = `
-                                                <div style="text-align: center; padding: 40px 20px; background: #f8f9fa; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                                                <div style="text-align: center; padding: 40px 20px; background: #f8f9fa; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); max-width: 800px; width: 100%;">
                                                     <div style="font-size: 48px; margin-bottom: 20px;">💰</div>
                                                     <h3 style="color: #333; margin-bottom: 20px;" data-tr="tr">Fiyatlandırma Bilgisi</h3>
                                                     <h3 style="color: #333; margin-bottom: 20px; display: none;" data-tr="en">Pricing Information</h3>

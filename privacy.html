@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hesap Silme - Delete Account | Work24</title>
-    <meta name="description" content="Work24 hesabınızı silmek için bu sayfayı kullanın">
+    <title>Gizlilik Politikası - Privacy Policy | Work24</title>
+    <meta name="description" content="Work24 Gizlilik Politikası">
     <meta name="author" content="soukhinkhan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
@@ -122,8 +122,8 @@
             }
         }
 
-        .delete-account-container {
-            max-width: 800px;
+        .privacy-container {
+            max-width: 900px;
             margin: 80px auto;
             padding: 40px;
             background: white;
@@ -131,100 +131,53 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .delete-account-icon {
-            font-size: 64px;
-            color: #dc3545;
+        .privacy-title {
             text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .delete-account-title {
-            text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: #333;
         }
 
-        .delete-account-description {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
+        .privacy-content {
             line-height: 1.8;
+            color: #555;
         }
 
-        .warning-box {
-            background-color: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 30px 0;
+        .privacy-content h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 24px;
         }
 
-        .warning-box h4 {
-            color: #856404;
+        .privacy-content h3 {
+            color: #444;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .privacy-content p {
             margin-bottom: 15px;
         }
 
-        .warning-box ul {
-            color: #856404;
-            margin: 0;
-            padding-left: 20px;
+        .privacy-content ul {
+            margin-bottom: 15px;
+            padding-left: 30px;
         }
 
-        .warning-box li {
+        .privacy-content li {
             margin-bottom: 10px;
         }
 
-        .delete-account-button {
-            width: 100%;
-            padding: 15px;
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 30px;
+        .privacy-content strong {
+            color: #333;
         }
 
-        .delete-account-button:hover {
-            background-color: #c82333;
-        }
-
-        .cancel-button {
-            width: 100%;
-            padding: 15px;
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 15px;
-            text-decoration: none;
-            display: block;
+        .privacy-date {
             text-align: center;
-        }
-
-        .cancel-button:hover {
-            background-color: #5a6268;
-            color: white;
-        }
-
-        .info-box {
-            background-color: #d1ecf1;
-            border: 1px solid #bee5eb;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 30px 0;
-        }
-
-        .info-box p {
-            color: #0c5460;
-            margin: 0;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -314,67 +267,232 @@
     <div id="smooth-wrapper">
         <div id="smooth-content">
             <main>
-                <!-- Delete Account Section start -->
+                <!-- Privacy Policy Section start -->
                 <section class="section-space">
                     <div class="container">
-                        <div class="delete-account-container">
-                            <div class="delete-account-icon">
-                                <i class="fa-solid fa-triangle-exclamation"></i>
-                            </div>
-
-                            <h1 class="delete-account-title" data-translate="delete_account_title">
-                                Hesabınızı Silmek İstiyor musunuz?
+                        <div class="privacy-container">
+                            <h1 class="privacy-title" data-translate="privacy_title">
+                                Gizlilik Politikası
                             </h1>
 
-                            <p class="delete-account-description" data-translate="delete_account_description">
-                                Hesabınızı silmeden önce lütfen aşağıdaki bilgileri dikkatle okuyun. Hesap silme işlemi
-                                geri alınamaz.
+                            <p class="privacy-date" data-translate="privacy_last_updated">
+                                Son Güncelleme: 2024
                             </p>
 
-                            <div class="warning-box">
-                                <h4 data-translate="warning_title">⚠️ Önemli Uyarı</h4>
-                                <ul>
-                                    <li data-tr="tr">Hesabınız kalıcı olarak silinecektir</li>
-                                    <li data-tr="en" style="display: none;">Your account will be permanently deleted
-                                    </li>
-                                    <li data-tr="tr">Tüm verileriniz (çalışan bilgileri, vardiya kayıtları, raporlar)
-                                        kalıcı olarak silinecektir</li>
-                                    <li data-tr="en" style="display: none;">All your data (employee information, shift
-                                        records, reports) will be permanently deleted</li>
-                                    <li data-tr="tr">Bu işlem geri alınamaz</li>
-                                    <li data-tr="en" style="display: none;">This action cannot be undone</li>
-                                    <li data-tr="tr">Yedekleme yapmanızı öneririz</li>
-                                    <li data-tr="en" style="display: none;">We recommend backing up your data</li>
-                                </ul>
-                            </div>
+                            <div class="privacy-content">
+                                <div data-tr="tr">
+                                    <p>
+                                        Work24 ("biz", "bizim", "şirket") olarak, kullanıcılarımızın gizliliğine önem
+                                        veriyoruz.
+                                        Bu Gizlilik Politikası, Work24 hizmetlerini kullandığınızda topladığımız,
+                                        kullandığımız,
+                                        paylaştığımız ve koruduğumuz kişisel bilgiler hakkında sizi bilgilendirmek için
+                                        hazırlanmıştır.
+                                    </p>
 
-                            <div class="info-box">
-                                <p data-translate="delete_account_info">
-                                    Hesabınızı silmek için lütfen bizimle e-posta yoluyla iletişime geçin. Hesap silme
-                                    talebinizi <strong>info@work24.io</strong> adresine gönderin.
-                                    Talebiniz incelendikten sonra hesabınız kalıcı olarak silinecektir.
-                                </p>
-                                <p style="margin-top: 20px; text-align: center;">
-                                    <a href="mailto:info@work24.io?subject=Hesap Silme Talebi&body=Merhaba, hesabımın silinmesini istiyorum."
-                                        class="email-link" id="email-link-tr"
-                                        style="font-size: 20px; color: #007bff; text-decoration: none; font-weight: bold;">
-                                        <i class="fa-solid fa-envelope"></i> info@work24.io
-                                    </a>
-                                    <a href="mailto:info@work24.io?subject=Account Deletion Request&body=Hello, I would like to delete my account."
-                                        class="email-link" id="email-link-en"
-                                        style="display: none; font-size: 20px; color: #007bff; text-decoration: none; font-weight: bold;">
-                                        <i class="fa-solid fa-envelope"></i> info@work24.io
-                                    </a>
-                                </p>
-                            </div>
+                                    <h2>1. Toplanan Bilgiler</h2>
+                                    <p>
+                                        Work24 hizmetlerini kullanırken aşağıdaki bilgileri toplayabiliriz:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Hesap Bilgileri:</strong> İsim, e-posta adresi, telefon numarası,
+                                            şirket bilgileri</li>
+                                        <li><strong>Kullanım Bilgileri:</strong> Giriş-çıkış kayıtları, vardiya
+                                            bilgileri, izin talepleri</li>
+                                        <li><strong>Cihaz Bilgileri:</strong> IP adresi, tarayıcı türü, işletim sistemi
+                                        </li>
+                                        <li><strong>Çalışan Bilgileri:</strong> Çalışanlarınızın adı, pozisyonu, çalışma
+                                            saatleri</li>
+                                    </ul>
 
-                            <a href="index.html" class="cancel-button" data-translate="cancel_button">
-                                Ana Sayfaya Dön
-                            </a>
+                                    <h2>2. Bilgilerin Kullanımı</h2>
+                                    <p>
+                                        Topladığımız bilgileri aşağıdaki amaçlar için kullanırız:
+                                    </p>
+                                    <ul>
+                                        <li>Hizmetlerimizi sağlamak ve iyileştirmek</li>
+                                        <li>Kullanıcı hesaplarını yönetmek</li>
+                                        <li>Vardiya ve izin yönetimi yapmak</li>
+                                        <li>Raporlar oluşturmak</li>
+                                        <li>Teknik destek sağlamak</li>
+                                        <li>Yasal yükümlülüklerimizi yerine getirmek</li>
+                                    </ul>
+
+                                    <h2>3. Bilgilerin Paylaşımı</h2>
+                                    <p>
+                                        Kişisel bilgilerinizi aşağıdaki durumlar dışında üçüncü taraflarla paylaşmayız:
+                                    </p>
+                                    <ul>
+                                        <li>Yasal zorunluluklar gereği</li>
+                                        <li>Hizmet sağlayıcılarımızla (bulut hosting, ödeme işlemcileri)</li>
+                                        <li>Kullanıcının açık izni ile</li>
+                                    </ul>
+
+                                    <h2>4. Veri Güvenliği</h2>
+                                    <p>
+                                        Verilerinizin güvenliğini sağlamak için endüstri standartlarına uygun teknik ve
+                                        idari
+                                        önlemler alıyoruz. Ancak, internet üzerinden veri aktarımının %100 güvenli
+                                        olmadığını
+                                        unutmayın.
+                                    </p>
+
+                                    <h2>5. Çerezler (Cookies)</h2>
+                                    <p>
+                                        Web sitemizi ve uygulamayı kullanırken çerezler kullanabiliriz. Çerezler, web
+                                        sitenin
+                                        işlevselliğini artırmak ve kullanıcı deneyimini iyileştirmek için kullanılır.
+                                    </p>
+
+                                    <h2>6. Kullanıcı Hakları</h2>
+                                    <p>
+                                        KVKK (Kişisel Verilerin Korunması Kanunu) ve GDPR kapsamında aşağıdaki haklara
+                                        sahipsiniz:
+                                    </p>
+                                    <ul>
+                                        <li>Kişisel verilerinize erişim hakkı</li>
+                                        <li>Yanlış verilerin düzeltilmesi</li>
+                                        <li>Verilerin silinmesi</li>
+                                        <li>Veri işlemeye itiraz etme</li>
+                                        <li>Veri taşınabilirliği</li>
+                                    </ul>
+
+                                    <h2>7. Veri Saklama</h2>
+                                    <p>
+                                        Kişisel verileriniz, hesabınız aktif olduğu sürece saklanır. Hesabınızı
+                                        sildiğinizde,
+                                        yasal saklama yükümlülüklerimiz dışında verileriniz silinir.
+                                    </p>
+
+                                    <h2>8. Çocukların Gizliliği</h2>
+                                    <p>
+                                        Hizmetlerimiz 18 yaş altındaki kişiler için tasarlanmamıştır ve bilerek
+                                        çocuklardan
+                                        kişisel bilgi toplamayız.
+                                    </p>
+
+                                    <h2>9. Değişiklikler</h2>
+                                    <p>
+                                        Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Önemli değişiklikler
+                                        için
+                                        size bildirimde bulunacağız.
+                                    </p>
+
+                                    <h2>10. İletişim</h2>
+                                    <p>
+                                        Gizlilik ile ilgili sorularınız için bizimle iletişime geçebilirsiniz:
+                                    </p>
+                                    <p>
+                                        <strong>E-posta:</strong> <a href="mailto:info@work24.io">info@work24.io</a>
+                                    </p>
+                                </div>
+
+                                <div data-tr="en" style="display: none;">
+                                    <p>
+                                        At Work24 ("we", "our", "company"), we value the privacy of our users.
+                                        This Privacy Policy is designed to inform you about the personal information
+                                        we collect, use, share, and protect when you use Work24 services.
+                                    </p>
+
+                                    <h2>1. Information Collected</h2>
+                                    <p>
+                                        When using Work24 services, we may collect the following information:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Account Information:</strong> Name, email address, phone number,
+                                            company information</li>
+                                        <li><strong>Usage Information:</strong> Check-in/check-out records, shift
+                                            information, leave requests</li>
+                                        <li><strong>Device Information:</strong> IP address, browser type, operating
+                                            system</li>
+                                        <li><strong>Employee Information:</strong> Employee names, positions, working
+                                            hours</li>
+                                    </ul>
+
+                                    <h2>2. Use of Information</h2>
+                                    <p>
+                                        We use the information we collect for the following purposes:
+                                    </p>
+                                    <ul>
+                                        <li>To provide and improve our services</li>
+                                        <li>To manage user accounts</li>
+                                        <li>To manage shifts and leaves</li>
+                                        <li>To generate reports</li>
+                                        <li>To provide technical support</li>
+                                        <li>To fulfill our legal obligations</li>
+                                    </ul>
+
+                                    <h2>3. Information Sharing</h2>
+                                    <p>
+                                        We do not share your personal information with third parties except in the
+                                        following cases:
+                                    </p>
+                                    <ul>
+                                        <li>Legal requirements</li>
+                                        <li>With our service providers (cloud hosting, payment processors)</li>
+                                        <li>With the user's explicit consent</li>
+                                    </ul>
+
+                                    <h2>4. Data Security</h2>
+                                    <p>
+                                        We take technical and administrative measures in accordance with industry
+                                        standards
+                                        to ensure the security of your data. However, please note that data transmission
+                                        over the internet is not 100% secure.
+                                    </p>
+
+                                    <h2>5. Cookies</h2>
+                                    <p>
+                                        We may use cookies when you use our website and application. Cookies are used
+                                        to enhance website functionality and improve user experience.
+                                    </p>
+
+                                    <h2>6. User Rights</h2>
+                                    <p>
+                                        Under KVKK (Personal Data Protection Law) and GDPR, you have the following
+                                        rights:
+                                    </p>
+                                    <ul>
+                                        <li>Right to access your personal data</li>
+                                        <li>Right to correction of incorrect data</li>
+                                        <li>Right to deletion</li>
+                                        <li>Right to object to data processing</li>
+                                        <li>Right to data portability</li>
+                                    </ul>
+
+                                    <h2>7. Data Retention</h2>
+                                    <p>
+                                        Your personal data is retained as long as your account is active. When you
+                                        delete
+                                        your account, your data will be deleted except for our legal retention
+                                        obligations.
+                                    </p>
+
+                                    <h2>8. Children's Privacy</h2>
+                                    <p>
+                                        Our services are not designed for persons under 18 years of age and we do not
+                                        knowingly collect personal information from children.
+                                    </p>
+
+                                    <h2>9. Changes</h2>
+                                    <p>
+                                        We may update this Privacy Policy from time to time. We will notify you of
+                                        significant changes.
+                                    </p>
+
+                                    <h2>10. Contact</h2>
+                                    <p>
+                                        For questions about privacy, you can contact us:
+                                    </p>
+                                    <p>
+                                        <strong>Email:</strong> <a href="mailto:info@work24.io">info@work24.io</a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
-                <!-- Delete Account Section end -->
+                <!-- Privacy Policy Section end -->
 
             </main>
 
@@ -447,6 +565,7 @@
                                             <li><a href="privacy.html" data-tr="tr">Gizlilik Politikası</a><a
                                                     href="privacy.html" data-tr="en" style="display: none;">Privacy
                                                     Policy</a></li>
+
                                             <li><a href="delete-account.html" data-tr="tr">Hesap Silme</a><a
                                                     href="delete-account.html" data-tr="en"
                                                     style="display: none;">Delete Account</a></li>
@@ -536,20 +655,12 @@
             const trElements = document.querySelectorAll('[data-tr="tr"]');
             const enElements = document.querySelectorAll('[data-tr="en"]');
 
-            // E-posta linkleri
-            const emailLinkTr = document.getElementById('email-link-tr');
-            const emailLinkEn = document.getElementById('email-link-en');
-
             if (lang === 'tr') {
                 trElements.forEach(el => el.style.display = '');
                 enElements.forEach(el => el.style.display = 'none');
-                if (emailLinkTr) emailLinkTr.style.display = '';
-                if (emailLinkEn) emailLinkEn.style.display = 'none';
             } else {
                 trElements.forEach(el => el.style.display = 'none');
                 enElements.forEach(el => el.style.display = '');
-                if (emailLinkTr) emailLinkTr.style.display = 'none';
-                if (emailLinkEn) emailLinkEn.style.display = '';
             }
         }
 

@@ -70,7 +70,11 @@ const translations = {
         "delete_account_button": "Hesabımı Sil",
         "cancel_button": "Ana Sayfaya Dön",
         "users": "Kullanıcı",
-        "location_plan": "Konum"
+        "location_plan": "Konum",
+
+        // Privacy Page
+        "privacy_title": "Gizlilik Politikası",
+        "privacy_last_updated": "Son Güncelleme: 2024"
     },
     en: {
         // Header
@@ -142,7 +146,11 @@ const translations = {
         "delete_account_button": "Delete My Account",
         "cancel_button": "Back to Home",
         "users": "Users",
-        "location_plan": "Location"
+        "location_plan": "Location",
+
+        // Privacy Page
+        "privacy_title": "Privacy Policy",
+        "privacy_last_updated": "Last Updated: 2024"
     }
 };
 

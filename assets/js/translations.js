@@ -59,7 +59,18 @@ const translations = {
         "feature_payroll_report": "Puantaj Raporu",
         "feature_neural_frameworks": "Önceden Optimize Edilmiş Nöral Çerçeveler",
         "feature_autoencoders": "Temel Özellik Otokodlayıcıları",
-        "feature_attention": "Dikkat Mekanizması Çerçeveleri"
+        "feature_attention": "Dikkat Mekanizması Çerçeveleri",
+
+        // Delete Account Page
+        "delete_account_title": "Hesabınızı Silmek İstiyor musunuz?",
+        "delete_account_description": "Hesabınızı silmeden önce lütfen aşağıdaki bilgileri dikkatle okuyun. Hesap silme işlemi geri alınamaz.",
+        "warning_title": "⚠️ Önemli Uyarı",
+        "warning_list": "Bu çeviri liste içeriği için kullanılmaz - HTML içinde manuel olarak yönetilir",
+        "delete_account_info": "Hesabınızı silmek için lütfen bizimle e-posta yoluyla iletişime geçin. Hesap silme talebinizi info@work24.io adresine gönderin. Talebiniz incelendikten sonra hesabınız kalıcı olarak silinecektir.",
+        "delete_account_button": "Hesabımı Sil",
+        "cancel_button": "Ana Sayfaya Dön",
+        "users": "Kullanıcı",
+        "location_plan": "Konum"
     },
     en: {
         // Header
@@ -120,7 +131,18 @@ const translations = {
         "feature_payroll_report": "Payroll Report",
         "feature_neural_frameworks": "Pre-optimized Neural Frameworks",
         "feature_autoencoders": "Underlying Feature Autoencoders",
-        "feature_attention": "Attention Mechanism Frameworks"
+        "feature_attention": "Attention Mechanism Frameworks",
+
+        // Delete Account Page
+        "delete_account_title": "Do You Want to Delete Your Account?",
+        "delete_account_description": "Please read the following information carefully before deleting your account. Account deletion cannot be undone.",
+        "warning_title": "⚠️ Important Warning",
+        "warning_list": "This translation is not used for list content - managed manually in HTML",
+        "delete_account_info": "To delete your account, please contact us by email. Send your account deletion request to info@work24.io. After your request is reviewed, your account will be permanently deleted.",
+        "delete_account_button": "Delete My Account",
+        "cancel_button": "Back to Home",
+        "users": "Users",
+        "location_plan": "Location"
     }
 };
 

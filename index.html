@@ -332,10 +332,11 @@
                         <div class="header__right header-8__right">
                             <div class="header__action d-flex align-items-center">
                                 <div class="contact d-none d-md-inline-flex">
-                                    <a onclick="startApp('signin')" data-translate="go_to_signin">Giriş Yap</a>
+                                    <a href="https://app.work24.io/signin" data-translate="go_to_signin">Giriş Yap</a>
                                 </div>
                                 <div class="header__btn-wrap header-8__btn d-none d-sm-inline-flex">
-                                    <a onclick="startApp('signup')" class="rr-btn" data-translate="get_started">Hemen
+                                    <a href="https://app.work24.io/signup" class="rr-btn"
+                                        data-translate="get_started">Hemen
                                         Başla</a>
                                 </div>
                                 <div class="language-selector">
@@ -427,11 +428,13 @@
                                         kolayca yönetin.
                                     </p>
                                     <div class="banner8__btn">
-                                        <a onclick="startApp('signin')" class="rr-btn" data-translate="go_to_signin">
+                                        <a href="https://app.work24.io/signin" class="rr-btn"
+                                            data-translate="go_to_signin">
                                             Giriş Yap <i class="fa-sharp fa-regular fa-arrow-right"></i>
                                         </a>
                                         <span data-translate="or" class="mx-3"> OR </span>
-                                        <a onclick="startApp('signup')" class="rr-btn" data-translate="get_started">
+                                        <a href="https://app.work24.io/signup" class="rr-btn"
+                                            data-translate="get_started">
                                             Hemen Başla <i class="fa-sharp fa-regular fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -947,136 +950,15 @@
                                         <div class="calculator-note" id="calculator-note">
                                         </div>
                                         <div class="banner8__btn mt-3">
-                                            <a href="#" onclick="startApp('signup')" class="rr-btn"
+                                            <a href="https://app.work24.io/signup" class="rr-btn"
                                                 style="background-color:#7ed957;" data-translate="go_to_signup">
                                                 Hemen Başla <i class="fa-sharp fa-regular fa-arrow-right"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <script>
-                                        window.addEventListener("message", function (event) {
-                                            if (event.data.type === "plans") {
-                                                const plans = event.data.data;
-
-                                                // Plans kontrolü
-                                                if (!plans || !Array.isArray(plans) || plans.length === 0) {
-                                                    console.error('Plan verileri alınamadı veya boş');
-                                                    return;
-                                                }
-
-                                                const container = document.querySelector("#plan-container");
-                                                container.innerHTML = '';
-
-                                                const packageSelect = document.getElementById("calculator-package");
-                                                const usersInput = document.getElementById("calculator-users");
-                                                const resultDiv = document.getElementById("calculator-result");
-                                                const noteDiv = document.getElementById("calculator-note");
-                                                const selectedInfoDiv = document.getElementById("selected-info");
-
-                                                // Select menüsünü dinamik olarak doldur
-                                                packageSelect.innerHTML = '';
-                                                plans.forEach((plan, index) => {
-                                                    const opt = document.createElement("option");
-                                                    opt.value = index; // index üzerinden plan'ı seçeceğiz
-                                                    opt.textContent = plan.name;
-                                                    packageSelect.appendChild(opt);
-
-                                                    // Plan kutuları
-                                                    const item = document.createElement('div');
-                                                    item.innerHTML = `
-                                                        <div class="pricing-4__item fade-top mb-5">
-                                                            <div class="pricing-4__header">
-                                                                <h3>${plan.name}</h3>
-                                                            </div>
-                                                            <div class="pricing-4__tag">
-                                                                <h4>₺ ${parseFloat(plan.perPrice || 0).toFixed(2)}<span data-translate="per_user_month"> User/Month</span></h4>
-                                                            </div>
-                                                            <div class="pricing-4__features text-start">
-                                                                <h3 class="pricing-8__features__title">${plan.description ?? ''}</h3>
-                                                                <ul>
-                                                                    <li><i class="fa-regular fa-check"></i> ${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} <span data-translate="location_plan">Location</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    `;
-                                                    container.appendChild(item);
-                                                });
-
-                                                function validateUserCount(value) {
-                                                    const numValue = parseInt(value);
-                                                    if (isNaN(numValue) || numValue < 1) {
-                                                        usersInput.value = 1;
-                                                        return 1;
-                                                    }
-                                                    return numValue;
-                                                }
-
-                                                function updateCalculator() {
-                                                    const selectedIndex = parseInt(packageSelect.value);
-                                                    const plan = plans[selectedIndex];
-
-                                                    // Plan kontrolü
-                                                    if (!plan) {
-                                                        console.error('Plan bulunamadı');
-                                                        return;
-                                                    }
-
-                                                    const users = validateUserCount(usersInput.value);
-
-                                                    const perPrice = parseFloat(plan.perPrice || 0);
-                                                    const discount = parseFloat(plan.discountPercent || 0) / 100;
-                                                    const yearlyTotal = users * perPrice * 12;
-                                                    const discountedTotal = yearlyTotal * (1 - discount);
-
-                                                    selectedInfoDiv.innerHTML = `
-                                                        <span class="package-name">${plan.name}</span>
-                                                        <span class="package-locations">(${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} Konum)</span>
-                                                        <span> </span>
-                                                        <strong>${users}</strong>
-                                                        <span> Kullanıcı</span>
-                                                    `;
-
-                                                    resultDiv.innerHTML = `
-                                                        <div class="selected-info" id="selected-info">
-                                                            <span class="package-name">${plan.name}</span>
-                                                            <span class="package-locations">(${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} <span data-translate="location_plan">Location</span>)</span>
-                                                            <span> </span>
-                                                            <strong>${users}</strong>
-                                                            <span data-translate="users">Users</span>
-                                                        </div>
-                                                        <span class="result-label" data-translate="yearly_payment">Yearly Payment: </span>
-                                                        <span class="result-price">${discountedTotal.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} TL</span>
-                                                        <span class="result-vat"  data-translate="vat"> + VAT</span>
-                                                    `;
-
-                                                    noteDiv.innerHTML = discount > 0
-                                                        ? `📦 <strong>${plan.name}</strong> paketine <span class="discount">%${plan.discountPercent} indirim</span> uygulanmıştır.`
-                                                        : `📦 <strong>${plan.name}</strong> paketine indirim <strong>uygulanmaz</strong>.`;
-                                                }
-
-                                                document.getElementById("increase-users").addEventListener("click", () => {
-                                                    const input = document.getElementById("calculator-users");
-                                                    input.value = parseInt(input.value || 1) + 1;
-                                                    input.dispatchEvent(new Event("input"));
-                                                });
-
-                                                document.getElementById("decrease-users").addEventListener("click", () => {
-                                                    const input = document.getElementById("calculator-users");
-                                                    const current = parseInt(input.value || 1);
-                                                    if (current > 1) {
-                                                        input.value = current - 1;
-                                                        input.dispatchEvent(new Event("input"));
-                                                    }
-                                                });
-
-                                                usersInput.addEventListener("input", () => updateCalculator());
-                                                usersInput.addEventListener("blur", () => updateCalculator());
-                                                packageSelect.addEventListener("change", () => updateCalculator());
-
-                                                // İlk hesaplama
-                                                updateCalculator();
-                                            }
-                                        });
+                                        // API Endpoint
+                                        const PLANS_API_ENDPOINT = 'https://devinsofthrmsystemdashapi.azurewebsites.net/api/PlanServices/All';
 
                                         // API hatası durumunda varsayılan planlar
                                         const defaultPlans = [
@@ -1106,18 +988,172 @@
                                             }
                                         ];
 
-                                        // Sayfa yüklendiğinde varsayılan planları göster
-                                        setTimeout(() => {
-                                            if (!document.querySelector("#plan-container").children.length) {
-                                                console.log('Varsayılan planlar yükleniyor...');
-                                                window.dispatchEvent(new MessageEvent('message', {
-                                                    data: {
-                                                        type: 'plans',
-                                                        data: defaultPlans
-                                                    }
-                                                }));
+                                        let plans = [];
+
+                                        // Planları API'den çek
+                                        async function fetchPlans() {
+                                            try {
+                                                const response = await fetch(PLANS_API_ENDPOINT, {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                    },
+                                                    body: JSON.stringify({
+                                                        orders: [],
+                                                        filters: []
+                                                    })
+                                                });
+
+                                                if (!response.ok) {
+                                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                                }
+
+                                                const data = await response.json();
+
+                                                // Response formatı: { results: [], totalCount: number, pageCount: number }
+                                                plans = data.results || [];
+
+                                                if (!plans || plans.length === 0) {
+                                                    console.warn('API\'den plan verisi boş geldi, varsayılan planlar kullanılıyor');
+                                                    plans = defaultPlans;
+                                                }
+
+                                                renderPlans(plans);
+                                            } catch (error) {
+                                                console.error('Planlar yüklenirken hata oluştu:', error);
+                                                console.log('Varsayılan planlar kullanılıyor...');
+                                                plans = defaultPlans;
+                                                renderPlans(plans);
                                             }
-                                        }, 2000);
+                                        }
+
+                                        // Planları render et
+                                        function renderPlans(plansData) {
+                                            // Plans kontrolü
+                                            if (!plansData || !Array.isArray(plansData) || plansData.length === 0) {
+                                                console.error('Plan verileri alınamadı veya boş');
+                                                return;
+                                            }
+
+                                            plans = plansData;
+
+                                            const container = document.querySelector("#plan-container");
+                                            container.innerHTML = '';
+
+                                            const packageSelect = document.getElementById("calculator-package");
+                                            const usersInput = document.getElementById("calculator-users");
+                                            const resultDiv = document.getElementById("calculator-result");
+                                            const noteDiv = document.getElementById("calculator-note");
+                                            const selectedInfoDiv = document.getElementById("selected-info");
+
+                                            // Select menüsünü dinamik olarak doldur
+                                            packageSelect.innerHTML = '';
+                                            plans.forEach((plan, index) => {
+                                                const opt = document.createElement("option");
+                                                opt.value = index; // index üzerinden plan'ı seçeceğiz
+                                                opt.textContent = plan.name;
+                                                packageSelect.appendChild(opt);
+
+                                                // Plan kutuları
+                                                const item = document.createElement('div');
+                                                item.innerHTML = `
+                                                    <div class="pricing-4__item fade-top mb-5">
+                                                        <div class="pricing-4__header">
+                                                            <h3>${plan.name}</h3>
+                                                        </div>
+                                                        <div class="pricing-4__tag">
+                                                            <h4>₺ ${parseFloat(plan.perPrice || 0).toFixed(2)}<span data-translate="per_user_month"> User/Month</span></h4>
+                                                        </div>
+                                                        <div class="pricing-4__features text-start">
+                                                            <h3 class="pricing-8__features__title">${plan.description ?? ''}</h3>
+                                                            <ul>
+                                                                <li><i class="fa-regular fa-check"></i> ${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} <span data-translate="location_plan">Location</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                `;
+                                                container.appendChild(item);
+                                            });
+
+                                            function validateUserCount(value) {
+                                                const numValue = parseInt(value);
+                                                if (isNaN(numValue) || numValue < 1) {
+                                                    usersInput.value = 1;
+                                                    return 1;
+                                                }
+                                                return numValue;
+                                            }
+
+                                            function updateCalculator() {
+                                                const selectedIndex = parseInt(packageSelect.value);
+                                                const plan = plans[selectedIndex];
+
+                                                // Plan kontrolü
+                                                if (!plan) {
+                                                    console.error('Plan bulunamadı');
+                                                    return;
+                                                }
+
+                                                const users = validateUserCount(usersInput.value);
+
+                                                const perPrice = parseFloat(plan.perPrice || 0);
+                                                const discount = parseFloat(plan.discountPercent || 0) / 100;
+                                                const yearlyTotal = users * perPrice * 12;
+                                                const discountedTotal = yearlyTotal * (1 - discount);
+
+                                                selectedInfoDiv.innerHTML = `
+                                                    <span class="package-name">${plan.name}</span>
+                                                    <span class="package-locations">(${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} Konum)</span>
+                                                    <span> </span>
+                                                    <strong>${users}</strong>
+                                                    <span> Kullanıcı</span>
+                                                `;
+
+                                                resultDiv.innerHTML = `
+                                                    <div class="selected-info" id="selected-info">
+                                                        <span class="package-name">${plan.name}</span>
+                                                        <span class="package-locations">(${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} <span data-translate="location_plan">Location</span>)</span>
+                                                        <span> </span>
+                                                        <strong>${users}</strong>
+                                                        <span data-translate="users">Users</span>
+                                                    </div>
+                                                    <span class="result-label" data-translate="yearly_payment">Yearly Payment: </span>
+                                                    <span class="result-price">${discountedTotal.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} TL</span>
+                                                    <span class="result-vat"  data-translate="vat"> + VAT</span>
+                                                `;
+
+                                                noteDiv.innerHTML = discount > 0
+                                                    ? `📦 <strong>${plan.name}</strong> paketine <span class="discount">%${plan.discountPercent || 0} indirim</span> uygulanmıştır.`
+                                                    : `📦 <strong>${plan.name}</strong> paketine indirim <strong>uygulanmaz</strong>.`;
+                                            }
+
+                                            document.getElementById("increase-users").addEventListener("click", () => {
+                                                const input = document.getElementById("calculator-users");
+                                                input.value = parseInt(input.value || 1) + 1;
+                                                input.dispatchEvent(new Event("input"));
+                                            });
+
+                                            document.getElementById("decrease-users").addEventListener("click", () => {
+                                                const input = document.getElementById("calculator-users");
+                                                const current = parseInt(input.value || 1);
+                                                if (current > 1) {
+                                                    input.value = current - 1;
+                                                    input.dispatchEvent(new Event("input"));
+                                                }
+                                            });
+
+                                            usersInput.addEventListener("input", () => updateCalculator());
+                                            usersInput.addEventListener("blur", () => updateCalculator());
+                                            packageSelect.addEventListener("change", () => updateCalculator());
+
+                                            // İlk hesaplama
+                                            updateCalculator();
+                                        }
+
+                                        // Sayfa yüklendiğinde planları çek
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            fetchPlans();
+                                        });
                                     </script>
 
                                 </div>
@@ -1277,8 +1313,7 @@
                                                 </div>
                                                 <div class="text">
                                                     <span>Download on the</span>
-                                                    <h6><a href="javascript:void(0)"
-                                                            onclick="window.parent.postMessage('appstore', '*')">App
+                                                    <h6><a href="https://apps.apple.com/tr/app/work24/id6742156967">App
                                                             Store</a></h6>
                                                 </div>
                                             </div>
@@ -1288,8 +1323,8 @@
                                                 </div>
                                                 <div class="text">
                                                     <span>Get it on</span>
-                                                    <h6><a href="javascript:void(0)"
-                                                            onclick="window.parent.postMessage('googleplay', '*')">Google
+                                                    <h6><a
+                                                            href="https://play.google.com/store/apps/details?id=io.work24.app">Google
                                                             Play</a></h6>
                                                 </div>
                                             </div>
@@ -1528,17 +1563,6 @@
             updateContent('en');
         });
 
-        function startApp(tag) {
-            if (tag == 'signin') {
-                window.parent.postMessage('signInApp', '*');
-            } else if (tag == 'signup') {
-                window.parent.postMessage('signUpApp', '*');
-            } else if (tag == 'appstore') {
-                window.parent.postMessage('signUpApp', '*');
-            } else if (tag == 'googleplay') {
-                window.parent.postMessage('googlePlay', '*');
-            }
-        }
 
         function toggleLanguageMenu() {
             const menu = document.getElementById('languageMenu');

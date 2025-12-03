@@ -34,7 +34,7 @@ const translations = {
 
         // FAQ Items
         "faq_start_question": "Work24'i nasıl kullanmaya başlayabilirim?",
-        "faq_start_answer": "Work24'i kullanmaya başlamak için öncelikle ücretsiz hesap oluşturmanız yeterli. Ardından çalışanlarınızı sisteme ekleyebilir, vardiya planlaması yapabilir ve diğer özellikleri kullanmaya başlayabilirsiniz.",
+        "faq_start_answer": "Work24'i kullanmaya başlamak için öncelikle hesap oluşturmanız yeterli. Ardından çalışanlarınızı sisteme ekleyebilir, vardiya planlaması yapabilir ve diğer özellikleri kullanmaya başlayabilirsiniz.",
 
         "faq_qr_question": "QR kod ile giriş-çıkış sistemi nasıl çalışır?",
         "faq_qr_answer": "Her çalışanınıza özel bir QR kod atanır. Çalışanlar bu QR kodu telefonlarından okutarak giriş-çıkış yapabilirler. Sistem otomatik olarak giriş-çıkış kayıtlarını tutar ve raporlar.",
@@ -137,7 +137,7 @@ const translations = {
 
         // FAQ Items
         "faq_start_question": "How can I start using Work24?",
-        "faq_start_answer": "To start using Work24, you just need to create a free account first. Then you can add your employees to the system, plan shifts and start using other features.",
+        "faq_start_answer": "To start using Work24, you just need to create an account first. Then you can add your employees to the system, plan shifts and start using other features.",
 
         "faq_qr_question": "How does the QR code entry-exit system work?",
         "faq_qr_answer": "Each employee is assigned a unique QR code. Employees can scan this QR code with their phones to check in and out. The system automatically keeps and reports entry-exit records.",

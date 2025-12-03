@@ -3859,7 +3859,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .img-custom-anim-left {
-  animation: img-anim-left 1.3s forwards cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s;
+  animation: img-anim-left 1.3s forwards cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
   opacity: 0;
 }
 
@@ -6639,14 +6639,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 /*----------------------------------------*/
 /*  3.3 header-6
 /*----------------------------------------*/
-@media only screen and (min-width: 992px) and (max-width: 1199px),
-only screen and (min-width: 768px) and (max-width: 992px),
-only screen and (min-width: 576px) and (max-width: 767px),
-(max-width: 575px) {
-  .header-6__main {
-    padding: 15px 0;
-  }
-}
+
 
 .header-6__top-bar {
   margin: 0 110px;
@@ -10207,16 +10200,14 @@ only screen and (min-width: 576px) and (max-width: 767px),
   }
 }
 
-.main-menu ul li.active>a {
-  color: var(--rr-theme-primary2) !important;
-}
+
 
 .main-menu ul li>a {
   display: inline-block;
   color: var(--rr-heading-primary);
   font-family: var(--rr-ff-body);
   font-weight: var(--rr-fw-medium);
-  padding: 35px 0;
+  padding: 15px 0;
   text-transform: uppercase;
   font-size: 14px;
   line-height: 10px;
@@ -10484,12 +10475,10 @@ only screen and (min-width: 1200px) and (max-width: 1399px) {
   width: 12px;
 }
 
-.main-menu ul li:hover>a {
-  color: var(--rr-theme-primary2);
-}
+
 
 .main-menu ul li:hover>a::after {
-  color: var(--rr-theme-primary2);
+  color: var(--rr-theme-primary);
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
@@ -17639,6 +17628,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .faq-8 .faq-4__thumb .section__title-wrapper .section__title-wrapper-title-2 {
+  font-family: var(--rr-ff-heading);
   color: var(--rr-heading-primary);
   font-size: 44px;
   line-height: 56px;

@@ -7,6 +7,11 @@ const translations = {
         "get_started": "Hemen Başla",
         "language": "Türkçe",
         "or": "VEYA",
+        // Menu
+        "menu_home": "Ana Sayfa",
+        "menu_features": "Özellikler",
+        "menu_how_it_works": "Nasıl Çalışır",
+        "menu_pricing": "Fiyatlandırma",
         // Banner
         "banner_title": "İş Yönetiminde Yeni Nesil Çözümler",
         "banner_description": "Çalışanlarınızın vardiya, izin ve performans yönetimini tek bir platformda kolayca yönetin.",
@@ -61,6 +66,28 @@ const translations = {
         "feature_autoencoders": "Temel Özellik Otokodlayıcıları",
         "feature_attention": "Dikkat Mekanizması Çerçeveleri",
 
+        // Detailed Features Section
+        "features_detailed_title": "Work24'in Güçlü Özellikleri",
+        "features_detailed_subtitle": "İşletmenizi dijital dünyada yönetmek için ihtiyacınız olan tüm araçlar tek bir platformda",
+        "feature_qr_title": "QR Kod Giriş-Çıkış",
+        "feature_qr_description": "Her çalışanınıza özel QR kod atayın. Telefon ile kolayca tarayarak giriş-çıkış yapın. Otomatik kayıt ve raporlama sistemi.",
+        "feature_shift_title": "Vardiya Yönetimi",
+        "feature_shift_description": "Esnek vardiya planlaması, otomatik vardiya oluşturma, vardiya değişiklikleri ve çalışan bazlı planlama özellikleri.",
+        "feature_leave_title": "İzin Yönetimi",
+        "feature_leave_description": "İzin talepleri, onay süreçleri, izin bakiyesi takibi ve detaylı izin raporları ile çalışan izinlerini kolayca yönetin.",
+        "feature_payroll_title": "Puantaj Raporu",
+        "feature_payroll_description": "Otomatik puantaj hesaplamaları, mesai raporları, eksik-fazla mesai takibi ve detaylı çalışma saat analizleri.",
+        "feature_dashboard_title": "Akıllı Dashboard",
+        "feature_dashboard_description": "Gerçek zamanlı istatistikler, özet kartlar, çalışan durumları ve performans metrikleri ile işinizi tek bakışta görün.",
+        "feature_notification_title": "Bildirim Yönetimi",
+        "feature_notification_description": "Anlık bildirimler, vardiya hatırlatmaları, izin onay bildirimleri ve özelleştirilebilir bildirim ayarları.",
+        "feature_role_title": "Rol Yönetimi",
+        "feature_role_description": "Esnek yetki sistemi, rol bazlı erişim kontrolü, departman yönetimi ve kullanıcı yetkilendirme özellikleri.",
+        "feature_mobile_title": "Mobil Uygulama",
+        "feature_mobile_description": "iOS ve Android uygulamaları ile her yerden erişim. QR kod tarama, vardiya görüntüleme ve bildirim alma özellikleri.",
+        "feature_overtime_title": "Mesai Raporlama",
+        "feature_overtime_description": "Eksik ve fazla mesai takibi, otomatik hesaplamalar, mesai onay süreçleri ve detaylı mesai raporları.",
+
         // Delete Account Page
         "delete_account_title": "Hesabınızı Silmek İstiyor musunuz?",
         "delete_account_description": "Hesabınızı silmeden önce lütfen aşağıdaki bilgileri dikkatle okuyun. Hesap silme işlemi geri alınamaz.",
@@ -74,7 +101,7 @@ const translations = {
 
         // Privacy Page
         "privacy_title": "Gizlilik Politikası",
-        "privacy_last_updated": "Son Güncelleme: 2024"
+        "privacy_last_updated": "Son Güncelleme: 2025"
     },
     en: {
         // Header
@@ -84,6 +111,11 @@ const translations = {
         "get_started": "Get Started",
         "language": "English",
         "or": "OR",
+        // Menu
+        "menu_home": "Home",
+        "menu_features": "Features",
+        "menu_how_it_works": "How It Works",
+        "menu_pricing": "Pricing",
         // Banner
         "banner_title": "Next Generation Solutions in Business Management",
         "banner_description": "Easily manage your employees' shifts, leaves and performance on a single platform.",
@@ -137,6 +169,28 @@ const translations = {
         "feature_autoencoders": "Underlying Feature Autoencoders",
         "feature_attention": "Attention Mechanism Frameworks",
 
+        // Detailed Features Section
+        "features_detailed_title": "Work24's Powerful Features",
+        "features_detailed_subtitle": "All the tools you need to manage your business in the digital world in a single platform",
+        "feature_qr_title": "QR Code Entry-Exit",
+        "feature_qr_description": "Assign a unique QR code to each employee. Easily scan with your phone to check in and out. Automatic recording and reporting system.",
+        "feature_shift_title": "Shift Management",
+        "feature_shift_description": "Flexible shift planning, automatic shift creation, shift changes and employee-based planning features.",
+        "feature_leave_title": "Leave Management",
+        "feature_leave_description": "Easily manage employee leaves with leave requests, approval processes, leave balance tracking and detailed leave reports.",
+        "feature_payroll_title": "Payroll Report",
+        "feature_payroll_description": "Automatic payroll calculations, overtime reports, missing-overtime tracking and detailed working hour analyses.",
+        "feature_dashboard_title": "Smart Dashboard",
+        "feature_dashboard_description": "See your business at a glance with real-time statistics, summary cards, employee statuses and performance metrics.",
+        "feature_notification_title": "Notification Management",
+        "feature_notification_description": "Instant notifications, shift reminders, leave approval notifications and customizable notification settings.",
+        "feature_role_title": "Role Management",
+        "feature_role_description": "Flexible permission system, role-based access control, department management and user authorization features.",
+        "feature_mobile_title": "Mobile Application",
+        "feature_mobile_description": "Access from anywhere with iOS and Android apps. QR code scanning, shift viewing and notification features.",
+        "feature_overtime_title": "Overtime Reporting",
+        "feature_overtime_description": "Missing and overtime tracking, automatic calculations, overtime approval processes and detailed overtime reports.",
+
         // Delete Account Page
         "delete_account_title": "Do You Want to Delete Your Account?",
         "delete_account_description": "Please read the following information carefully before deleting your account. Account deletion cannot be undone.",
@@ -150,7 +204,7 @@ const translations = {
 
         // Privacy Page
         "privacy_title": "Privacy Policy",
-        "privacy_last_updated": "Last Updated: 2024"
+        "privacy_last_updated": "Last Updated: 2025"
     }
 };
 

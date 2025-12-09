@@ -46,7 +46,7 @@ function updateContent(lang) {
 
 // Sayfa yüklendiğinde dil tercihini yükle veya varsayılan dili kullan
 document.addEventListener('DOMContentLoaded', function () {
-    const savedLang = localStorage.getItem('work24_language') || 'en';
+    const savedLang = localStorage.getItem('work24_language') || 'tr';
     updateContent(savedLang);
     // Bayrağı da güncelle
     const currentFlag = document.getElementById('currentFlag');
@@ -159,37 +159,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
     menuLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
+            const rawHref = this.getAttribute('href');
+            if (!rawHref) return;
 
-            // Only handle anchor links
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                const targetId = href.substring(1);
+            // Normalize URL
+            const targetUrl = new URL(rawHref, window.location.href);
+            const isSamePage = targetUrl.pathname === window.location.pathname;
+            const hasHash = !!targetUrl.hash;
 
-                // Mobil menüden tıklandıysa offcanvas'ı kapat
-                const offcanvasElement = document.getElementById('offcanvasMenu');
-                if (offcanvasElement && this.classList.contains('mobile-menu-link')) {
-                    const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
-                    if (offcanvas) {
-                        offcanvas.hide();
-                    }
+            // Mobil menüden tıklandıysa offcanvas'ı kapat
+            const offcanvasElement = document.getElementById('offcanvasMenu');
+            if (offcanvasElement && this.classList.contains('mobile-menu-link')) {
+                const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                if (offcanvas) {
+                    offcanvas.hide();
                 }
+            }
 
-                // Ana sayfa için özel kontrol
+            // Hash yoksa veya başka sayfaysa doğrudan yönlendir
+            if (!hasHash || !isSamePage) {
+                e.preventDefault();
+                window.location.href = targetUrl.href;
+                return;
+            }
+
+            if (hasHash) {
+                // Aynı sayfada ise smooth scroll
+                e.preventDefault();
+                const targetId = targetUrl.hash.substring(1);
+
                 if (targetId === 'home') {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-
-                    // Tüm aktif sınıfları kaldır ve ana sayfa linkini aktif yap
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     menuLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
                     return;
                 }
 
                 const targetElement = document.getElementById(targetId);
-
                 if (targetElement) {
                     const headerHeight = document.querySelector('header').offsetHeight;
                     const targetPosition = targetElement.offsetTop - headerHeight - 20;
@@ -199,7 +205,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         behavior: 'smooth'
                     });
 
-                    // Scroll tamamlandıktan sonra aktif sınıfı güncelle
                     setTimeout(() => {
                         menuLinks.forEach(l => l.classList.remove('active'));
                         this.classList.add('active');
@@ -261,7 +266,7 @@ function selectMobileLanguage(lang) {
 
 // Update mobile language on page load
 document.addEventListener('DOMContentLoaded', function () {
-    const savedLang = localStorage.getItem('work24_language') || 'en';
+    const savedLang = localStorage.getItem('work24_language') || 'tr';
     const mobileCurrentFlag = document.getElementById('mobileCurrentFlag');
     const mobileCurrentLang = document.getElementById('mobileCurrentLang');
 

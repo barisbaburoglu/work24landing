@@ -327,8 +327,8 @@ window.addEventListener('scroll', function () {
     function formatCurrency(amount, lang) {
         const locale = lang === 'en' ? 'en-US' : 'tr-TR';
         return amount.toLocaleString(locale, {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
         });
     }
 
@@ -345,8 +345,9 @@ window.addEventListener('scroll', function () {
         const perUser = card.querySelector('.pricing-card__per-user');
         const range = card.querySelector(`[data-plan-range="${planKey}"]`)?.closest('li');
         const startBtn = card.querySelector('.rr-btn:not(.rr-btn--outline)');
+        const yearly = card.querySelector(`[data-plan-yearly="${planKey}"]`)?.closest('.pricing-card__yearly');
 
-        [price, perUser, range, startBtn].forEach(el => {
+        [price, perUser, range, startBtn, yearly].forEach(el => {
             if (!el) return;
             el.style.display = visible ? '' : 'none';
         });
@@ -359,17 +360,59 @@ window.addEventListener('scroll', function () {
         }
         setPlanVisibility(planKey, true);
         const totalPriceEl = document.querySelector(`[data-plan-price="${planKey}"]`);
+        const originalPriceEl = document.querySelector(`[data-plan-original="${planKey}"]`);
         const perUserEls = document.querySelectorAll(`[data-plan-per-user="${planKey}"]`);
         const rangeEl = document.querySelector(`[data-plan-range="${planKey}"]`);
+        const discountBadgeEl = document.querySelector(`[data-plan-discount-badge="${planKey}"]`);
+        const yearlyEl = document.querySelector(`[data-plan-yearly="${planKey}"]`);
 
         const perPrice = parseFloat(planData.perPrice || 0);
-        const discount = parseFloat(planData.discountPercent || 0) / 100;
+        const discountPercent = parseFloat(planData.discountPercent || 0);
+        const safeDiscountPercent = isNaN(discountPercent) ? 0 : discountPercent;
+        const discount = Math.max(0, safeDiscountPercent) / 100;
         const yearlyTotal = userCount * perPrice * 12;
         const discountedTotal = yearlyTotal * (1 - discount);
+        const originalMonthly = yearlyTotal / 12;
+        const discountedMonthly = discountedTotal / 12;
+        const yearlyDue = discountedTotal;
 
         if (totalPriceEl) {
-            totalPriceEl.textContent = formatCurrency(discountedTotal / 12, lang);
+            totalPriceEl.textContent = formatCurrency(discountedMonthly, lang);
         }
+
+        if (originalPriceEl) {
+            if (discount > 0) {
+                originalPriceEl.style.display = '';
+                originalPriceEl.textContent = formatCurrency(originalMonthly, lang);
+            } else {
+                originalPriceEl.style.display = 'none';
+                originalPriceEl.textContent = '';
+            }
+        }
+
+        if (discountBadgeEl) {
+            if (discount > 0) {
+                discountBadgeEl.style.display = '';
+                const trText = `-%${discountPercent}`;
+                const enText = `-${discountPercent}% OFF`;
+                discountBadgeEl.textContent = pricingState.lang === 'en' ? enText : trText;
+            } else {
+                discountBadgeEl.style.display = 'none';
+                discountBadgeEl.textContent = '';
+            }
+        }
+
+        if (yearlyEl) {
+            if (discountedTotal > 0) {
+                yearlyEl.style.display = '';
+                const suffix = lang === 'en' ? ' / Year' : ' / Yıl';
+                yearlyEl.textContent = `₺ ${formatCurrency(yearlyDue, lang)}${suffix}`;
+            } else {
+                yearlyEl.style.display = 'none';
+                yearlyEl.textContent = '';
+            }
+        }
+
 
         perUserEls.forEach(el => {
             el.textContent = `₺ ${formatCurrency(perPrice, lang)}`;
@@ -476,95 +519,5 @@ window.addEventListener('scroll', function () {
         initPricingControls();
         fetchPlans();
     });
-})();
-
-// Pricing cards - toplam fiyat hesaplama
-(function () {
-    const pricingPlansConfig = {
-        starter: { perUser: 0 },
-        team: { perUser: 0 },
-        enterprise: { perUser: 0 }
-    };
-
-    const pricingState = {
-        lang: localStorage.getItem('work24_language') || 'en'
-    };
-
-    function formatCurrency(amount, lang) {
-        const locale = lang === 'en' ? 'en-US' : 'tr-TR';
-        return amount.toLocaleString(locale, {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
-        });
-    }
-
-    function updatePricingCards(langOverride) {
-        const userInput = document.getElementById('pricing-user-count');
-        if (!userInput) return;
-
-        if (langOverride) {
-            pricingState.lang = langOverride;
-        }
-
-        const lang = pricingState.lang;
-        const parsedValue = parseInt(userInput.value, 10);
-        const userCount = isNaN(parsedValue) || parsedValue < 1 ? 1 : parsedValue;
-
-        userInput.value = userCount;
-
-        // Kullanıcı sayısını gösteren alanları güncelle
-        document.querySelectorAll('[data-plan-user-count]').forEach(el => {
-            el.textContent = userCount;
-        });
-
-        Object.entries(pricingPlansConfig).forEach(([planId, config]) => {
-            const priceEl = document.querySelector(`[data-plan-price="${planId}"]`);
-            const perUserEls = document.querySelectorAll(`[data-plan-per-user="${planId}"]`);
-            const totalPrice = config.perUser * userCount;
-
-            if (priceEl) {
-                priceEl.textContent = formatCurrency(totalPrice, lang);
-            }
-
-            perUserEls.forEach(el => {
-                el.textContent = `₺ ${formatCurrency(config.perUser, lang)}`;
-            });
-        });
-    }
-
-    function initPricingControls() {
-        const userInput = document.getElementById('pricing-user-count');
-        const increaseBtn = document.getElementById('pricing-user-increase');
-        const decreaseBtn = document.getElementById('pricing-user-decrease');
-
-        if (!userInput || !increaseBtn || !decreaseBtn) {
-            return;
-        }
-
-        increaseBtn.addEventListener('click', () => {
-            const current = parseInt(userInput.value || '1', 10);
-            userInput.value = current + 1;
-            updatePricingCards();
-        });
-
-        decreaseBtn.addEventListener('click', () => {
-            const current = parseInt(userInput.value || '1', 10);
-            if (current > 1) {
-                userInput.value = current - 1;
-            }
-            updatePricingCards();
-        });
-
-        userInput.addEventListener('input', () => updatePricingCards());
-        userInput.addEventListener('blur', () => updatePricingCards());
-
-        updatePricingCards();
-    }
-
-    // Sayfa yüklendiğinde başlat
-    document.addEventListener('DOMContentLoaded', initPricingControls);
-
-    // Dil değişikliğinde fiyat alanlarını güncelle
-    window.updatePricingLanguage = updatePricingCards;
 })();
 

@@ -239,6 +239,9 @@
     padding: 28px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .pricing-card:hover {
@@ -265,27 +268,38 @@
 
 .pricing-card__header {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .pricing-card__title {
     font-size: 22px;
     margin-bottom: 6px;
     color: #0f172a;
+    text-align: center;
 }
 
 .pricing-card__subtitle {
     color: #6b7280;
     min-height: 42px;
     font-size: 15px;
+    text-align: center;
 }
 
 .pricing-card__price {
     display: flex;
     align-items: flex-end;
-    gap: 4px;
+    gap: 6px;
     margin: 18px 0;
     color: #0f172a;
     font-weight: 800;
+    justify-content: center;
+}
+
+.pricing-card__original {
+    font-size: 16px;
+    color: #94a3b8;
+    text-decoration: line-through;
+    line-height: 1;
 }
 
 .pricing-card__currency {
@@ -303,10 +317,47 @@
     margin-bottom: 4px;
 }
 
+.pricing-card__yearly {
+    text-align: center;
+    color: #4b5563;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.pricing-card__yearly-original {
+    color: #94a3b8;
+    text-decoration: line-through;
+    margin-left: 6px;
+}
+
+.pricing-card__yearly-amount {
+    color: #7ed957;
+    font-weight: 800;
+    margin-left: 6px;
+}
+
 .pricing-card__per-user {
     color: #4b5563;
     font-weight: 600;
     margin-bottom: 16px;
+    text-align: center;
+}
+
+.pricing-card__discount-badge {
+    position: absolute;
+    top: 14px;
+    left: -12px;
+    background: linear-gradient(135deg, #ff5f6d 0%, #ffc371 100%);
+    color: #fff;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 8px 12px;
+    transform: rotate(-12deg);
+    box-shadow: 0 10px 24px rgba(255, 95, 109, 0.3);
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .pricing-card__features {
@@ -315,6 +366,7 @@
     margin: 0 0 20px 0;
     display: grid;
     gap: 10px;
+    justify-items: center;
 }
 
 .pricing-card__features li {

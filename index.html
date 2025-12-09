@@ -68,6 +68,15 @@
                                             data-translate="menu_how_it_works">Nasıl Çalışır</a></li>
                                     <li><a href="#pricing" class="menu-link"
                                             data-translate="menu_pricing">Fiyatlandırma</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#" class="menu-link" data-translate="menu_support">Destek</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="faq.html" data-translate="menu_faq">Sıkça Sorulan Sorular</a>
+                                            </li>
+                                            <li><a href="solutions.html" data-translate="menu_solutions">WORK24
+                                                    Çözümler</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -143,6 +152,15 @@
                             data-bs-dismiss="offcanvas">Nasıl Çalışır</a></li>
                     <li><a href="#pricing" class="mobile-menu-link" data-translate="menu_pricing"
                             data-bs-dismiss="offcanvas">Fiyatlandırma</a></li>
+                    <li class="mobile-menu-item-has-children">
+                        <a href="#" class="mobile-menu-link" data-translate="menu_support">Destek</a>
+                        <ul class="mobile-sub-menu">
+                            <li><a href="faq.html" class="mobile-menu-link" data-translate="menu_faq"
+                                    data-bs-dismiss="offcanvas">Sıkça Sorulan Sorular</a></li>
+                            <li><a href="solutions.html" class="mobile-menu-link" data-translate="menu_solutions"
+                                    data-bs-dismiss="offcanvas">WORK24 Çözümler</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <div class="mobile-language-selector">
@@ -691,298 +709,169 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <div class="section__title-wrapper text-center hero mb-55">
+                                <div class="section__title-wrapper text-center hero mb-40">
                                     <h2 class="section__title-wrapper-title _split_text" data-translate="pricing_title">
                                         Esnek Fiyatlandırma Planları</h2>
                                     <p class="section__title-wrapper-dec mt-15 rr_title_anim"
                                         data-translate="pricing_description">İşletmenizin
                                         büyüklüğüne ve ihtiyaçlarınıza uygun <br>
                                         fiyatlandırma seçenekleriyle hemen başlayın.</p>
-                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="row d-flex align-items-center">
-                            <div class="col-md-6" id="plan-container"></div>
+                        <div class="pricing-control text-center fade-top mb-50" style="display: none;">
+                            <p class="pricing-control__label">
+                                <span data-tr="tr">Kişi Sayısı</span>
+                                <span data-tr="en">Number of users</span>
+                            </p>
+                            <div class="pricing-control__input">
+                                <button type="button" class="user-btn" id="pricing-user-decrease"
+                                    aria-label="Decrease users">−</button>
+                                <input type="number" id="pricing-user-count" class="calculator-input" min="1" value="10"
+                                    aria-label="User count" />
+                                <button type="button" class="user-btn" id="pricing-user-increase"
+                                    aria-label="Increase users">+</button>
+                            </div>
+                            <p class="pricing-control__hint">
+                                <span data-tr="tr">Fiyatlar kişi sayısına göre aylık toplam tutar üzerinden
+                                    hesaplanır.</span>
+                                <span data-tr="en">Prices are calculated as total monthly amount based on user
+                                    count.</span>
+                            </p>
+                        </div>
 
-                            <div class="col-md-6">
-                                <div class="section__title-wrapper text-center hero mb-55">
-                                    <h2 class="section__title-wrapper-title _split_text"
-                                        data-translate="calculator_title">
-                                        💸 Yıllık Ödeme Hesaplayıcı</h2>
-                                    <p class="section__title-wrapper-dec mt-15 rr_title_anim mb-5"
-                                        data-translate="calculator_description">
-                                        Size en uygun pakete göre yıllık ödemenizi hesaplayın.</p>
-
-                                    <div class="calculator-container">
-                                        <label class="calculator-label" data-translate="plan_title">Planınızı
-                                            Seçin</label>
-                                        <select id="calculator-package" class="calculator-select">
-                                        </select>
-
-                                        <label class="calculator-label" data-translate="user_count">Kullanıcı
-                                            Sayısı</label>
-                                        <div class="calculator-input-wrapper">
-                                            <button type="button" id="decrease-users" class="user-btn">−</button>
-                                            <input type="number" id="calculator-users" class="calculator-input" min="1"
-                                                value="1" />
-                                            <button type="button" id="increase-users" class="user-btn">+</button>
-                                        </div>
-
-                                        <div class="calculator-result" id="calculator-result">
-                                            <div class="selected-info" id="selected-info">
-
-                                            </div>
-                                            <span class="result-label" data-translate="yearly_payment">Yıllık Ödeme:
-                                            </span>
-                                            <span class="result-price"></span>
-                                            <span class="result-vat" data-translate="vat">+ VAT</span>
-                                        </div>
-                                        <div class="calculator-note" id="calculator-note">
-                                        </div>
-                                        <div class="banner8__btn mt-3">
-                                            <a href="https://app.work24.io/signup" class="rr-btn btn-signup"
-                                                data-translate="go_to_signup">
-                                                Hemen Başla <i class="fa-sharp fa-regular fa-arrow-right"></i>
-                                            </a>
-                                        </div>
+                        <div class="row g-4 pricing-card-row fade-top">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="pricing-card" data-plan="starter">
+                                    <div class="pricing-card__header">
+                                        <h3 class="pricing-card__title">
+                                            <span data-tr="tr">Başlangıç</span>
+                                            <span data-tr="en">Starter</span>
+                                        </h3>
+                                        <p class="pricing-card__subtitle">
+                                            <span data-tr="tr">Yeni başlayan ekipler için temel özellikler</span>
+                                            <span data-tr="en">Core features for small teams</span>
+                                        </p>
                                     </div>
-                                    <script>
-                                        // API Endpoint
-                                        const PLANS_API_ENDPOINT = 'https://devinsofthrmsystemdashapi.azurewebsites.net/api/PlanServices/All';
+                                    <div class="pricing-card__price">
+                                        <span class="pricing-card__currency">₺</span>
+                                        <span class="pricing-card__amount" data-plan-price="starter">0</span>
+                                        <span class="pricing-card__period">
+                                            <span data-tr="tr">/ay</span>
+                                            <span data-tr="en">/mo</span>
+                                        </span>
+                                    </div>
+                                    <div class="pricing-card__per-user">
+                                        <span data-tr="tr">Kişi başı <strong
+                                                data-plan-per-user="starter"></strong></span>
+                                        <span data-tr="en"><strong data-plan-per-user="starter"></strong> per
+                                            user</span>
+                                    </div>
+                                    <ul class="pricing-card__features">
+                                        <li>
+                                            <i class="fa-regular fa-check"></i>
+                                            <span data-plan-range="starter"></span>
+                                        </li>
+                                    </ul>
+                                    <a href="https://app.work24.io/signup" class="rr-btn w-100">
+                                        <span data-tr="tr">Hemen Başla</span>
+                                        <span data-tr="en">Get Started</span>
+                                    </a>
+                                    <a href="mailto:info@work24.io?subject=Demo%20Talebi"
+                                        class="rr-btn rr-btn--outline w-100 mt-10">
+                                        <span data-tr="tr">Demo İçin İletişime Geç</span>
+                                        <span data-tr="en">Contact for Demo</span>
+                                    </a>
+                                </div>
+                            </div>
 
-                                        let plans = [];
+                            <div class="col-lg-4 col-md-6">
+                                <div class="pricing-card pricing-card--featured" data-plan="team">
+                                    <div class="pricing-card__badge">
+                                        <span data-tr="tr">En Popüler</span>
+                                        <span data-tr="en">Most Popular</span>
+                                    </div>
+                                    <div class="pricing-card__header">
+                                        <h3 class="pricing-card__title">
+                                            <span data-tr="tr">Profesyonel</span>
+                                            <span data-tr="en">Professional</span>
+                                        </h3>
+                                        <p class="pricing-card__subtitle">
+                                            <span data-tr="tr">Büyüyen ekipler için gelişmiş özellikler</span>
+                                            <span data-tr="en">Advanced features for growing teams</span>
+                                        </p>
+                                    </div>
+                                    <div class="pricing-card__price">
+                                        <span class="pricing-card__currency">₺</span>
+                                        <span class="pricing-card__amount" data-plan-price="team">0</span>
+                                        <span class="pricing-card__period">
+                                            <span data-tr="tr">/ay</span>
+                                            <span data-tr="en">/mo</span>
+                                        </span>
+                                    </div>
+                                    <div class="pricing-card__per-user">
+                                        <span data-tr="tr">Kişi başı <strong data-plan-per-user="team"></strong></span>
+                                        <span data-tr="en"><strong data-plan-per-user="team"></strong> per user</span>
+                                    </div>
+                                    <ul class="pricing-card__features">
+                                        <li>
+                                            <i class="fa-regular fa-check"></i>
+                                            <span data-plan-range="team"></span>
+                                        </li>
+                                    </ul>
+                                    <a href="https://app.work24.io/signup" class="rr-btn w-100">
+                                        <span data-tr="tr">Hemen Başla</span>
+                                        <span data-tr="en">Get Started</span>
+                                    </a>
+                                    <a href="mailto:info@work24.io?subject=Demo%20Talebi"
+                                        class="rr-btn rr-btn--outline w-100 mt-10">
+                                        <span data-tr="tr">Demo İçin İletişime Geç</span>
+                                        <span data-tr="en">Contact for Demo</span>
+                                    </a>
+                                </div>
+                            </div>
 
-                                        // Planları API'den çek
-                                        async function fetchPlans() {
-                                            try {
-                                                const response = await fetch(PLANS_API_ENDPOINT, {
-                                                    method: 'POST',
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                    },
-                                                    body: JSON.stringify({
-                                                        orders: [],
-                                                        filters: []
-                                                    })
-                                                });
-
-                                                if (!response.ok) {
-                                                    throw new Error(`HTTP error! status: ${response.status}`);
-                                                }
-
-                                                const data = await response.json();
-
-                                                // Response formatı: { results: [], totalCount: number, pageCount: number }
-                                                plans = data.results || [];
-
-                                                if (!plans || plans.length === 0) {
-                                                    console.warn('API\'den plan verisi boş geldi');
-                                                    showPricingContactMessage();
-                                                    return;
-                                                }
-
-                                                renderPlans(plans);
-                                            } catch (error) {
-                                                console.error('Planlar yüklenirken hata oluştu:', error);
-                                                showPricingContactMessage();
-                                            }
-                                        }
-
-                                        // Fiyatlandırma için iletişim mesajı göster
-                                        function showPricingContactMessage() {
-                                            const container = document.querySelector("#plan-container");
-                                            const containerParent = container.parentElement; // col-md-6
-                                            // Calculator section'ı bul (plan-container'ın parent'ının kardeş elementi)
-                                            const row = container.closest('.row');
-                                            const calculatorSection = row ? row.querySelector('.col-md-6:last-child') : null;
-
-                                            // Container'ı tam genişlikte ve ortalanmış yap
-                                            containerParent.classList.remove('col-md-6');
-                                            containerParent.classList.add('col-md-12', 'd-flex', 'justify-content-center');
-                                            containerParent.style.margin = '0 auto';
-
-                                            container.innerHTML = `
-                                                <div style="text-align: center; padding: 40px 20px; background: #f8f9fa; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); max-width: 800px; width: 100%;">
-                                                    <div style="font-size: 48px; margin-bottom: 20px;">💰</div>
-                                                    <h3 style="color: #333; margin-bottom: 20px;" data-tr="tr">Fiyatlandırma Bilgisi</h3>
-                                                    <h3 style="color: #333; margin-bottom: 20px; display: none;" data-tr="en">Pricing Information</h3>
-                                                    <p style="color: #666; margin-bottom: 30px; line-height: 1.8;" data-tr="tr">
-                                                        Size özel fiyatlandırma planları hakkında bilgi almak için lütfen bizimle iletişime geçin.
-                                                        <br>Fiyatlandırma teklifi için <strong>info@work24.io</strong> adresine e-posta gönderebilirsiniz.
-                                                    </p>
-                                                    <p style="color: #666; margin-bottom: 30px; line-height: 1.8; display: none;" data-tr="en">
-                                                        Please contact us to get information about custom pricing plans.
-                                                        <br>You can send an email to <strong>info@work24.io</strong> for a pricing quote.
-                                                    </p>
-                                                    <a href="mailto:info@work24.io?subject=Fiyatlandırma Bilgisi&body=Merhaba, fiyatlandırma planları hakkında bilgi almak istiyorum." 
-                                                       class="rr-btn" style="background-color:#7ed957; color: white; border-radius: 6px;"
-                                                       id="pricing-email-link-tr">
-                                                        <i class="fa-solid fa-envelope"></i> info@work24.io
-                                                    </a>
-                                                    <a href="mailto:info@work24.io?subject=Pricing Information&body=Hello, I would like to get information about pricing plans." 
-                                                       class="rr-btn" style="background-color:#7ed957; color: white; border-radius: 6px;"
-                                                       id="pricing-email-link-en">
-                                                        <i class="fa-solid fa-envelope"></i> info@work24.io
-                                                    </a>
-                                                </div>
-                                            `;
-
-                                            // Calculator bölümünü gizle
-                                            if (calculatorSection && calculatorSection.classList.contains('col-md-6')) {
-                                                calculatorSection.style.display = 'none';
-                                            }
-
-                                            // Dil değişikliği için e-posta linklerini güncelle
-                                            const savedLang = localStorage.getItem('work24_language') || 'en';
-                                            updatePricingContactMessageLang(savedLang);
-                                        }
-
-                                        // Fiyatlandırma mesajının dilini güncelle
-                                        function updatePricingContactMessageLang(lang) {
-                                            const emailLinkTr = document.getElementById('pricing-email-link-tr');
-                                            const emailLinkEn = document.getElementById('pricing-email-link-en');
-
-                                            if (emailLinkTr && emailLinkEn) {
-                                                if (lang === 'tr') {
-                                                    emailLinkTr.style.display = 'inline-block';
-                                                    emailLinkEn.style.display = 'none';
-                                                } else {
-                                                    emailLinkTr.style.display = 'none';
-                                                    emailLinkEn.style.display = 'inline-block';
-                                                }
-                                            }
-                                        }
-
-                                        // Planları render et
-                                        function renderPlans(plansData) {
-                                            // Plans kontrolü
-                                            if (!plansData || !Array.isArray(plansData) || plansData.length === 0) {
-                                                console.error('Plan verileri alınamadı veya boş');
-                                                return;
-                                            }
-
-                                            plans = plansData;
-
-                                            const container = document.querySelector("#plan-container");
-                                            container.innerHTML = '';
-
-                                            const packageSelect = document.getElementById("calculator-package");
-                                            const usersInput = document.getElementById("calculator-users");
-                                            const resultDiv = document.getElementById("calculator-result");
-                                            const noteDiv = document.getElementById("calculator-note");
-                                            const selectedInfoDiv = document.getElementById("selected-info");
-
-                                            // Select menüsünü dinamik olarak doldur
-                                            packageSelect.innerHTML = '';
-                                            plans.forEach((plan, index) => {
-                                                const opt = document.createElement("option");
-                                                opt.value = index; // index üzerinden plan'ı seçeceğiz
-                                                opt.textContent = plan.name;
-                                                packageSelect.appendChild(opt);
-
-                                                // Plan kutuları
-                                                const item = document.createElement('div');
-                                                item.innerHTML = `
-                                                    <div class="pricing-4__item fade-top mb-5">
-                                                        <div class="pricing-4__header">
-                                                            <h3>${plan.name}</h3>
-                                                        </div>
-                                                        <div class="pricing-4__tag">
-                                                            <h4>₺ ${parseFloat(plan.perPrice || 0).toFixed(2)}<span data-translate="per_user_month"> User/Month</span></h4>
-                                                        </div>
-                                                        <div class="pricing-4__features text-start">
-                                                            <h3 class="pricing-8__features__title">${plan.description ?? ''}</h3>
-                                                            <ul>
-                                                                <li><i class="fa-regular fa-check"></i> ${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} <span data-translate="location_plan">Location</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                `;
-                                                container.appendChild(item);
-                                            });
-
-                                            function validateUserCount(value) {
-                                                const numValue = parseInt(value);
-                                                if (isNaN(numValue) || numValue < 1) {
-                                                    usersInput.value = 1;
-                                                    return 1;
-                                                }
-                                                return numValue;
-                                            }
-
-                                            function updateCalculator() {
-                                                const selectedIndex = parseInt(packageSelect.value);
-                                                const plan = plans[selectedIndex];
-
-                                                // Plan kontrolü
-                                                if (!plan) {
-                                                    console.error('Plan bulunamadı');
-                                                    return;
-                                                }
-
-                                                const users = validateUserCount(usersInput.value);
-
-                                                const perPrice = parseFloat(plan.perPrice || 0);
-                                                const discount = parseFloat(plan.discountPercent || 0) / 100;
-                                                const yearlyTotal = users * perPrice * 12;
-                                                const discountedTotal = yearlyTotal * (1 - discount);
-
-                                                selectedInfoDiv.innerHTML = `
-                                                    <span class="package-name">${plan.name}</span>
-                                                    <span class="package-locations">(${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} Konum)</span>
-                                                    <span> </span>
-                                                    <strong>${users}</strong>
-                                                    <span> Kullanıcı</span>
-                                                `;
-
-                                                resultDiv.innerHTML = `
-                                                    <div class="selected-info" id="selected-info">
-                                                        <span class="package-name">${plan.name}</span>
-                                                        <span class="package-locations">(${plan.start ?? '?'}${plan.end == null ? '+' : ' - ' + plan.end} <span data-translate="location_plan">Location</span>)</span>
-                                                        <span> </span>
-                                                        <strong>${users}</strong>
-                                                        <span data-translate="users">Users</span>
-                                                    </div>
-                                                    <span class="result-label" data-translate="yearly_payment">Yearly Payment: </span>
-                                                    <span class="result-price">${discountedTotal.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} TL</span>
-                                                    <span class="result-vat"  data-translate="vat"> + VAT</span>
-                                                `;
-
-                                                noteDiv.innerHTML = discount > 0
-                                                    ? `📦 <strong>${plan.name}</strong> paketine <span class="discount">%${plan.discountPercent || 0} indirim</span> uygulanmıştır.`
-                                                    : `📦 <strong>${plan.name}</strong> paketine indirim <strong>uygulanmaz</strong>.`;
-                                            }
-
-                                            document.getElementById("increase-users").addEventListener("click", () => {
-                                                const input = document.getElementById("calculator-users");
-                                                input.value = parseInt(input.value || 1) + 1;
-                                                input.dispatchEvent(new Event("input"));
-                                            });
-
-                                            document.getElementById("decrease-users").addEventListener("click", () => {
-                                                const input = document.getElementById("calculator-users");
-                                                const current = parseInt(input.value || 1);
-                                                if (current > 1) {
-                                                    input.value = current - 1;
-                                                    input.dispatchEvent(new Event("input"));
-                                                }
-                                            });
-
-                                            usersInput.addEventListener("input", () => updateCalculator());
-                                            usersInput.addEventListener("blur", () => updateCalculator());
-                                            packageSelect.addEventListener("change", () => updateCalculator());
-
-                                            // İlk hesaplama
-                                            updateCalculator();
-                                        }
-
-                                        // Sayfa yüklendiğinde planları çek
-                                        document.addEventListener('DOMContentLoaded', function () {
-                                            fetchPlans();
-                                        });
-                                    </script>
-
+                            <div class="col-lg-4 col-md-12">
+                                <div class="pricing-card" data-plan="enterprise">
+                                    <div class="pricing-card__header">
+                                        <h3 class="pricing-card__title">
+                                            <span data-tr="tr">Kurumsal</span>
+                                            <span data-tr="en">Enterprise</span>
+                                        </h3>
+                                        <p class="pricing-card__subtitle">
+                                            <span data-tr="tr">Geniş ekipler ve çoklu lokasyonlar için</span>
+                                            <span data-tr="en">For large teams and multi-location needs</span>
+                                        </p>
+                                    </div>
+                                    <div class="pricing-card__price">
+                                        <span class="pricing-card__currency">₺</span>
+                                        <span class="pricing-card__amount" data-plan-price="enterprise">0</span>
+                                        <span class="pricing-card__period">
+                                            <span data-tr="tr">/ay</span>
+                                            <span data-tr="en">/mo</span>
+                                        </span>
+                                    </div>
+                                    <div class="pricing-card__per-user">
+                                        <span data-tr="tr">Kişi başı <strong
+                                                data-plan-per-user="enterprise"></strong></span>
+                                        <span data-tr="en"><strong data-plan-per-user="enterprise"></strong> per
+                                            user</span>
+                                    </div>
+                                    <ul class="pricing-card__features">
+                                        <li>
+                                            <i class="fa-regular fa-check"></i>
+                                            <span data-plan-range="enterprise"></span>
+                                        </li>
+                                    </ul>
+                                    <a href="https://app.work24.io/signup" class="rr-btn w-100">
+                                        <span data-tr="tr">Hemen Başla</span>
+                                        <span data-tr="en">Get Started</span>
+                                    </a>
+                                    <a href="mailto:info@work24.io?subject=Demo%20Talebi"
+                                        class="rr-btn rr-btn--outline w-100 mt-10">
+                                        <span data-tr="tr">Demo İçin İletişime Geç</span>
+                                        <span data-tr="en">Contact for Demo</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1055,6 +944,12 @@
                                     </div>
                                     <div class="footer-2__link">
                                         <ul>
+                                            <li><a href="faq.html" data-tr="tr">Sıkça Sorulan Sorular(SSS)</a><a
+                                                    href="faq.html" data-tr="en" style="display: none;">Frequently Asked
+                                                    Questions(SSS)</a></li>
+                                            <li><a href="solutions.html" data-tr="tr">Work24 Çözümler</a><a
+                                                    href="solutions.html" data-tr="en" style="display: none;">Work24
+                                                    Solutions</a></li>
                                             <li><a href="privacy.html" data-tr="tr">Gizlilik Politikası</a><a
                                                     href="privacy.html" data-tr="en" style="display: none;">Privacy
                                                     Policy</a></li>

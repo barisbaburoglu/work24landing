@@ -37,6 +37,11 @@ function updateContent(lang) {
     if (typeof updatePricingContactMessageLang === 'function') {
         updatePricingContactMessageLang(lang);
     }
+
+    // Yeni fiyat kartlarının dilini güncelle (varsa)
+    if (typeof updatePricingLanguage === 'function') {
+        updatePricingLanguage(lang);
+    }
 }
 
 // Sayfa yüklendiğinde dil tercihini yükle veya varsayılan dili kullan
@@ -151,16 +156,16 @@ document.addEventListener('DOMContentLoaded', function () {
 // Smooth Scroll for Menu Links
 document.addEventListener('DOMContentLoaded', function () {
     const menuLinks = document.querySelectorAll('.menu-link, .mobile-menu-link');
-    
+
     menuLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            
+
             // Only handle anchor links
             if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = href.substring(1);
-                
+
                 // Mobil menüden tıklandıysa offcanvas'ı kapat
                 const offcanvasElement = document.getElementById('offcanvasMenu');
                 if (offcanvasElement && this.classList.contains('mobile-menu-link')) {
@@ -169,31 +174,31 @@ document.addEventListener('DOMContentLoaded', function () {
                         offcanvas.hide();
                     }
                 }
-                
+
                 // Ana sayfa için özel kontrol
                 if (targetId === 'home') {
                     window.scrollTo({
                         top: 0,
                         behavior: 'smooth'
                     });
-                    
+
                     // Tüm aktif sınıfları kaldır ve ana sayfa linkini aktif yap
                     menuLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
                     return;
                 }
-                
+
                 const targetElement = document.getElementById(targetId);
-                
+
                 if (targetElement) {
                     const headerHeight = document.querySelector('header').offsetHeight;
                     const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
-                    
+
                     // Scroll tamamlandıktan sonra aktif sınıfı güncelle
                     setTimeout(() => {
                         menuLinks.forEach(l => l.classList.remove('active'));
@@ -203,6 +208,24 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Sayfa yüklenince hash varsa ilgili bölüme kaydır (diğer sayfalardan gelenler için)
+    setTimeout(() => {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#')) {
+            const targetId = hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }, 150);
 });
 
 // Mobile Language Menu Functions
@@ -215,20 +238,20 @@ function selectMobileLanguage(lang) {
     const menu = document.getElementById('mobileLanguageMenu');
     const currentFlag = document.getElementById('mobileCurrentFlag');
     const currentLang = document.getElementById('mobileCurrentLang');
-    
+
     // Dil tercihini localStorage'a kaydet
     localStorage.setItem('work24_language', lang);
-    
+
     // Bayrak ve dil adını güncelle
     currentFlag.src = `assets/imgs/flags/${lang}.png`;
     currentLang.textContent = lang === 'tr' ? 'Türkçe' : 'English';
-    
+
     // Menüyü kapat
     menu.classList.remove('active');
-    
+
     // İçeriği güncelle
     updateContent(lang);
-    
+
     // Desktop dil menüsünü de güncelle
     const desktopFlag = document.getElementById('currentFlag');
     if (desktopFlag) {
@@ -241,11 +264,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const savedLang = localStorage.getItem('work24_language') || 'en';
     const mobileCurrentFlag = document.getElementById('mobileCurrentFlag');
     const mobileCurrentLang = document.getElementById('mobileCurrentLang');
-    
+
     if (mobileCurrentFlag) {
         mobileCurrentFlag.src = `assets/imgs/flags/${savedLang}.png`;
     }
-    
+
     if (mobileCurrentLang) {
         mobileCurrentLang.textContent = savedLang === 'tr' ? 'Türkçe' : 'English';
     }
@@ -257,7 +280,7 @@ window.addEventListener('scroll', function () {
     const menuLinks = document.querySelectorAll('.menu-link, .mobile-menu-link');
     const scrollPosition = window.scrollY + 150;
     const headerHeight = document.querySelector('header')?.offsetHeight || 100;
-    
+
     // Ana sayfa kontrolü - sayfa başına yakınsa ana sayfa aktif
     if (window.scrollY < headerHeight + 100) {
         menuLinks.forEach(link => {
@@ -268,19 +291,19 @@ window.addEventListener('scroll', function () {
         });
         return;
     }
-    
+
     // Diğer bölümler için kontrol
     let activeSection = null;
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             activeSection = sectionId;
         }
     });
-    
+
     // Aktif bölümü menü linklerine uygula
     if (activeSection) {
         menuLinks.forEach(link => {
@@ -291,4 +314,257 @@ window.addEventListener('scroll', function () {
         });
     }
 });
+
+// Pricing cards - API'den dinamik fiyat ve konum aralığı
+(function () {
+    const PLANS_API_ENDPOINT = 'https://devinsofthrmsystemdashapi.azurewebsites.net/api/PlanServices/All';
+    const planOrder = ['starter', 'team', 'enterprise'];
+    const pricingState = {
+        lang: localStorage.getItem('work24_language') || 'en',
+        plans: []
+    };
+
+    function formatCurrency(amount, lang) {
+        const locale = lang === 'en' ? 'en-US' : 'tr-TR';
+        return amount.toLocaleString(locale, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+    }
+
+    function formatRange(start, end) {
+        if (start == null) return '';
+        if (end == null) return `${start}+ Konum`;
+        return `${start} - ${end} Konum`;
+    }
+
+    function setPlanVisibility(planKey, visible) {
+        const card = document.querySelector(`[data-plan="${planKey}"]`);
+        if (!card) return;
+        const price = card.querySelector('.pricing-card__price');
+        const perUser = card.querySelector('.pricing-card__per-user');
+        const range = card.querySelector(`[data-plan-range="${planKey}"]`)?.closest('li');
+        const startBtn = card.querySelector('.rr-btn:not(.rr-btn--outline)');
+
+        [price, perUser, range, startBtn].forEach(el => {
+            if (!el) return;
+            el.style.display = visible ? '' : 'none';
+        });
+    }
+
+    function applyPlanToCard(planKey, planData, userCount, lang) {
+        if (!planData || !planData.perPrice || parseFloat(planData.perPrice) <= 0) {
+            setPlanVisibility(planKey, false);
+            return;
+        }
+        setPlanVisibility(planKey, true);
+        const totalPriceEl = document.querySelector(`[data-plan-price="${planKey}"]`);
+        const perUserEls = document.querySelectorAll(`[data-plan-per-user="${planKey}"]`);
+        const rangeEl = document.querySelector(`[data-plan-range="${planKey}"]`);
+
+        const perPrice = parseFloat(planData.perPrice || 0);
+        const discount = parseFloat(planData.discountPercent || 0) / 100;
+        const yearlyTotal = userCount * perPrice * 12;
+        const discountedTotal = yearlyTotal * (1 - discount);
+
+        if (totalPriceEl) {
+            totalPriceEl.textContent = formatCurrency(discountedTotal / 12, lang);
+        }
+
+        perUserEls.forEach(el => {
+            el.textContent = `₺ ${formatCurrency(perPrice, lang)}`;
+        });
+
+        if (rangeEl) {
+            const rangeTextTr = formatRange(planData.start, planData.end);
+            const rangeTextEn = planData.end == null
+                ? `${planData.start}+ Location`
+                : `${planData.start} - ${planData.end} Location`;
+            rangeEl.textContent = lang === 'en' ? rangeTextEn : rangeTextTr;
+        }
+    }
+
+    function updatePricingCards(langOverride) {
+        const userInput = document.getElementById('pricing-user-count');
+        if (!userInput) return;
+
+        if (langOverride) {
+            pricingState.lang = langOverride;
+        }
+
+        const lang = pricingState.lang;
+        const parsedValue = parseInt(userInput.value, 10);
+        const userCount = isNaN(parsedValue) || parsedValue < 1 ? 1 : parsedValue;
+        userInput.value = userCount;
+
+        if (!pricingState.plans.length) {
+            planOrder.forEach(key => setPlanVisibility(key, false));
+            return;
+        }
+
+        planOrder.forEach((key, idx) => {
+            const planData = pricingState.plans[idx];
+            applyPlanToCard(key, planData, userCount, lang);
+        });
+    }
+
+    async function fetchPlans() {
+        try {
+            const response = await fetch(PLANS_API_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    orders: [],
+                    filters: []
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const plans = (data.results || []).slice().sort((a, b) => {
+                const aStart = a.start ?? 0;
+                const bStart = b.start ?? 0;
+                return aStart - bStart;
+            });
+
+            // İlk 3 planı sırayla eşle
+            pricingState.plans = planOrder.map((_, idx) => plans[idx] || plans[plans.length - 1] || null);
+            updatePricingCards();
+        } catch (error) {
+            console.error('Planlar yüklenirken hata oluştu:', error);
+            pricingState.plans = [];
+            updatePricingCards();
+        }
+    }
+
+    function initPricingControls() {
+        const userInput = document.getElementById('pricing-user-count');
+        const increaseBtn = document.getElementById('pricing-user-increase');
+        const decreaseBtn = document.getElementById('pricing-user-decrease');
+
+        if (userInput) {
+            userInput.addEventListener('input', () => updatePricingCards());
+            userInput.addEventListener('blur', () => updatePricingCards());
+        }
+        if (increaseBtn) {
+            increaseBtn.addEventListener('click', () => {
+                const current = parseInt(userInput.value || '1', 10);
+                userInput.value = current + 1;
+                updatePricingCards();
+            });
+        }
+        if (decreaseBtn) {
+            decreaseBtn.addEventListener('click', () => {
+                const current = parseInt(userInput.value || '1', 10);
+                if (current > 1) {
+                    userInput.value = current - 1;
+                }
+                updatePricingCards();
+            });
+        }
+    }
+
+    // Global dil değişimi için
+    window.updatePricingLanguage = updatePricingCards;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initPricingControls();
+        fetchPlans();
+    });
+})();
+
+// Pricing cards - toplam fiyat hesaplama
+(function () {
+    const pricingPlansConfig = {
+        starter: { perUser: 0 },
+        team: { perUser: 0 },
+        enterprise: { perUser: 0 }
+    };
+
+    const pricingState = {
+        lang: localStorage.getItem('work24_language') || 'en'
+    };
+
+    function formatCurrency(amount, lang) {
+        const locale = lang === 'en' ? 'en-US' : 'tr-TR';
+        return amount.toLocaleString(locale, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+    }
+
+    function updatePricingCards(langOverride) {
+        const userInput = document.getElementById('pricing-user-count');
+        if (!userInput) return;
+
+        if (langOverride) {
+            pricingState.lang = langOverride;
+        }
+
+        const lang = pricingState.lang;
+        const parsedValue = parseInt(userInput.value, 10);
+        const userCount = isNaN(parsedValue) || parsedValue < 1 ? 1 : parsedValue;
+
+        userInput.value = userCount;
+
+        // Kullanıcı sayısını gösteren alanları güncelle
+        document.querySelectorAll('[data-plan-user-count]').forEach(el => {
+            el.textContent = userCount;
+        });
+
+        Object.entries(pricingPlansConfig).forEach(([planId, config]) => {
+            const priceEl = document.querySelector(`[data-plan-price="${planId}"]`);
+            const perUserEls = document.querySelectorAll(`[data-plan-per-user="${planId}"]`);
+            const totalPrice = config.perUser * userCount;
+
+            if (priceEl) {
+                priceEl.textContent = formatCurrency(totalPrice, lang);
+            }
+
+            perUserEls.forEach(el => {
+                el.textContent = `₺ ${formatCurrency(config.perUser, lang)}`;
+            });
+        });
+    }
+
+    function initPricingControls() {
+        const userInput = document.getElementById('pricing-user-count');
+        const increaseBtn = document.getElementById('pricing-user-increase');
+        const decreaseBtn = document.getElementById('pricing-user-decrease');
+
+        if (!userInput || !increaseBtn || !decreaseBtn) {
+            return;
+        }
+
+        increaseBtn.addEventListener('click', () => {
+            const current = parseInt(userInput.value || '1', 10);
+            userInput.value = current + 1;
+            updatePricingCards();
+        });
+
+        decreaseBtn.addEventListener('click', () => {
+            const current = parseInt(userInput.value || '1', 10);
+            if (current > 1) {
+                userInput.value = current - 1;
+            }
+            updatePricingCards();
+        });
+
+        userInput.addEventListener('input', () => updatePricingCards());
+        userInput.addEventListener('blur', () => updatePricingCards());
+
+        updatePricingCards();
+    }
+
+    // Sayfa yüklendiğinde başlat
+    document.addEventListener('DOMContentLoaded', initPricingControls);
+
+    // Dil değişikliğinde fiyat alanlarını güncelle
+    window.updatePricingLanguage = updatePricingCards;
+})();
 

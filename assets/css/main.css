@@ -9387,8 +9387,8 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .banner8__shapes-shape-3 {
-  left: 90px;
-  bottom: 275px;
+  left: 300px;
+  top: 250px;
   animation: rotate360 3s linear infinite;
 }
 
@@ -10216,14 +10216,14 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 @media only screen and (min-width: 1400px) and (max-width: 1600px) {
   .main-menu ul li>a {
-    padding: 32.8px 0;
+    padding: 8px 0;
   }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px),
 only screen and (min-width: 1200px) and (max-width: 1399px) {
   .main-menu ul li>a {
-    padding: 30px 0;
+    padding: 8px 0;
     font-size: 14px;
   }
 }
@@ -31040,7 +31040,6 @@ p.checkout-coupon input[type=submit]:hover {
   border: medium none;
   color: #fff;
   display: inline-block;
-  float: left;
   font-size: 12px;
   font-weight: 700;
   height: 40px;

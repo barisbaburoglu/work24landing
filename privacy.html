@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="assets/css/vendor/spacing.css">
     <link rel="stylesheet" href="assets/css/vendor/custom-font.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
 
     <style>
         .header__btn-wrap {
@@ -184,16 +185,6 @@
 
 <body>
 
-    <!-- preloader start -->
-    <div id="preloader">
-        <div class="sk-three-bounce">
-            <div class="sk-child sk-bounce1"></div>
-            <div class="sk-child sk-bounce2"></div>
-            <div class="sk-child sk-bounce3"></div>
-        </div>
-    </div>
-    <!-- preloader start -->
-
     <!-- Backtotop start -->
     <div class="backtotop-wrap cursor-pointer">
         <svg class="backtotop-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -202,9 +193,9 @@
     </div>
     <!-- Backtotop end -->
 
-    <!-- Header area start -->
+    <!-- Header start -->
     <header>
-        <div id="header-sticky" class="header header-6 header-8" style="padding:15px !important;">
+        <div id="header-sticky" class="header header-6 header-8">
             <div class="container">
                 <div class="mega__menu-wrapper p-relative">
                     <div class="header__main header2__main header-6__main">
@@ -218,19 +209,40 @@
                             </div>
                         </div>
                         <div class="header__middle header-3__middle">
-
+                            <nav class="main-menu d-none d-xl-block">
+                                <ul class="menu-list">
+                                    <li><a href="index.html#home" class="menu-link" data-translate="menu_home">Ana
+                                            Sayfa</a></li>
+                                    <li><a href="index.html#features" class="menu-link"
+                                            data-translate="menu_features">Özellikler</a></li>
+                                    <li><a href="index.html#how-it-works" class="menu-link"
+                                            data-translate="menu_how_it_works">Nasıl Çalışır</a></li>
+                                    <li><a href="index.html#pricing" class="menu-link"
+                                            data-translate="menu_pricing">Fiyatlandırma</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#" class="menu-link" data-translate="menu_support">Destek</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="faq.html" data-translate="menu_faq">Sıkça Sorulan
+                                                    Sorular(SSS)</a>
+                                            </li>
+                                            <li><a href="solutions.html" data-translate="menu_solutions">Work24
+                                                    Çözümler</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                         <div class="header__right header-8__right">
                             <div class="header__action d-flex align-items-center">
-                                <div class="contact d-none d-md-inline-flex">
+                                <div class="contact d-none d-xl-inline-flex">
                                     <a href="https://app.work24.io/signin" data-translate="go_to_signin">Giriş Yap</a>
                                 </div>
-                                <div class="header__btn-wrap header-8__btn d-none d-sm-inline-flex">
+                                <div class="header__btn-wrap header-8__btn d-none d-xl-inline-flex">
                                     <a href="https://app.work24.io/signup" class="rr-btn"
                                         data-translate="get_started">Hemen
                                         Başla</a>
                                 </div>
-                                <div class="language-selector">
+                                <div class="language-selector d-none d-xl-block">
                                     <div class="language-button" onclick="toggleLanguageMenu()">
                                         <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon" id="currentFlag">
                                         <i class="fa-solid fa-chevron-down"></i>
@@ -247,7 +259,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="header__hamburger ml-20 d-xl-none">
+                            <div class="header__hamburger ml-20 mr-20 d-xl-none">
                                 <button type="button" class="hamburger-btn" data-bs-toggle="offcanvas"
                                     data-bs-target="#offcanvasMenu">
                                     <span></span>
@@ -260,8 +272,74 @@
                 </div>
             </div>
         </div>
+        </div>
     </header>
-    <!-- Header area end -->
+
+    <div id="popup-search-box">
+        <div class="box-inner-wrap d-flex align-items-center">
+            <form id="form" action="#" method="get" role="search">
+                <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+            </form>
+            <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+        </div>
+    </div>
+    <!-- Header end -->
+
+    <!-- Offcanvas Mobile Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <div class="offcanvas-logo">
+                <img src="assets/imgs/logo/logo_work24.png" alt="Work24 Logo">
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="mobile-menu-nav">
+                <ul class="mobile-menu-list">
+                    <li><a href="index.html#home" class="mobile-menu-link" data-translate="menu_home"
+                            data-bs-dismiss="offcanvas">Ana Sayfa</a></li>
+                    <li><a href="index.html#features" class="mobile-menu-link" data-translate="menu_features"
+                            data-bs-dismiss="offcanvas">Özellikler</a></li>
+                    <li><a href="index.html#how-it-works" class="mobile-menu-link" data-translate="menu_how_it_works"
+                            data-bs-dismiss="offcanvas">Nasıl Çalışır</a></li>
+                    <li><a href="index.html#pricing" class="mobile-menu-link" data-translate="menu_pricing"
+                            data-bs-dismiss="offcanvas">Fiyatlandırma</a></li>
+                    <li class="mobile-menu-item-has-children">
+                        <a href="#" class="mobile-menu-link" data-translate="menu_support">Destek</a>
+                        <ul class="mobile-sub-menu">
+                            <li><a href="faq.html" class="mobile-menu-link" data-translate="menu_faq"
+                                    data-bs-dismiss="offcanvas">Sıkça Sorulan Sorular(SSS)</a></li>
+                            <li><a href="solutions.html" class="mobile-menu-link" data-translate="menu_solutions"
+                                    data-bs-dismiss="offcanvas">Work24 Çözümler</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-language-selector">
+                <div class="mobile-language-button" onclick="toggleMobileLanguageMenu()">
+                    <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon" id="mobileCurrentFlag">
+                    <span id="mobileCurrentLang">English</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="mobile-language-menu" id="mobileLanguageMenu">
+                    <div class="mobile-language-option" onclick="selectMobileLanguage('tr')">
+                        <img src="assets/imgs/flags/tr.png" alt="TR" class="flag-icon">
+                        <span>Türkçe</span>
+                    </div>
+                    <div class="mobile-language-option" onclick="selectMobileLanguage('en')">
+                        <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-actions">
+                <a href="https://app.work24.io/signin" class="mobile-menu-btn mobile-menu-btn-secondary"
+                    data-translate="go_to_signin" data-bs-dismiss="offcanvas">Giriş Yap</a>
+                <a href="https://app.work24.io/signup" class="mobile-menu-btn mobile-menu-btn-primary"
+                    data-translate="get_started" data-bs-dismiss="offcanvas">Hemen Başla</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Body main wrapper start -->
     <div id="smooth-wrapper">
@@ -545,11 +623,9 @@
                                             <li><a href="index.html" data-tr="tr">Ana Sayfa</a><a href="index.html"
                                                     data-tr="en" style="display: none;">Home</a></li>
                                             <li><a href="https://app.work24.io/signup" data-tr="tr">Kayıt Ol</a><a
-                                                    href="https://app.work24.io/signup" data-tr="en"
-                                                    style="display: none;">Sign Up</a></li>
+                                                    href="https://app.work24.io/signup" data-tr="en">Sign Up</a></li>
                                             <li><a href="https://app.work24.io/signin" data-tr="tr">Giriş Yap</a><a
-                                                    href="https://app.work24.io/signin" data-tr="en"
-                                                    style="display: none;">Sign In</a></li>
+                                                    href="https://app.work24.io/signin" data-tr="en">Sign In</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -562,13 +638,17 @@
                                     </div>
                                     <div class="footer-2__link">
                                         <ul>
+                                            <li><a href="faq.html" data-tr="tr">Sıkça Sorulan Sorular(SSS)</a><a
+                                                    href="faq.html" data-tr="en" style="display: none;">Frequently Asked
+                                                    Questions(SSS)</a></li>
+                                            <li><a href="solutions.html" data-tr="tr">Work24 Çözümler</a><a
+                                                    href="solutions.html" data-tr="en" style="display: none;">Work24
+                                                    Solutions</a></li>
                                             <li><a href="privacy.html" data-tr="tr">Gizlilik Politikası</a><a
                                                     href="privacy.html" data-tr="en" style="display: none;">Privacy
                                                     Policy</a></li>
-
                                             <li><a href="delete-account.html" data-tr="tr">Hesap Silme</a><a
-                                                    href="delete-account.html" data-tr="en"
-                                                    style="display: none;">Delete Account</a></li>
+                                                    href="delete-account.html" data-tr="en">Delete Account</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -632,6 +712,7 @@
     <script src="assets/js/vendor/ajax-form.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/translations.js"></script>
+    <script src="assets/js/custom.js"></script>
 
     <script>
         function changeLanguage() {

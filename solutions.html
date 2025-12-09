@@ -1,0 +1,590 @@
+<!doctype html>
+<html class="no-js" lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Work24 | Work24 Çözümler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/odometer.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/vendor/fontawesome-pro.css">
+    <link rel="stylesheet" href="assets/css/vendor/spacing.css">
+    <link rel="stylesheet" href="assets/css/vendor/custom-font.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+    <!-- Backtotop start -->
+    <div class="backtotop-wrap cursor-pointer">
+        <svg class="backtotop-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Backtotop end -->
+
+    <!-- Header start -->
+    <header>
+        <div id="header-sticky" class="header header-6 header-8">
+            <div class="container">
+                <div class="mega__menu-wrapper p-relative">
+                    <div class="header__main header2__main header-6__main">
+                        <div class="header__left">
+                            <div class="header__logo">
+                                <a href="index.html">
+                                    <div class="logo">
+                                        <img src="assets/imgs/logo/logo_work24.png" alt="Work24 Logo">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header__middle header-3__middle">
+                            <nav class="main-menu d-none d-xl-block">
+                                <ul class="menu-list">
+                                    <li><a href="index.html#home" class="menu-link" data-translate="menu_home">Ana
+                                            Sayfa</a></li>
+                                    <li><a href="index.html#features" class="menu-link"
+                                            data-translate="menu_features">Özellikler</a></li>
+                                    <li><a href="index.html#how-it-works" class="menu-link"
+                                            data-translate="menu_how_it_works">Nasıl Çalışır</a></li>
+                                    <li><a href="index.html#pricing" class="menu-link"
+                                            data-translate="menu_pricing">Fiyatlandırma</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#" class="menu-link" data-translate="menu_support">Destek</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="faq.html" data-translate="menu_faq">Sıkça Sorulan
+                                                    Sorular(SSS)</a>
+                                            </li>
+                                            <li><a href="solutions.html" data-translate="menu_solutions">Work24
+                                                    Çözümler</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__right header-8__right">
+                            <div class="header__action d-flex align-items-center">
+                                <div class="contact d-none d-xl-inline-flex">
+                                    <a href="https://app.work24.io/signin" data-translate="go_to_signin">Giriş Yap</a>
+                                </div>
+                                <div class="header__btn-wrap header-8__btn d-none d-xl-inline-flex">
+                                    <a href="https://app.work24.io/signup" class="rr-btn"
+                                        data-translate="get_started">Hemen
+                                        Başla</a>
+                                </div>
+                                <div class="language-selector d-none d-xl-block">
+                                    <div class="language-button" onclick="toggleLanguageMenu()">
+                                        <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon" id="currentFlag">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
+                                    <div class="language-menu" id="languageMenu">
+                                        <div class="language-option" onclick="selectLanguage('tr')">
+                                            <img src="assets/imgs/flags/tr.png" alt="TR" class="flag-icon">
+                                            <span>Türkçe</span>
+                                        </div>
+                                        <div class="language-option" onclick="selectLanguage('en')">
+                                            <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon">
+                                            <span>English</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header__hamburger ml-20 mr-20 d-xl-none">
+                                <button type="button" class="hamburger-btn" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasMenu">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <div id="popup-search-box">
+        <div class="box-inner-wrap d-flex align-items-center">
+            <form id="form" action="#" method="get" role="search">
+                <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+            </form>
+            <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+        </div>
+    </div>
+    <!-- Header end -->
+
+    <!-- Offcanvas Mobile Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <div class="offcanvas-logo">
+                <img src="assets/imgs/logo/logo_work24.png" alt="Work24 Logo">
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="mobile-menu-nav">
+                <ul class="mobile-menu-list">
+                    <li><a href="index.html#home" class="mobile-menu-link" data-translate="menu_home"
+                            data-bs-dismiss="offcanvas">Ana Sayfa</a></li>
+                    <li><a href="index.html#features" class="mobile-menu-link" data-translate="menu_features"
+                            data-bs-dismiss="offcanvas">Özellikler</a></li>
+                    <li><a href="index.html#how-it-works" class="mobile-menu-link" data-translate="menu_how_it_works"
+                            data-bs-dismiss="offcanvas">Nasıl Çalışır</a></li>
+                    <li><a href="index.html#pricing" class="mobile-menu-link" data-translate="menu_pricing"
+                            data-bs-dismiss="offcanvas">Fiyatlandırma</a></li>
+                    <li class="mobile-menu-item-has-children">
+                        <a href="#" class="mobile-menu-link" data-translate="menu_support">Destek</a>
+                        <ul class="mobile-sub-menu">
+                            <li><a href="faq.html" class="mobile-menu-link" data-translate="menu_faq"
+                                    data-bs-dismiss="offcanvas">Sıkça Sorulan Sorular(SSS)</a></li>
+                            <li><a href="solutions.html" class="mobile-menu-link" data-translate="menu_solutions"
+                                    data-bs-dismiss="offcanvas">Work24 Çözümler</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-language-selector">
+                <div class="mobile-language-button" onclick="toggleMobileLanguageMenu()">
+                    <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon" id="mobileCurrentFlag">
+                    <span id="mobileCurrentLang">English</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="mobile-language-menu" id="mobileLanguageMenu">
+                    <div class="mobile-language-option" onclick="selectMobileLanguage('tr')">
+                        <img src="assets/imgs/flags/tr.png" alt="TR" class="flag-icon">
+                        <span>Türkçe</span>
+                    </div>
+                    <div class="mobile-language-option" onclick="selectMobileLanguage('en')">
+                        <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-actions">
+                <a href="https://app.work24.io/signin" class="mobile-menu-btn mobile-menu-btn-secondary"
+                    data-translate="go_to_signin" data-bs-dismiss="offcanvas">Giriş Yap</a>
+                <a href="https://app.work24.io/signup" class="mobile-menu-btn mobile-menu-btn-primary"
+                    data-translate="get_started" data-bs-dismiss="offcanvas">Hemen Başla</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="banner-section-8 section-space fade-wrapper support-hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="banner-8__content fade-top text-center">
+                            <h1 class="banner-8__title mb-20" data-translate="solutions_page_title">WORK24 Çözümler</h1>
+                            <p class="banner-8__desc mx-auto" data-translate="solutions_page_desc">Sektöre özel PDKS ve
+                                vardiya çözümlerimizin özetini
+                                keşfedin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space solutions-page">
+            <div class="container">
+                <div class="row justify-content-center g-4">
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_office">OFİS & HİZMET SEKTÖRÜ
+                            </h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_office_law_title">Hukuk Büroları</strong> <span
+                                        data-translate="solutions_office_law_desc">Hukuk bürolarına özel PDKS sistemi
+                                        ile giriş-çıkışları kolayca yönetin. QR kodla giriş sayesinde zaman kaybı
+                                        yaşamadan personel takibi sağlayın. Mesai takip uygulamamızla ofis içi
+                                        verimliliği artırın.</span></li>
+                                <li><strong data-translate="solutions_office_accounting_title">Muhasebe
+                                        Ofisleri</strong> <span
+                                        data-translate="solutions_office_accounting_desc">Muhasebe ofisleri için
+                                        geliştirilen QR kodlu PDKS sistemi, personel takibini dijitalleştirir. Fazla
+                                        mesai ve giriş-çıkış saatleri anında kayıt altına alınır. Zaman yönetimini
+                                        kolaylaştırır.</span></li>
+                                <li><strong data-translate="solutions_office_insurance_title">Sigorta Büroları</strong>
+                                    <span data-translate="solutions_office_insurance_desc">Sigorta ofisleri için
+                                        geliştirilmiş PDKS sistemi, personel devamlılığını güvenle takip eder. QR kodlu
+                                        giriş ile zamandan tasarruf edin, ofis içi düzeni koruyun.</span>
+                                </li>
+                                <li><strong data-translate="solutions_office_advertising_title">Reklam
+                                        Ajansları</strong> <span
+                                        data-translate="solutions_office_advertising_desc">Yaratıcılık zaman ister,
+                                        takip ise sistem. QR kodla çalışan PDKS sistemimiz reklam ajanslarında zaman
+                                        yönetimini optimize eder, ekibin verimliliğini artırır.</span></li>
+                                <li><strong data-translate="solutions_office_sales_title">Satış Ofisleri</strong> <span
+                                        data-translate="solutions_office_sales_desc">Satış ekiplerinin mesai
+                                        giriş-çıkışlarını dakikası dakikasına izleyin. QR kodla entegre çalışan personel
+                                        takip sistemimizle zaman kaybını önleyin.</span></li>
+                                <li><strong data-translate="solutions_office_realestate_title">Emlakçılar</strong> <span
+                                        data-translate="solutions_office_realestate_desc">Emlak ofislerinde saha dışı
+                                        çalışan personelin takibini QR kodla yönetin. Mesai takip sistemi sayesinde ofis
+                                        içi ve dışı zamanı kontrol altında tutun.</span></li>
+                                <li><strong data-translate="solutions_office_pdks_office_title">Ofisler için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_office_pdks_office_desc">İş
+                                        yerinizde çalışan takibini zahmetsiz hale getirin! QR kod tabanlı sistemimiz
+                                        sayesinde personelinizin giriş-çıkış saatlerini kaydedin, esnek çalışma
+                                        saatlerini yönetin ve fazla mesaileri otomatik hesaplayın. Dijital PDKS ile
+                                        insan kaynakları süreçlerinizi kolaylaştırın.</span></li>
+                                <li><strong data-translate="solutions_office_pdks_hotel_title">Oteller için PDKS
+                                        Çözümü</strong> <span
+                                        data-translate="solutions_office_pdks_hotel_desc">Resepsiyon, temizlik, mutfak
+                                        ve teknik ekiplerinizin vardiya takibini dijitalleştirin! QR kod tabanlı PDKS
+                                        sistemimiz ile otel çalışanlarınızın giriş-çıkışlarını, mesailerini ve
+                                        izinlerini tek ekrandan yönetin. Operasyonlarınızı kolaylaştırarak
+                                        verimliliğinizi artırın!</span></li>
+                                <li><strong data-translate="solutions_office_pdks_technopark_title">Teknoparklar için
+                                        PDKS Çözümü</strong> <span
+                                        data-translate="solutions_office_pdks_technopark_desc">Teknoloji firmalarınızın
+                                        personel takibini QR kod ile modernleştirin! Esnek çalışma saatlerini
+                                        destekleyen PDKS sistemimiz ile giriş-çıkış takibini yapın, uzaktan çalışma
+                                        süreçlerini yönetin ve ekip yönetimini kolaylaştırın. Yenilikçi iş yerleri için
+                                        dijital çözümler sunuyoruz!</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_retail">PERAKENDE & TİCARET
+                            </h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_retail_markets_title">Marketler</strong> <span
+                                        data-translate="solutions_retail_markets_desc">Market çalışanlarının
+                                        vardiyalarını düzenli takip edin! QR kod ile giriş yapılan PDKS sistemimiz, tüm
+                                        şubelerde etkili personel yönetimi sağlar. Kolay kurulum, yüksek
+                                        performans.</span></li>
+                                <li><strong data-translate="solutions_retail_stores_title">Perakende Mağazaları</strong>
+                                    <span data-translate="solutions_retail_stores_desc">Yoğun mağaza trafiğinde personel
+                                        takibini aksatmayın. QR kodlu mesai takip uygulamamız, perakende sektörüne özel
+                                        hızlı ve güvenli çözümler sunar. İş gücü yönetimi artık çok daha kolay.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_health">SAĞLIK & MEDİKAL</h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_health_vet_title">Veteriner Hekimler</strong>
+                                    <span data-translate="solutions_health_vet_desc">Küçük ekiplerle çalışan veteriner
+                                        kliniklerinde QR kodlu PDKS sistemiyle düzeni sağlayın. Giriş-çıkışlar dijital
+                                        ortamda saklanır, mesai takip işlemleri zahmetsizce yönetilir.</span>
+                                </li>
+                                <li><strong data-translate="solutions_health_dental_title">Ağız ve Diş Sağlığı
+                                        Merkezleri</strong> <span data-translate="solutions_health_dental_desc">Diş
+                                        kliniklerine uygun personel takip sistemiyle verimliliği artırın. QR kodla hızlı
+                                        giriş ve mesai saatlerini doğru ölçen PDKS uygulamamızla klinik yönetimi daha
+                                        kolay.</span></li>
+                                <li><strong data-translate="solutions_health_centers_title">Sağlık Merkezleri</strong>
+                                    <span data-translate="solutions_health_centers_desc">Sağlık sektörüne özel
+                                        geliştirilen QR kodlu PDKS sistemi, nöbet ve vardiya takibini mükemmel şekilde
+                                        destekler. Tüm personel giriş-çıkışları dijital olarak izlenebilir.</span>
+                                </li>
+                                <li><strong data-translate="solutions_health_pharma_title">İlaç Firmaları</strong> <span
+                                        data-translate="solutions_health_pharma_desc">İlaç üretim ve dağıtım
+                                        süreçlerinde personel takibini QR kodlu PDKS sistemiyle kontrol altına alın.
+                                        Kritik saatlerde tam zamanlı takip ile yüksek verim elde edin.</span></li>
+                                <li><strong data-translate="solutions_health_device_title">Tıbbi Cihaz Üretimi</strong>
+                                    <span data-translate="solutions_health_device_desc">Üretim alanlarında mesai takibi
+                                        çok önemli. QR kodla çalışan PDKS sistemimiz, tıbbi cihaz üretimi yapan
+                                        firmalarda giriş-çıkışları kusursuz bir şekilde kayıt altına alır.</span>
+                                </li>
+                                <li><strong data-translate="solutions_health_medical_title">Medikal Firmalar</strong>
+                                    <span data-translate="solutions_health_medical_desc">Medikal sektöre özel PDKS
+                                        çözümümüz ile personel giriş-çıkışlarını anlık takip edin. Verimlilik ve
+                                        güvenlik bir arada.</span>
+                                </li>
+                                <li><strong data-translate="solutions_health_hospital_title">Hastaneler için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_health_hospital_desc">Sağlık
+                                        hizmetlerinde zaman yönetimi kritik önem taşır! Doktorlar, hemşireler, hasta
+                                        bakıcılar ve idari personelin giriş-çıkış saatlerini QR kod ile hızlıca
+                                        kaydedin. Vardiya düzenlerini kolayca planlayın, fazla mesaileri otomatik
+                                        hesaplayın ve iş gücü yönetiminizi mükemmelleştirin.</span></li>
+                                <li><strong data-translate="solutions_health_services_title">Sağlık Hizmetleri için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_health_services_desc">Evde
+                                        bakım, laboratuvar ve diğer sağlık hizmetlerinde personel takibini
+                                        dijitalleştirin! QR kod destekli PDKS sistemi ile çalışanlarınızın
+                                        giriş-çıkışlarını takip edin, mesai hesaplamalarını yapın ve izin süreçlerini
+                                        yönetin. Sağlık sektörüne özel esnek çözümler sunuyoruz!</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_education">EĞİTİM</h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_edu_dorm_title">Yurtlar</strong> <span
+                                        data-translate="solutions_edu_dorm_desc">Öğrenci yurtlarında çalışan
+                                        personelinizi QR kod ile hızlıca takip edin! Gece nöbetçisinden temizlik
+                                        görevlilerine kadar herkesin giriş-çıkış saatlerini anında kaydedin. Fazla mesai
+                                        hesaplamaları ve izin yönetimi artık çok daha kolay!</span></li>
+                                <li><strong data-translate="solutions_edu_school_title">Okullar</strong> <span
+                                        data-translate="solutions_edu_school_desc">Okul personelinin takibi artık çok
+                                        kolay. QR kod ile çalışan PDKS sistemi sayesinde öğretmen ve personelin
+                                        giriş-çıkışları kayıt altına alınır, zaman yönetimi optimize edilir.</span></li>
+                                <li><strong data-translate="solutions_edu_centers_title">Eğitim Merkezleri</strong>
+                                    <span data-translate="solutions_edu_centers_desc">Eğitim sektörüne özel PDKS
+                                        çözümleriyle personel takibi dijitalleşiyor. QR kod ile hızlı giriş, mesai takip
+                                        uygulaması ile kusursuz yönetim elinizin altında.</span>
+                                </li>
+                                <li><strong data-translate="solutions_edu_pdks_title">Eğitim Kurumları için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_edu_pdks_desc">Öğretmenler,
+                                        idari personel ve destek ekiplerinin giriş-çıkışlarını QR kod ile takip edin!
+                                        Eğitim kurumları için özel olarak geliştirilen PDKS sistemimiz ile mesai
+                                        saatlerini düzenleyin, izin taleplerini yönetin ve personel devamlılığını
+                                        dijital olarak kayıt altına alın.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_sport">SPOR & AKTİVİTE</h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_sport_gym_title">Spor Salonları için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_sport_gym_desc">Spor salonunuzda
+                                        personel giriş-çıkışlarını, mesai saatlerini ve izin durumlarını tek bir
+                                        uygulama ile takip edin! Telefonunuza indirilen uygulama ile oluşturulan QR kod
+                                        sistemi sayesinde karmaşık manuel takip süreçlerine son verin. Antrenörlerden
+                                        temizlik personeline kadar tüm çalışanlarınızın takibini zahmetsizce yaparak
+                                        operasyonel verimliliğinizi artırın.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_manufacturing">ÜRETİM & ATÖLYE
+                            </h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_mfg_workshop_title">İmalathaneler için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_mfg_workshop_desc">Üretim
+                                        alanlarında vardiya düzeni çok önemli! QR kodlu PDKS sistemimiz ile
+                                        çalışanlarınızın giriş-çıkış saatlerini kolayca takip edin, fazla mesaileri
+                                        hesaplayın ve verimliliği artırın. Manuel takip yöntemlerine son verin,
+                                        süreçlerinizi modernize edin!</span></li>
+                                <li><strong data-translate="solutions_mfg_warehouse_title">Depolar için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_mfg_warehouse_desc">Depo
+                                        çalışanlarınızın giriş-çıkışlarını QR kod ile anında kaydedin! PDKS uygulamamız
+                                        sayesinde vardiya takibini kolaylaştırın, fazla mesaileri hesaplayın ve izin
+                                        süreçlerini dijital olarak yönetin. Lojistik süreçlerinizi daha verimli hale
+                                        getirin!</span></li>
+                                <li><strong data-translate="solutions_mfg_print_title">Matbaalar</strong> <span
+                                        data-translate="solutions_mfg_print_desc">Matbaa çalışanlarının vardiya
+                                        giriş-çıkışlarını dijitalle yönetin. QR kod ile hızlı geçiş sağlayan PDKS
+                                        sistemimizle iş süreçlerinizi daha kontrollü hale getirin.</span></li>
+                                <li><strong data-translate="solutions_mfg_copy_title">Ozalitçiler</strong> <span
+                                        data-translate="solutions_mfg_copy_desc">Küçük ölçekli baskı atölyeleri için
+                                        ideal personel takip sistemi. QR kodla giriş, dijital mesai kaydı ve kolay
+                                        kullanım bir arada.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_food">YEME-İÇME & CATERING
+                            </h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_food_dining_title">Yemekhaneler</strong> <span
+                                        data-translate="solutions_food_dining_desc">Toplu yemek hizmeti sunan firmalar
+                                        için personel giriş-çıkışlarını dijitalleştirin. Mesai takibi artık QR kodla
+                                        saniyeler içinde yapılabilir.</span></li>
+                                <li><strong data-translate="solutions_food_catering_title">Catering Firmaları</strong>
+                                    <span data-translate="solutions_food_catering_desc">Mobil ve çok noktalı çalışan
+                                        catering ekipleri için QR kodlu PDKS sistemi mükemmel bir çözümdür. Her
+                                        çalışanınızın saatini tam zamanlı takip edin.</span>
+                                </li>
+                                <li><strong data-translate="solutions_food_restaurant_title">Restoranlar için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_food_restaurant_desc">Yoğun
+                                        tempolu restoran işletmenizde personel takibini dijitalleştirin! Garsonlardan
+                                        aşçılara, kasiyerlerden temizlik görevlilerine kadar tüm çalışanlarınızın
+                                        giriş-çıkış saatlerini QR kod ile anında kaydedin. Fazla mesai hesaplamalarını
+                                        ve izin taleplerini kolayca yönetin, iş gücü planlamanızı optimize edin.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_construction">İNŞAAT & SAHA
+                                ÇALIŞMALARI</h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_construction_companies_title">İnşaat
+                                        Firmaları</strong> <span
+                                        data-translate="solutions_construction_companies_desc">Şantiye personel takibini
+                                        QR kod ile kolaylaştırın. Mobil uyumlu PDKS uygulamamızla inşaat alanlarında
+                                        güvenli ve hızlı giriş-çıkış takibi sağlayın.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="solutions-card">
+                            <h3 class="pricing-card__title" data-translate="solutions_cat_energy">ENERJİ DAĞITIM
+                                HİZMETLERİ</h3>
+                            <ul class="pricing-card__features">
+                                <li><strong data-translate="solutions_energy_gas_title">Benzin İstasyonları için PDKS
+                                        Çözümü</strong> <span data-translate="solutions_energy_gas_desc">Vardiyalı
+                                        çalışanlarınızı takip etmek artık çok daha kolay! QR kod destekli PDKS
+                                        uygulamamız ile istasyonunuzdaki pompa görevlilerinden market çalışanlarına
+                                        kadar herkesin giriş-çıkışlarını, çalışma sürelerini ve izinlerini tek ekrandan
+                                        yönetin. Personel takibinde hata payını sıfıra indirin.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer area start -->
+        <footer>
+            <section class="footer-2 footer-8 overflow-hidden p-relative z-1">
+                <div class="footer-8__shapes">
+                    <div class="footer-8__shape-1 footer-8__shape upDown">
+                        <img src="assets/imgs/shapes/footer-8-shape-1.png" alt="">
+                    </div>
+                    <div class="footer-8__shape-2 footer-8__shape rightLeft">
+                        <img src="assets/imgs/shapes/footer-8-shape-2.png" alt="">
+                    </div>
+
+                    <div class="footer-8__border__box footer-8__border__box-1">
+                        <div class="footer-8__border__shape"></div>
+                    </div>
+                    <div class="footer-8__border__box footer-8__border__box-2">
+                        <div class="footer-8__border__shape footer-8__border__shape-2"></div>
+                    </div>
+                    <div class="footer-8__border__box footer-8__border__box-3">
+                        <div class="footer-8__border__shape"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row footer-2__wrap p-relative">
+                        <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-2__widget">
+                                <div class="footer-2__logo mb-30">
+                                    <a href="index.html">
+                                        <img src="assets/imgs/logo/logo_work24.png" alt="Work24 Logo">
+                                    </a>
+                                </div>
+                                <div class="footer-2__content">
+                                    <p class="dec" data-tr="tr">İş yönetiminde yeni nesil çözümler için <br>
+                                        Work24'i tercih edin.</p>
+                                    <p class="dec" data-tr="en" style="display: none;">Choose Work24 for next
+                                        generation solutions in <br> business management.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-2__widget footer-4__widget-2th-left">
+                                <div class="footer-2__widget-title mb-15 mb-md-10 mb-sm-10 mb-xs-10">
+                                    <h4 data-tr="tr">Hızlı Bağlantılar</h4>
+                                    <h4 data-tr="en" style="display: none;">Quick Links</h4>
+                                </div>
+                                <div class="footer-2__link">
+                                    <ul>
+                                        <li><a href="index.html" data-tr="tr">Ana Sayfa</a><a href="index.html"
+                                                data-tr="en" style="display: none;">Home</a></li>
+                                        <li><a href="https://app.work24.io/signup" data-tr="tr">Kayıt Ol</a><a
+                                                href="https://app.work24.io/signup" data-tr="en">Sign Up</a></li>
+                                        <li><a href="https://app.work24.io/signin" data-tr="tr">Giriş Yap</a><a
+                                                href="https://app.work24.io/signin" data-tr="en">Sign In</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-2__widget footer-4__widget-3th-left">
+                                <div class="footer-2__widget-title mb-15 mb-md-10 mb-sm-10 mb-xs-10">
+                                    <h4 data-tr="tr">Destek</h4>
+                                    <h4 data-tr="en" style="display: none;">Support</h4>
+                                </div>
+                                <div class="footer-2__link">
+                                    <ul>
+                                        <li><a href="faq.html" data-tr="tr">Sıkça Sorulan Sorular(SSS)</a><a
+                                                href="faq.html" data-tr="en" style="display: none;">Frequently Asked
+                                                Questions(SSS)</a></li>
+                                        <li><a href="solutions.html" data-tr="tr">Work24 Çözümler</a><a
+                                                href="solutions.html" data-tr="en" style="display: none;">Work24
+                                                Solutions</a></li>
+                                        <li><a href="privacy.html" data-tr="tr">Gizlilik Politikası</a><a
+                                                href="privacy.html" data-tr="en" style="display: none;">Privacy
+                                                Policy</a></li>
+                                        <li><a href="delete-account.html" data-tr="tr">Hesap Silme</a><a
+                                                href="delete-account.html" data-tr="en">Delete Account</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-2__widget footer-4__widget footer-4__widget-4th-left">
+                                <div class="footer-2__widget-title mb-25 mb-md-20 mb-sm-20 mb-xs-20">
+                                    <h4 data-tr="tr">İletişim</h4>
+                                    <h4 data-tr="en" style="display: none;">Contact</h4>
+                                </div>
+                                <div class="footer-4__contact">
+                                    <h6 class="footer-4__contact-link">
+                                        <a href="mailto:info@work24.io">info@work24.io</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-2__bottom-wrapper">
+                        <div class="container">
+                            <div class="footer-2__bottom">
+                                <div class="footer-2__copyright">
+                                    <p data-tr="tr">© 2025 Work24. Tüm hakları saklıdır.</p>
+                                    <p data-tr="en" style="display: none;">© 2025 Work24. All rights reserved.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <!-- Footer area end -->
+    </main>
+
+
+
+    <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+    <!-- JS here -->
+    <script src="assets/js/vendor/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/vendor/chroma.min.js"></script>
+    <script src="assets/js/plugins/waypoints.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/plugins/meanmenu.min.js"></script>
+    <script src="assets/js/plugins/swiper.min.js"></script>
+    <script src="assets/js/plugins/gsap.js"></script>
+    <script src="assets/js/plugins/ScrollSmoother.js"></script>
+    <script src="assets/js/plugins/ScrollToPlugin.js"></script>
+    <script src="assets/js/plugins/ScrollTrigger.js"></script>
+    <script src="assets/js/plugins/SplitText.js"></script>
+    <script src="assets/js/plugins/wow.js"></script>
+    <script src="assets/js/vendor/magnific-popup.min.js"></script>
+    <script src="assets/js/vendor/type.js"></script>
+    <script src="assets/js/vendor/vanilla-tilt.js"></script>
+    <script src="assets/js/plugins/nice-select.min.js"></script>
+    <script src="assets/js/vendor/odometer.min.js"></script>
+    <script src="assets/js/vendor/jquery-ui.min.js"></script>
+    <script src="assets/js/plugins/parallax-scroll.js"></script>
+    <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="assets/js/plugins/isotope-docs.min.js"></script>
+    <script src="assets/js/vendor/ajax-form.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+
+</html>

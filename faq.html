@@ -1,0 +1,509 @@
+<!doctype html>
+<html class="no-js" lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Work24 | Sıkça Sorulan Sorular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/odometer.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/vendor/fontawesome-pro.css">
+    <link rel="stylesheet" href="assets/css/vendor/spacing.css">
+    <link rel="stylesheet" href="assets/css/vendor/custom-font.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+    <!-- Backtotop start -->
+    <div class="backtotop-wrap cursor-pointer">
+        <svg class="backtotop-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Backtotop end -->
+
+    <!-- Header start -->
+    <header>
+        <div id="header-sticky" class="header header-6 header-8">
+            <div class="container">
+                <div class="mega__menu-wrapper p-relative">
+                    <div class="header__main header2__main header-6__main">
+                        <div class="header__left">
+                            <div class="header__logo">
+                                <a href="index.html">
+                                    <div class="logo">
+                                        <img src="assets/imgs/logo/logo_work24.png" alt="Work24 Logo">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header__middle header-3__middle">
+                            <nav class="main-menu d-none d-xl-block">
+                                <ul class="menu-list">
+                                    <li><a href="index.html#home" class="menu-link" data-translate="menu_home">Ana
+                                            Sayfa</a></li>
+                                    <li><a href="index.html#features" class="menu-link"
+                                            data-translate="menu_features">Özellikler</a></li>
+                                    <li><a href="index.html#how-it-works" class="menu-link"
+                                            data-translate="menu_how_it_works">Nasıl Çalışır</a></li>
+                                    <li><a href="index.html#pricing" class="menu-link"
+                                            data-translate="menu_pricing">Fiyatlandırma</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#" class="menu-link" data-translate="menu_support">Destek</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="faq.html" data-translate="menu_faq">Sıkça Sorulan
+                                                    Sorular(SSS)</a>
+                                            </li>
+                                            <li><a href="solutions.html" data-translate="menu_solutions">Work24
+                                                    Çözümler</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__right header-8__right">
+                            <div class="header__action d-flex align-items-center">
+                                <div class="contact d-none d-xl-inline-flex">
+                                    <a href="https://app.work24.io/signin" data-translate="go_to_signin">Giriş Yap</a>
+                                </div>
+                                <div class="header__btn-wrap header-8__btn d-none d-xl-inline-flex">
+                                    <a href="https://app.work24.io/signup" class="rr-btn"
+                                        data-translate="get_started">Hemen
+                                        Başla</a>
+                                </div>
+                                <div class="language-selector d-none d-xl-block">
+                                    <div class="language-button" onclick="toggleLanguageMenu()">
+                                        <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon" id="currentFlag">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
+                                    <div class="language-menu" id="languageMenu">
+                                        <div class="language-option" onclick="selectLanguage('tr')">
+                                            <img src="assets/imgs/flags/tr.png" alt="TR" class="flag-icon">
+                                            <span>Türkçe</span>
+                                        </div>
+                                        <div class="language-option" onclick="selectLanguage('en')">
+                                            <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon">
+                                            <span>English</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header__hamburger ml-20 mr-20 d-xl-none">
+                                <button type="button" class="hamburger-btn" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasMenu">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <div id="popup-search-box">
+        <div class="box-inner-wrap d-flex align-items-center">
+            <form id="form" action="#" method="get" role="search">
+                <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+            </form>
+            <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+        </div>
+    </div>
+    <!-- Header end -->
+
+    <!-- Offcanvas Mobile Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <div class="offcanvas-logo">
+                <img src="assets/imgs/logo/logo_work24.png" alt="Work24 Logo">
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="mobile-menu-nav">
+                <ul class="mobile-menu-list">
+                    <li><a href="index.html#home" class="mobile-menu-link" data-translate="menu_home"
+                            data-bs-dismiss="offcanvas">Ana Sayfa</a></li>
+                    <li><a href="index.html#features" class="mobile-menu-link" data-translate="menu_features"
+                            data-bs-dismiss="offcanvas">Özellikler</a></li>
+                    <li><a href="index.html#how-it-works" class="mobile-menu-link" data-translate="menu_how_it_works"
+                            data-bs-dismiss="offcanvas">Nasıl Çalışır</a></li>
+                    <li><a href="index.html#pricing" class="mobile-menu-link" data-translate="menu_pricing"
+                            data-bs-dismiss="offcanvas">Fiyatlandırma</a></li>
+                    <li class="mobile-menu-item-has-children">
+                        <a href="#" class="mobile-menu-link" data-translate="menu_support">Destek</a>
+                        <ul class="mobile-sub-menu">
+                            <li><a href="faq.html" class="mobile-menu-link" data-translate="menu_faq"
+                                    data-bs-dismiss="offcanvas">Sıkça Sorulan Sorular</a></li>
+                            <li><a href="solutions.html" class="mobile-menu-link" data-translate="menu_solutions"
+                                    data-bs-dismiss="offcanvas">WORK24 Çözümler</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-language-selector">
+                <div class="mobile-language-button" onclick="toggleMobileLanguageMenu()">
+                    <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon" id="mobileCurrentFlag">
+                    <span id="mobileCurrentLang">English</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="mobile-language-menu" id="mobileLanguageMenu">
+                    <div class="mobile-language-option" onclick="selectMobileLanguage('tr')">
+                        <img src="assets/imgs/flags/tr.png" alt="TR" class="flag-icon">
+                        <span>Türkçe</span>
+                    </div>
+                    <div class="mobile-language-option" onclick="selectMobileLanguage('en')">
+                        <img src="assets/imgs/flags/en.png" alt="EN" class="flag-icon">
+                        <span>English</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-actions">
+                <a href="https://app.work24.io/signin" class="mobile-menu-btn mobile-menu-btn-secondary"
+                    data-translate="go_to_signin" data-bs-dismiss="offcanvas">Giriş Yap</a>
+                <a href="https://app.work24.io/signup" class="mobile-menu-btn mobile-menu-btn-primary"
+                    data-translate="get_started" data-bs-dismiss="offcanvas">Hemen Başla</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="banner-section-8 section-space fade-wrapper support-hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="banner-8__content fade-top text-center">
+                            <h1 class="banner-8__title mb-20" data-translate="faq_page_title">Sıkça Sorulan Sorular
+                                (SSS)
+                            </h1>
+                            <p class="banner-8__desc mx-auto" data-translate="faq_page_desc">Work24 hakkında en sık
+                                sorulan sorular ve yanıtları</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space faq-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="faq-list">
+                            <details class="faq-item" open>
+                                <summary data-translate="faq_q1_question"></summary>
+                                <p data-translate="faq_q1_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q2_question"></summary>
+                                <p data-translate="faq_q2_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q3_question"></summary>
+                                <p data-translate="faq_q3_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q4_question"></summary>
+                                <p data-translate="faq_q4_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q5_question"></summary>
+                                <p data-translate="faq_q5_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q6_question"></summary>
+                                <p data-translate="faq_q6_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q7_question"></summary>
+                                <p data-translate="faq_q7_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q8_question"></summary>
+                                <p data-translate="faq_q8_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q9_question"></summary>
+                                <p data-translate="faq_q9_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q10_question"></summary>
+                                <p data-translate="faq_q10_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q11_question"></summary>
+                                <p data-translate="faq_q11_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q12_question"></summary>
+                                <p data-translate="faq_q12_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q13_question"></summary>
+                                <p data-translate="faq_q13_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q14_question"></summary>
+                                <p data-translate="faq_q14_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q15_question"></summary>
+                                <p data-translate="faq_q15_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q16_question"></summary>
+                                <p data-translate="faq_q16_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q17_question"></summary>
+                                <p data-translate="faq_q17_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q18_question"></summary>
+                                <p data-translate="faq_q18_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q19_question"></summary>
+                                <p data-translate="faq_q19_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q20_question"></summary>
+                                <p data-translate="faq_q20_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q21_question"></summary>
+                                <p data-translate="faq_q21_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q22_question"></summary>
+                                <p data-translate="faq_q22_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q23_question"></summary>
+                                <p data-translate="faq_q23_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q24_question"></summary>
+                                <p data-translate="faq_q24_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q25_question"></summary>
+                                <p data-translate="faq_q25_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q26_question"></summary>
+                                <p data-translate="faq_q26_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q27_question"></summary>
+                                <p data-translate="faq_q27_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q28_question"></summary>
+                                <p data-translate="faq_q28_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q29_question"></summary>
+                                <p data-translate="faq_q29_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q30_question"></summary>
+                                <p data-translate="faq_q30_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q31_question"></summary>
+                                <p data-translate="faq_q31_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q32_question"></summary>
+                                <p data-translate="faq_q32_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q33_question"></summary>
+                                <p data-translate="faq_q33_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q34_question"></summary>
+                                <p data-translate="faq_q34_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q35_question"></summary>
+                                <p data-translate="faq_q35_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q36_question"></summary>
+                                <p data-translate="faq_q36_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q37_question"></summary>
+                                <p data-translate="faq_q37_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q38_question"></summary>
+                                <p data-translate="faq_q38_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q39_question"></summary>
+                                <p data-translate="faq_q39_answer"></p>
+                            </details>
+                            <details class="faq-item">
+                                <summary data-translate="faq_q40_question"></summary>
+                                <p data-translate="faq_q40_answer"></p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer area start -->
+        <footer>
+            <section class="footer-2 footer-8 overflow-hidden p-relative z-1">
+                <div class="footer-8__shapes">
+                    <div class="footer-8__shape-1 footer-8__shape upDown">
+                        <img src="assets/imgs/shapes/footer-8-shape-1.png" alt="">
+                    </div>
+                    <div class="footer-8__shape-2 footer-8__shape rightLeft">
+                        <img src="assets/imgs/shapes/footer-8-shape-2.png" alt="">
+                    </div>
+
+                    <div class="footer-8__border__box footer-8__border__box-1">
+                        <div class="footer-8__border__shape"></div>
+                    </div>
+                    <div class="footer-8__border__box footer-8__border__box-2">
+                        <div class="footer-8__border__shape footer-8__border__shape-2"></div>
+                    </div>
+                    <div class="footer-8__border__box footer-8__border__box-3">
+                        <div class="footer-8__border__shape"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row footer-2__wrap p-relative">
+                        <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-2__widget">
+                                <div class="footer-2__logo mb-30">
+                                    <a href="index.html">
+                                        <img src="assets/imgs/logo/logo_work24.png" alt="Work24 Logo">
+                                    </a>
+                                </div>
+                                <div class="footer-2__content">
+                                    <p class="dec" data-tr="tr">İş yönetiminde yeni nesil çözümler için <br>
+                                        Work24'i tercih edin.</p>
+                                    <p class="dec" data-tr="en" style="display: none;">Choose Work24 for next
+                                        generation solutions in <br> business management.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-2__widget footer-4__widget-2th-left">
+                                <div class="footer-2__widget-title mb-15 mb-md-10 mb-sm-10 mb-xs-10">
+                                    <h4 data-tr="tr">Hızlı Bağlantılar</h4>
+                                    <h4 data-tr="en" style="display: none;">Quick Links</h4>
+                                </div>
+                                <div class="footer-2__link">
+                                    <ul>
+                                        <li><a href="index.html" data-tr="tr">Ana Sayfa</a><a href="index.html"
+                                                data-tr="en" style="display: none;">Home</a></li>
+                                        <li><a href="https://app.work24.io/signup" data-tr="tr">Kayıt Ol</a><a
+                                                href="https://app.work24.io/signup" data-tr="en">Sign Up</a></li>
+                                        <li><a href="https://app.work24.io/signin" data-tr="tr">Giriş Yap</a><a
+                                                href="https://app.work24.io/signin" data-tr="en">Sign In</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-2__widget footer-4__widget-3th-left">
+                                <div class="footer-2__widget-title mb-15 mb-md-10 mb-sm-10 mb-xs-10">
+                                    <h4 data-tr="tr">Destek</h4>
+                                    <h4 data-tr="en" style="display: none;">Support</h4>
+                                </div>
+                                <div class="footer-2__link">
+                                    <ul>
+                                        <li><a href="faq.html" data-tr="tr">Sıkça Sorulan Sorular(SSS)</a><a
+                                                href="faq.html" data-tr="en" style="display: none;">Frequently Asked
+                                                Questions(SSS)</a></li>
+                                        <li><a href="solutions.html" data-tr="tr">Work24 Çözümler</a><a
+                                                href="solutions.html" data-tr="en" style="display: none;">Work24
+                                                Solutions</a></li>
+                                        <li><a href="privacy.html" data-tr="tr">Gizlilik Politikası</a><a
+                                                href="privacy.html" data-tr="en" style="display: none;">Privacy
+                                                Policy</a></li>
+                                        <li><a href="delete-account.html" data-tr="tr">Hesap Silme</a><a
+                                                href="delete-account.html" data-tr="en">Delete Account</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-2__widget footer-4__widget footer-4__widget-4th-left">
+                                <div class="footer-2__widget-title mb-25 mb-md-20 mb-sm-20 mb-xs-20">
+                                    <h4 data-tr="tr">İletişim</h4>
+                                    <h4 data-tr="en" style="display: none;">Contact</h4>
+                                </div>
+                                <div class="footer-4__contact">
+                                    <h6 class="footer-4__contact-link">
+                                        <a href="mailto:info@work24.io">info@work24.io</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-2__bottom-wrapper">
+                        <div class="container">
+                            <div class="footer-2__bottom">
+                                <div class="footer-2__copyright">
+                                    <p data-tr="tr">© 2025 Work24. Tüm hakları saklıdır.</p>
+                                    <p data-tr="en" style="display: none;">© 2025 Work24. All rights reserved.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <!-- Footer area end -->
+    </main>
+
+
+    <!-- JS here -->
+    <script src="assets/js/vendor/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/vendor/chroma.min.js"></script>
+    <script src="assets/js/plugins/waypoints.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/plugins/meanmenu.min.js"></script>
+    <script src="assets/js/plugins/swiper.min.js"></script>
+    <script src="assets/js/plugins/gsap.js"></script>
+    <script src="assets/js/plugins/ScrollSmoother.js"></script>
+    <script src="assets/js/plugins/ScrollToPlugin.js"></script>
+    <script src="assets/js/plugins/ScrollTrigger.js"></script>
+    <script src="assets/js/plugins/SplitText.js"></script>
+    <script src="assets/js/plugins/wow.js"></script>
+    <script src="assets/js/vendor/magnific-popup.min.js"></script>
+    <script src="assets/js/vendor/type.js"></script>
+    <script src="assets/js/vendor/vanilla-tilt.js"></script>
+    <script src="assets/js/plugins/nice-select.min.js"></script>
+    <script src="assets/js/vendor/odometer.min.js"></script>
+    <script src="assets/js/vendor/jquery-ui.min.js"></script>
+    <script src="assets/js/plugins/parallax-scroll.js"></script>
+    <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="assets/js/plugins/isotope-docs.min.js"></script>
+    <script src="assets/js/vendor/ajax-form.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+
+</html>

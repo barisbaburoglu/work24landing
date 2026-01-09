@@ -95,7 +95,7 @@ const translations = {
         "solutions_energy_gas_title": "Benzin İstasyonları için PDKS Çözümü",
         "solutions_energy_gas_desc": "Vardiyalı çalışanlarınızı takip etmek artık çok daha kolay! QR kod destekli PDKS uygulamamız ile istasyonunuzdaki pompa görevlilerinden market çalışanlarına kadar herkesin giriş-çıkışlarını, çalışma sürelerini ve izinlerini tek ekrandan yönetin. Personel takibinde hata payını sıfıra indirin.",
         // Banner
-        "banner_title": "İş Yönetiminde Yeni Nesil Çözümler",
+        "banner_title": "Personel Yönetiminde Yeni Nesil Çözümler",
         "banner_description": "Çalışanlarınızın vardiya, izin ve performans yönetimini tek bir platformda kolayca yönetin.",
 
         // Price Sections
@@ -197,7 +197,7 @@ const translations = {
         "faq_q40_answer": "Evet. Eşsiz tasarlanmış vardiya takip sistemi ile manuel müdahaleye gerek kalmadan doğruluk sağlar.",
 
         // Footer
-        "footer_text": "İş yönetiminde yeni nesil çözümler için Work24'i tercih edin.",
+        "footer_text": "Personel yönetiminde<br>yeni nesil çözümler için<br>Work24'i tercih edin.",
 
         // Services Section
         "digitalize_title": "İşletmenizi Dijitalleştirin ve Verimliliği Artırın",
@@ -353,7 +353,7 @@ const translations = {
         "solutions_energy_gas_title": "PDKS Solution for Gas Stations",
         "solutions_energy_gas_desc": "Tracking shift-based employees is now much easier! With our QR-supported PDKS application, manage entry–exit times, working hours, and leaves of all staff—from pump attendants to market employees—from a single screen. Reduce the margin of error in personnel tracking to zero.",
         // Banner
-        "banner_title": "Next Generation Solutions in Business Management",
+        "banner_title": "Next Generation Solutions in Employee Management",
         "banner_description": "Easily manage your employees' shifts, leaves and performance on a single platform.",
 
         // Price Sections
@@ -454,7 +454,7 @@ const translations = {
         "faq_q40_answer": "Yes. The system includes a uniquely designed shift tracking module that provides accurate results without manual intervention.",
 
         // Footer
-        "footer_text": "Choose Work24 for next generation solutions in business management.",
+        "footer_text": "Choose Work24 for<br>next generation solutions<br>in employee management.",
 
         // Services Section
         "digitalize_title": "Digitalize Your Business and Increase Efficiency",

@@ -1247,12 +1247,21 @@
 
         // Sayfa yüklendiğinde dil tercihini yükle veya varsayılan dili kullan
         document.addEventListener('DOMContentLoaded', function () {
-            const savedLang = localStorage.getItem('work24_language') || 'en';
+            const savedLang = localStorage.getItem('work24_language') || 'tr';
             updateContent(savedLang);
             // Bayrağı da güncelle
             const currentFlag = document.getElementById('currentFlag');
             if (currentFlag) {
                 currentFlag.src = `assets/imgs/flags/${savedLang}.png`;
+            }
+            // Mobil dil menüsünü de güncelle
+            const mobileCurrentFlag = document.getElementById('mobileCurrentFlag');
+            const mobileCurrentLang = document.getElementById('mobileCurrentLang');
+            if (mobileCurrentFlag) {
+                mobileCurrentFlag.src = `assets/imgs/flags/${savedLang}.png`;
+            }
+            if (mobileCurrentLang) {
+                mobileCurrentLang.textContent = savedLang === 'tr' ? 'Türkçe' : 'English';
             }
         });
 
@@ -1287,6 +1296,37 @@
                 menu.classList.remove('show');
             }
         });
+
+        // Mobile Language Menu Functions
+        function toggleMobileLanguageMenu() {
+            const menu = document.getElementById('mobileLanguageMenu');
+            menu.classList.toggle('active');
+        }
+
+        function selectMobileLanguage(lang) {
+            const menu = document.getElementById('mobileLanguageMenu');
+            const currentFlag = document.getElementById('mobileCurrentFlag');
+            const currentLang = document.getElementById('mobileCurrentLang');
+
+            // Dil tercihini localStorage'a kaydet
+            localStorage.setItem('work24_language', lang);
+
+            // Bayrak ve dil adını güncelle
+            currentFlag.src = `assets/imgs/flags/${lang}.png`;
+            currentLang.textContent = lang === 'tr' ? 'Türkçe' : 'English';
+
+            // Menüyü kapat
+            menu.classList.remove('active');
+
+            // İçeriği güncelle
+            updateContent(lang);
+
+            // Desktop dil menüsünü de güncelle
+            const desktopFlag = document.getElementById('currentFlag');
+            if (desktopFlag) {
+                desktopFlag.src = `assets/imgs/flags/${lang}.png`;
+            }
+        }
     </script>
 
     <!--Start of Tawk.to Script-->

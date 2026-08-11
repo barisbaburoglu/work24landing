@@ -322,7 +322,7 @@ window.addEventListener('scroll', function () {
 
 // Pricing cards - API'den dinamik fiyat ve konum aralığı
 (function () {
-    const PLANS_API_ENDPOINT = 'https://devinsofthrmsystemdashapi.azurewebsites.net/api/PlanServices/All';
+    const PLANS_API_ENDPOINT = 'https://api.work24.io/api/PlanServices/All';
     const planOrder = ['starter', 'team', 'enterprise'];
     const pricingState = {
         lang: localStorage.getItem('work24_language') || 'en',

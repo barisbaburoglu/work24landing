@@ -1,7 +1,7 @@
 .git
 .github
-.gitignore
-Dockerfile
-.dockerignore
-README.md
+node_modules
+dist
+_legacy
+assets
 *.md

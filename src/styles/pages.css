@@ -1,0 +1,115 @@
+.page {
+  padding: 48px 0 80px;
+}
+
+.faq-list,
+.solution-card + .reveal,
+.contact-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.contact-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.faq-item button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  color: #fff;
+  padding: 18px 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.faq-item p {
+  padding: 0 20px 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.solution-card,
+.legal-card {
+  padding: 28px;
+  margin-bottom: 18px;
+}
+
+.solution-card h2,
+.legal-card h1 {
+  margin-bottom: 16px;
+}
+
+.solution-card ul,
+.legal-body ul,
+.warn-box ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.solution-card li,
+.legal-body,
+.warn-box li,
+.info-box p {
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.solution-card strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.legal-date {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.legal-body h2,
+.legal-body h3 {
+  margin: 24px 0 10px;
+}
+
+.delete-card {
+  text-align: center;
+}
+
+.delete-card p,
+.warn-box,
+.info-box {
+  text-align: left;
+}
+
+.warn-box,
+.info-box {
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: 16px;
+}
+
+.warn-box {
+  background: rgba(225, 29, 72, 0.1);
+  border: 1px solid rgba(225, 29, 72, 0.24);
+}
+
+.info-box {
+  background: rgba(67, 194, 243, 0.08);
+  border: 1px solid rgba(67, 194, 243, 0.18);
+}
+
+.email-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,16 @@
+:root {
+  --font: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --blue: #43c2f3;
+  --green: #7ed957;
+  --green-dark: #2bb673;
+  --ink: #e8eef6;
+  --muted: #94a3b8;
+  --line: rgba(255, 255, 255, 0.1);
+  --white: #ffffff;
+  --navy: #07111f;
+  --navy-2: #0b1728;
+  --card: rgba(11, 23, 40, 0.72);
+  --danger: #e11d48;
+  --radius: 20px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}

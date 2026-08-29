@@ -1,0 +1,120 @@
+.site-orb-blue {
+  animation: orb-drift 12s ease-in-out infinite;
+}
+
+.site-orb-green {
+  animation: orb-drift 15s ease-in-out infinite reverse;
+}
+
+.hero-copy,
+.hero-visual {
+  animation: rise 0.8s ease both;
+}
+
+.hero-visual {
+  animation-delay: 0.12s;
+}
+
+.reveal {
+  opacity: 1;
+}
+
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.js-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal[data-delay="40ms"] { transition-delay: 40ms; }
+.reveal[data-delay="60ms"] { transition-delay: 60ms; }
+.reveal[data-delay="80ms"] { transition-delay: 80ms; }
+.reveal[data-delay="90ms"] { transition-delay: 90ms; }
+.reveal[data-delay="120ms"] { transition-delay: 120ms; }
+.reveal[data-delay="160ms"] { transition-delay: 160ms; }
+.reveal[data-delay="180ms"] { transition-delay: 180ms; }
+.reveal[data-delay="200ms"] { transition-delay: 200ms; }
+.reveal[data-delay="240ms"] { transition-delay: 240ms; }
+.reveal[data-delay="280ms"] { transition-delay: 280ms; }
+.reveal[data-delay="300ms"] { transition-delay: 300ms; }
+.reveal[data-delay="320ms"] { transition-delay: 320ms; }
+.reveal[data-delay="360ms"] { transition-delay: 360ms; }
+.reveal[data-delay="420ms"] { transition-delay: 420ms; }
+.reveal[data-delay="480ms"] { transition-delay: 480ms; }
+
+.feature-card,
+.step-card,
+.pricing-card,
+.solution-card,
+.contact-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover,
+.step-card:hover,
+.pricing-card:hover,
+.solution-card:hover,
+.contact-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(67, 194, 243, 0.35);
+}
+
+.hero-visual img,
+.featured-shot,
+.mobile-shot {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes orb-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(24px, 18px, 0) scale(1.08);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.62;
+  }
+}

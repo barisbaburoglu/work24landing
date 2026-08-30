@@ -18,7 +18,9 @@
             rel="noopener noreferrer"
             :aria-label="item.name"
           >
-            {{ item.name.charAt(0) }}
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" :d="item.path" />
+            </svg>
           </a>
         </div>
       </div>

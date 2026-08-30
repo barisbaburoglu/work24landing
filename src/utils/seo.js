@@ -5,18 +5,29 @@ import { useRoute } from 'vue-router'
 
 const SITE = 'https://work24.io'
 
+function pageUrl(path) {
+  return `${SITE}${path === '/' ? '/' : path}`
+}
+
+function localeUrl(path, code) {
+  const base = pageUrl(path)
+  return `${base}${base.includes('?') ? '&' : '?'}lang=${code}`
+}
+
 export function useSeo(titleKey, descriptionKey) {
   const { t, locale } = useI18n()
   const route = useRoute()
   const path = route.path === '/' ? '/' : route.path
-  const url = `${SITE}${path}`
+  const url = pageUrl(path)
   const title = computed(() => t(titleKey))
   const description = computed(() => t(descriptionKey))
+  const lang = computed(() => (locale.value === 'en' ? 'en' : 'tr'))
+  const ogLocale = computed(() => (locale.value === 'en' ? 'en_US' : 'tr_TR'))
 
   useHead({
     title,
     htmlAttrs: {
-      lang: locale.value === 'en' ? 'en' : 'tr',
+      lang,
     },
     meta: [
       { name: 'description', content: description },
@@ -28,11 +39,17 @@ export function useSeo(titleKey, descriptionKey) {
       { property: 'og:image:height', content: '512' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'Work24' },
+      { property: 'og:locale', content: ogLocale },
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:image', content: `${SITE}/og-favicon.png` },
       { name: 'twitter:title', content: title },
       { name: 'twitter:description', content: description },
     ],
-    link: [{ rel: 'canonical', href: url }],
+    link: [
+      { rel: 'canonical', href: url },
+      { rel: 'alternate', hreflang: 'tr', href: localeUrl(path, 'tr') },
+      { rel: 'alternate', hreflang: 'en', href: localeUrl(path, 'en') },
+      { rel: 'alternate', hreflang: 'x-default', href: url },
+    ],
   })
 }

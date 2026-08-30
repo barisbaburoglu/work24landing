@@ -305,20 +305,56 @@ body.drawer-open {
 
 .footer-social {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
-.social-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
+.footer a.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--line);
-  font-size: 12px;
-  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 0;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer a.social-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.footer a.social-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.footer a.social-btn.social-youtube:hover {
+  color: #ff0000;
+}
+
+.footer a.social-btn.social-linkedin:hover {
+  color: #0a66c2;
+}
+
+.footer a.social-btn.social-instagram:hover {
+  color: #e4405f;
+}
+
+.footer a.social-btn.social-facebook:hover {
+  color: #1877f2;
 }
 
 .footer-copy {

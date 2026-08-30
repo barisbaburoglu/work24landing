@@ -58,7 +58,8 @@
           <li><a :href="telHref">{{ CONTACT_PHONE }}</a></li>
           <li>
             <span>{{ t('contact_company') }}</span>
-            <span v-if="t('contact_street')">{{ t('contact_street') }}</span>
+            <span>{{ t('contact_street') }}</span>
+            <span>{{ t('contact_no') }}</span>
             <span>{{ t('contact_city') }}</span>
           </li>
         </ul>

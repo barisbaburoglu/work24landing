@@ -13,7 +13,8 @@
         <article class="contact-card">
           <h2>{{ t('contact_address') }}</h2>
           <p>{{ t('contact_company') }}</p>
-          <p v-if="t('contact_street')">{{ t('contact_street') }}</p>
+          <p>{{ t('contact_street') }}</p>
+          <p>{{ t('contact_no') }}</p>
           <p>{{ t('contact_city') }}</p>
         </article>
         <article class="contact-card">

@@ -5,13 +5,69 @@ import ContactView from '@/views/ContactView.vue'
 import PrivacyView from '@/views/PrivacyView.vue'
 import DeleteAccountView from '@/views/DeleteAccountView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import { SUPPORTED_LOCALES } from '@/i18n/locale'
+import { DEFAULT_LOCALE, isHomePage, legacyRedirectTarget, localizedPath, PAGE_NAMES } from '@/i18n/paths'
+
+const PAGE_COMPONENTS = {
+  home: HomeView,
+  features: HomeView,
+  'how-it-works': HomeView,
+  pricing: HomeView,
+  faq: FaqView,
+  solutions: SolutionsView,
+  contact: ContactView,
+  privacy: PrivacyView,
+  'delete-account': DeleteAccountView,
+}
+
+const LEGACY_PATHS = [
+  '/faq',
+  '/solutions',
+  '/contact',
+  '/privacy',
+  '/delete-account',
+  '/sss',
+  '/cozumler',
+  '/iletisim',
+  '/gizlilik',
+  '/hesap-silme',
+  '/ozellikler',
+  '/features',
+  '/nasil-calisir',
+  '/how-it-works',
+  '/fiyatlandirma',
+  '/pricing',
+]
+
+function buildLocaleRoutes() {
+  return SUPPORTED_LOCALES.flatMap((locale) =>
+    PAGE_NAMES.map((page) => ({
+      path: localizedPath(locale, page),
+      name: `${page}__${locale}`,
+      component: PAGE_COMPONENTS[page],
+      meta: {
+        locale,
+        page,
+        homeSection: isHomePage(page),
+      },
+    })),
+  )
+}
 
 export const routes = [
-  { path: '/', name: 'home', component: HomeView },
-  { path: '/faq', name: 'faq', component: FaqView },
-  { path: '/solutions', name: 'solutions', component: SolutionsView },
-  { path: '/contact', name: 'contact', component: ContactView },
-  { path: '/privacy', name: 'privacy', component: PrivacyView },
-  { path: '/delete-account', name: 'delete-account', component: DeleteAccountView },
-  { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFoundView },
+  {
+    path: '/',
+    redirect: () => localizedPath(DEFAULT_LOCALE, 'home'),
+  },
+  ...LEGACY_PATHS.map((path) => ({
+    path,
+    redirect: () => legacyRedirectTarget(path) || localizedPath(DEFAULT_LOCALE, 'home'),
+  })),
+  ...buildLocaleRoutes(),
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFoundView,
+    meta: { locale: DEFAULT_LOCALE, page: 'home' },
+  },
 ]

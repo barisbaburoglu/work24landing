@@ -10,23 +10,35 @@ export const featureCards = [
   { icon: 'Timer', tone: 'green', titleKey: 'feature_overtime_title', descKey: 'feature_overtime_description' },
 ]
 
-export const featuredBlocks = [
-  {
-    titleKey: 'featured_dashboard_title',
-    descKey: 'featured_dashboard_desc',
-    image: '/images/dashboard.png',
-    reverse: false,
-  },
-  {
-    titleKey: 'featured_shift_title',
-    descKey: 'featured_shift_desc',
-    image: '/images/shift.png',
-    reverse: true,
-  },
-  {
-    titleKey: 'featured_leave_title',
-    descKey: 'featured_leave_desc',
-    image: '/images/leave.png',
-    reverse: false,
-  },
-]
+export function shotSrc(name, locale) {
+  return locale === 'en' ? `/images/${name}-en.png` : `/images/${name}.png`
+}
+
+export function featuredBlocksFor(locale) {
+  return [
+    {
+      titleKey: 'featured_dashboard_title',
+      descKey: 'featured_dashboard_desc',
+      image: shotSrc('dashboard', locale),
+      reverse: false,
+    },
+    {
+      titleKey: 'featured_shift_title',
+      descKey: 'featured_shift_desc',
+      image: shotSrc('shift', locale),
+      reverse: true,
+    },
+    {
+      titleKey: 'featured_leave_title',
+      descKey: 'featured_leave_desc',
+      image: shotSrc('leave', locale),
+      reverse: false,
+    },
+    {
+      titleKey: 'featured_timesheet_title',
+      descKey: 'featured_timesheet_desc',
+      image: shotSrc('timesheet', locale),
+      reverse: true,
+    },
+  ]
+}

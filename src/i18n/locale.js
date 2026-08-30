@@ -5,6 +5,9 @@ const STORAGE_KEYS = ['work24_language', 'work24.locale']
 export function detectLocale() {
   if (typeof window === 'undefined') return 'tr'
 
+  const pathLocale = window.location.pathname.split('/').filter(Boolean)[0]
+  if (SUPPORTED_LOCALES.includes(pathLocale)) return pathLocale
+
   const fromQuery = new URLSearchParams(window.location.search).get('lang')
   if (SUPPORTED_LOCALES.includes(fromQuery)) return fromQuery
 

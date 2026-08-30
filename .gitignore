@@ -6,3 +6,6 @@ dist
 .env
 deploy/.env
 _legacy
+scripts/shots/node_modules
+public/images/_hero-raw.png
+public/images/_hero-raw-en.png

@@ -14,7 +14,12 @@
           </div>
         </div>
         <div class="hero-visual">
-          <img src="/images/hero.png" :alt="t('banner_title')" width="640" height="480" />
+          <ZoomableImage
+            :src="heroSrc"
+            :alt="t('banner_title')"
+            width="640"
+            height="480"
+          />
         </div>
       </div>
     </section>
@@ -41,7 +46,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section mobile-section">
       <div class="container mobile-grid">
         <Reveal>
           <div class="mobile-copy">
@@ -68,7 +73,23 @@
           </div>
         </Reveal>
         <Reveal>
-          <img class="mobile-shot" src="/images/app.png" :alt="t('feature_mobile_title')" width="520" height="420" />
+          <div class="mobile-visual">
+            <div class="mobile-app-glow" aria-hidden="true">
+              <span class="mobile-app-glow__orb mobile-app-glow__orb--blue"></span>
+              <span class="mobile-app-glow__orb mobile-app-glow__orb--green"></span>
+              <span class="mobile-app-glow__orb mobile-app-glow__orb--cyan"></span>
+              <span class="mobile-app-glow__spark mobile-app-glow__spark--1"></span>
+              <span class="mobile-app-glow__spark mobile-app-glow__spark--2"></span>
+              <span class="mobile-app-glow__spark mobile-app-glow__spark--3"></span>
+            </div>
+            <ZoomableImage
+              img-class="mobile-shot"
+              :src="appSrc"
+              :alt="t('feature_mobile_title')"
+              width="260"
+              height="500"
+            />
+          </div>
         </Reveal>
       </div>
     </section>
@@ -113,7 +134,13 @@
             </div>
           </Reveal>
           <Reveal>
-            <img class="featured-shot" :src="block.image" :alt="t(block.titleKey)" width="560" height="360" />
+            <ZoomableImage
+              img-class="featured-shot"
+              :src="block.image"
+              :alt="t(block.titleKey)"
+              width="560"
+              height="360"
+            />
           </Reveal>
         </article>
       </div>

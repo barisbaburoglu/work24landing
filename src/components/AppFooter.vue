@@ -4,7 +4,7 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div>
-        <RouterLink to="/" class="footer-brand">
+        <RouterLink :to="lp('home')" class="footer-brand">
           <BrandLogo />
         </RouterLink>
         <p class="footer-text" v-html="t('footer_text')"></p>
@@ -28,20 +28,20 @@
       <div>
         <h2>{{ t('footer_quick') }}</h2>
         <ul>
-          <li><RouterLink to="/">{{ t('menu_home') }}</RouterLink></li>
+          <li><RouterLink :to="lp('home')">{{ t('menu_home') }}</RouterLink></li>
           <li><a :href="APP_SIGNUP">{{ t('footer_signup') }}</a></li>
           <li><a :href="APP_SIGNIN">{{ t('footer_signin') }}</a></li>
-          <li><RouterLink to="/delete-account">{{ t('footer_delete') }}</RouterLink></li>
+          <li><RouterLink :to="lp('delete-account')">{{ t('footer_delete') }}</RouterLink></li>
         </ul>
       </div>
 
       <div>
         <h2>{{ t('footer_support') }}</h2>
         <ul>
-          <li><RouterLink to="/faq">{{ t('menu_faq') }}</RouterLink></li>
-          <li><RouterLink to="/solutions">{{ t('menu_solutions') }}</RouterLink></li>
-          <li><RouterLink to="/contact">{{ t('menu_contact') }}</RouterLink></li>
-          <li><RouterLink to="/privacy">{{ t('privacy_title') }}</RouterLink></li>
+          <li><RouterLink :to="lp('faq')">{{ t('menu_faq') }}</RouterLink></li>
+          <li><RouterLink :to="lp('solutions')">{{ t('menu_solutions') }}</RouterLink></li>
+          <li><RouterLink :to="lp('contact')">{{ t('menu_contact') }}</RouterLink></li>
+          <li><RouterLink :to="lp('privacy')">{{ t('privacy_title') }}</RouterLink></li>
           <li>
             <a href="/kvkk-clarification-notice-corporate.html">{{ t('footer_kvkk_corporate') }}</a>
           </li>

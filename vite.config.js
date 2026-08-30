@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
+import { allLocalizedRoutes } from './src/i18n/paths.js'
 
 export default defineConfig({
   plugins: [vue()],
@@ -17,7 +18,7 @@ export default defineConfig({
     formatting: 'minify',
     dirStyle: 'nested',
     includedRoutes() {
-      return ['/', '/faq', '/solutions', '/contact', '/privacy', '/delete-account']
+      return ['/', ...allLocalizedRoutes()]
     },
   },
 })

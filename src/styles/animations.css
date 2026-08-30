@@ -64,8 +64,7 @@
 }
 
 .hero-visual img,
-.featured-shot,
-.mobile-shot {
+.featured-shot {
   animation: floaty 6s ease-in-out infinite;
 }
 

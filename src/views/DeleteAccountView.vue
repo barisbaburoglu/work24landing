@@ -19,7 +19,7 @@
           <p>{{ t('delete_account_info') }}</p>
           <a class="email-link" :href="mailHref">{{ CONTACT_EMAIL }}</a>
         </div>
-        <RouterLink class="btn btn-ghost" to="/">{{ t('cancel_button') }}</RouterLink>
+        <RouterLink class="btn btn-ghost" :to="lp('home')">{{ t('cancel_button') }}</RouterLink>
       </article>
     </div>
   </section>

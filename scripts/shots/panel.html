@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Work24 shot</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #43c2f3;
+      --green: #7ed957;
+      --green-dark: #2bb673;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --canvas: #f4f7fb;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body { font-family: "DM Sans", sans-serif; background: #020617; color: var(--ink); }
+    .shell { display: flex; width: 100%; height: 100vh; overflow: hidden; background: #020617; }
+    .sidebar { width: 280px; height: 100%; background: #020617; color: #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden; }
+    .sidebar-brand { padding: 16px 20px 12px; flex-shrink: 0; }
+    .brand-logo { height: 32px; width: auto; max-width: 140px; object-fit: contain; display: block; }
+    .sidebar-nav { flex: 1; min-height: 0; overflow: hidden; padding: 0 12px 16px; }
+    .g { margin: 0 12px 6px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #64748b; font-weight: 700; }
+    .sidebar-group { margin-bottom: 16px; }
+    .link { display: flex; align-items: center; gap: 12px; padding: 7px 12px; border-radius: 12px; color: #cbd5e1; font-size: 14px; margin-bottom: 2px; }
+    .link svg { width: 16px; height: 16px; flex-shrink: 0; opacity: .85; }
+    .link.active { background: rgba(255,255,255,.08); color: #fff; }
+    .main { flex: 1; min-width: 0; background: var(--canvas); display: flex; flex-direction: column; }
+    .topbar { flex-shrink: 0; background: rgba(255,255,255,.9); border-bottom: 1px solid var(--line); }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; }
+    .top-l, .top-r { display: flex; align-items: center; gap: 12px; }
+    .menu-btn { border: 0; background: none; padding: 8px; color: var(--ink); border-radius: 8px; font-size: 20px; line-height: 1; }
+    .locale { display: inline-flex; align-items: center; gap: 8px; min-width: 118px; border: 1px solid var(--line); background: #fff; border-radius: 12px; padding: 8px 10px; }
+    .locale-code { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 22px; padding: 0 6px; border-radius: 7px; background: #e2e8f0; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+    .locale-name { font-size: 13px; font-weight: 600; }
+    .locale-chevron { color: #64748b; font-size: 10px; }
+    .bell { width: 40px; height: 40px; border: 0; background: transparent; color: var(--ink); border-radius: 10px; display: grid; place-items: center; font-size: 18px; }
+    .profile { display: flex; align-items: center; gap: 12px; }
+    .topbar-user { text-align: right; }
+    .topbar-user p { margin: 0; font-size: 14px; font-weight: 600; }
+    .topbar-user span { font-size: 12px; color: var(--muted); }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+    .content { flex: 1; min-height: 0; padding: 24px 32px; overflow: hidden; }
+    .dash { max-width: 1280px; }
+    .dash-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 20px; }
+    h1 { font-size: 26px; font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+    .page-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 24px; }
+    .page-header h2 { font-size: 24px; }
+    .sub { color: var(--muted); font-size: 14px; margin-top: 6px; line-height: 1.4; }
+    .date { color: #94a3b8; font-size: 12px; font-weight: 500; margin-top: 8px; }
+    .btn { border: 0; border-radius: 12px; padding: 10px 16px; font: inherit; font-size: 14px; font-weight: 600; cursor: default; }
+    .btn-p { background: var(--ink); color: #fff; }
+    .btn-g { background: transparent; color: var(--muted); }
+    .btn-sm { padding: 10px 16px; font-size: 13px; border-radius: 10px; }
+    .live { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .live-l { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #047857; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-dark); box-shadow: 0 0 0 3px rgba(43,182,115,.18); }
+    .upd { font-size: 12px; color: #94a3b8; }
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 14px; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
+    .stat { padding: 18px 20px 16px; position: relative; text-align: left; }
+    .stat + .stat { border-left: 1px solid rgba(15,23,42,.08); }
+    .stat::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+    .s1::before { background: var(--green-dark); }
+    .s2::before { background: #d97706; }
+    .s3::before { background: #0284c7; }
+    .s4::before { background: #e11d48; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .stat strong { display: block; margin-top: 8px; font-size: 28px; letter-spacing: -.04em; line-height: 1; }
+    .stat small { margin-left: 2px; font-size: 14px; font-weight: 600; color: #94a3b8; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; min-width: 0; }
+    .plan { grid-column: 1 / -1; }
+    .panel { background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 14px; padding: 16px 18px; box-shadow: 0 1px 2px rgba(15,23,42,.04); min-width: 0; overflow: hidden; }
+    .ph { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .ph h3 { font-size: 14px; font-weight: 700; letter-spacing: -.01em; }
+    .ph-title { display: flex; align-items: center; gap: 4px; }
+    .expand { width: 32px; height: 32px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--muted); display: grid; place-items: center; font-size: 14px; }
+    .muted { color: var(--muted); font-size: 12px; margin: 0 0 10px; }
+    .empty { display: flex; align-items: center; justify-content: center; min-height: 72px; margin: 4px 0 0; padding: 16px; border-radius: 10px; background: #f8fafc; color: #94a3b8; font-size: 12px; text-align: center; }
+    table.plan-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .plan-table th, .plan-table td { padding: 6px 4px; text-align: center; border-bottom: 1px solid #f1f5f9; }
+    .plan-table th { color: #64748b; font-weight: 600; font-size: 11px; }
+    .plan-table th:first-child, .plan-table td:first-child { text-align: left; min-width: 120px; }
+    .cell { display: flex; align-items: center; justify-content: center; min-height: 30px; min-width: 72px; padding: 2px 4px; border-radius: 6px; font-size: 11px; }
+    .cell.work { background: #fff; color: var(--ink); }
+    .cell.off { background: #fecaca; color: #991b1b; font-weight: 600; }
+    .cell.leave { background: #fdba74; color: #9a3412; font-weight: 600; }
+    .cell.holiday { background: #cbd5e1; color: #334155; font-weight: 600; }
+    .tabs { display: flex; gap: 2px; padding: 3px; margin-bottom: 14px; background: #f1f5f9; border-radius: 10px; }
+    .tab { flex: 1; border: 0; background: transparent; padding: 8px 10px; font: inherit; font-size: 12px; font-weight: 600; color: var(--muted); border-radius: 8px; text-align: center; }
+    .tab.on { color: var(--ink); background: #fff; box-shadow: 0 1px 2px rgba(15,23,42,.08); }
+    .req-head, .req-row { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr) minmax(0,.8fr); gap: 8px; align-items: center; font-size: 12px; min-width: 0; }
+    .req-head { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .03em; padding: 0 10px 8px; }
+    .req-row { padding: 10px; border-radius: 10px; border-left: 3px solid #f59e0b; }
+    .req-row.ok { border-left-color: #10b981; }
+    .req-row.bad { border-left-color: #ef4444; }
+    .req-row span:first-child { font-weight: 600; }
+    .search { width: 160px; border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font: inherit; font-size: 13px; background: #fafbfc; }
+    .notif { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 12px 4px; border-bottom: 1px solid #f1f5f9; }
+    .notif:last-child { border-bottom: 0; }
+    .notif strong { display: block; font-size: 13px; font-weight: 650; }
+    .notif p { margin: 4px 0 0; font-size: 12px; color: var(--muted); line-height: 1.45; }
+    .notif em { display: inline-block; margin-top: 6px; font-style: normal; font-size: 11px; font-weight: 600; color: #0369a1; background: #f0f9ff; padding: 2px 8px; border-radius: 6px; }
+    .activity { margin-top: 16px; }
+    .act-item { display: grid; grid-template-columns: 12px minmax(0,1fr) auto; gap: 12px; align-items: start; padding: 10px 2px; border-bottom: 1px solid #f1f5f9; }
+    .act-item:last-child { border-bottom: 0; }
+    .act-dot { width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: #f59e0b; }
+    .act-dot.ok { background: #10b981; }
+    .act-dot.info { background: #3b82f6; }
+    .act-item strong { display: block; font-size: 13px; font-weight: 650; color: var(--ink); line-height: 1.35; }
+    .act-item p { margin: 3px 0 0; font-size: 12px; color: var(--muted); }
+    .act-item time { font-size: 11px; font-weight: 600; color: #94a3b8; white-space: nowrap; padding-top: 2px; }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 20px; background: #fff; box-shadow: 0 8px 24px rgba(15,23,42,.06); margin-bottom: 12px; }
+    .toolbar input, .toolbar select { height: 42px; border: 1px solid var(--line); border-radius: 12px; padding: 0 12px; background: #fff; font: inherit; }
+    .legend { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+    .lg { border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600; }
+    .lg.work { background: #ecfdf5; color: #047857; }
+    .lg.off { background: #fff1f2; color: #be123c; }
+    .lg.leave { background: #ffedd5; color: #9a3412; }
+    .lg.holiday { background: #e2e8f0; color: #334155; }
+    .hint { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+    .day-wrap { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(15,23,42,.06); }
+    .day-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .day-table th, .day-table td { border: 1px solid var(--line); padding: 8px; text-align: center; min-width: 72px; }
+    .day-table th:first-child, .day-table td:first-child { text-align: left; min-width: 160px; background: #fff; }
+    .day-head { display: flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1.2; }
+    .day-head small { font-weight: 500; color: var(--muted); font-size: 11px; }
+    .emp { display: grid; gap: 2px; text-align: left; }
+    .emp small { color: var(--muted); }
+    .rtabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+    .rtab { border: 0; background: transparent; padding: 10px 14px; font: inherit; font-size: 13px; font-weight: 600; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+    .rtab.on { color: var(--ink); border-bottom-color: var(--blue); }
+    .card { background: #fff; border-radius: 16px; padding: 16px; box-shadow: 0 8px 24px rgba(15,23,42,.06); }
+    .rtb { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .rtb h3 { font-size: 15px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .filters input, .filters select { flex: 1 1 160px; border: 1px solid var(--line); border-radius: 12px; padding: 11px 14px; background: #fff; font: inherit; }
+    .lhead, .lrow { display: grid; grid-template-columns: .6fr 1.2fr 1fr .9fr .9fr .8fr auto; gap: 8px; align-items: center; font-size: 12px; padding: 8px 10px; }
+    .lhead { color: var(--muted); font-weight: 700; }
+    .lrow { border-radius: 10px; border-right: 4px solid #f59e0b; }
+    .lrow.ok { border-right-color: #10b981; }
+    .lrow.bad { border-right-color: #ef4444; }
+    .badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+    .badge.wait { background: #ffedd5; color: #9a3412; }
+    .badge.ok { background: #ecfdf5; color: #047857; }
+    .badge.bad { background: #fff1f2; color: #be123c; }
+    .ico-btn { border: 0; background: #f8fafc; color: var(--ink); border-radius: 8px; padding: 4px 8px; font-size: 12px; font-weight: 600; }
+    .ts-bar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 12px; padding: 12px 14px; border-radius: 20px; background: #fff; box-shadow: 0 8px 24px rgba(15,23,42,.06); margin-bottom: 12px; }
+    .ts-field { display: flex; flex-direction: column; gap: 6px; min-width: 148px; }
+    .ts-field span { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .ts-field select, .ts-field input { height: 40px; border: 1px solid var(--line); border-radius: 12px; padding: 0 12px; background: #fff; font: inherit; }
+    .ts-month { display: flex; align-items: center; gap: 8px; min-height: 40px; }
+    .ts-month strong { min-width: 128px; text-align: center; font-size: 15px; }
+    .ts-nav { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .ts-actions { margin-left: auto; display: flex; gap: 8px; }
+    .btn-x { background: #f8fafc; border: 1px solid var(--line); color: var(--ink); }
+    .ts-stats { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; margin-bottom: 12px; }
+    .ts-stats article { padding: 12px 14px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+    .ts-stats span { display: block; color: var(--muted); font-size: 12px; }
+    .ts-stats strong { display: block; margin-top: 6px; font-size: 20px; letter-spacing: -.03em; }
+    .ts-sheet { background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 8px 24px rgba(15,23,42,.06); overflow: hidden; }
+    .ts-head { padding: 14px 18px 12px; border-bottom: 1px solid var(--line); }
+    .ts-head p { margin: 0; color: var(--muted); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+    .ts-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+    .ts-meta h3 { font-size: 17px; }
+    .ts-meta strong { color: var(--muted); font-weight: 600; }
+    .ts-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 11px; }
+    .ts-table th, .ts-table td { border-bottom: 1px solid #eef2f6; border-right: 1px solid #eef2f6; text-align: center; }
+    .ts-table thead th { background: #f8fafc; color: var(--muted); font-weight: 600; padding: 6px 2px 8px; }
+    .ts-sticky { text-align: left !important; min-width: 148px; padding: 8px 12px; background: #fff; font-weight: 600; }
+    .ts-table thead .ts-sticky { background: #f8fafc; }
+    .ts-day small { display: block; font-size: 9px; letter-spacing: .04em; text-transform: uppercase; color: #94a3b8; }
+    .ts-day span { display: block; margin-top: 2px; color: var(--ink); font-size: 12px; }
+    .ts-cell { min-width: 46px; height: 40px; padding: 3px 2px; }
+    .ts-in, .ts-out { display: block; line-height: 1.25; font-variant-numeric: tabular-nums; }
+    .ts-out { color: var(--muted); }
+    .wk { background: #f8fafc; }
+    .lv { background: #eef2ff; color: #3730a3; font-weight: 700; }
+    .hol { background: #f1f5f9; color: #475569; font-weight: 700; }
+    .abs { color: #94a3b8; }
+    .late { box-shadow: inset 0 -2px 0 #f59e0b; }
+    .late .ts-in { color: #b45309; font-weight: 700; }
+    .ot .ts-out { color: #15803d; font-weight: 700; }
+    .sum { min-width: 52px; padding: 8px 4px; background: #fafbfc; font-weight: 600; }
+    body.mobile { background: transparent; display: flex; justify-content: center; align-items: center; }
+    .phone { width: 390px; height: 844px; background: #f4f7fb; border-radius: 36px; overflow: hidden; box-shadow: none; display: flex; flex-direction: column; }
+    .m-status { height: 28px; display: flex; align-items: center; justify-content: space-between; padding: 8px 22px 0; font-size: 12px; font-weight: 600; color: var(--ink); }
+    .m-appbar { height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px 0 4px; background: #fff; border-bottom: 1px solid var(--line); }
+    .m-appbar .menu { width: 44px; height: 44px; display: grid; place-items: center; color: var(--ink); font-size: 22px; }
+    .m-logo { height: 28px; width: auto; }
+    .m-app-r { display: flex; align-items: center; gap: 8px; }
+    .m-lang { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 10px; padding: 5px 8px; font-size: 12px; font-weight: 700; background: #fff; }
+    .m-av { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 16px; margin-right: 8px; }
+    .m-body { padding: 8px 16px 12px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+    .m-body h1 { font-size: 26px; letter-spacing: -.6px; line-height: 1.15; }
+    .m-sub { color: var(--muted); font-size: 14px; margin-top: 6px; line-height: 1.4; }
+    .m-date { text-align: right; font-size: 16px; font-weight: 700; letter-spacing: -.2px; margin-top: 8px; }
+    .clock { background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 14px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; margin: 20px 0 16px; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
+    .clock .t { font-size: 32px; font-weight: 700; letter-spacing: -1.2px; line-height: 1; }
+    .qr { background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 14px; padding: 20px; text-align: center; flex: 1; min-height: 0; display: flex; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
+    .qr-box { background: #e8f7fd; border-radius: 16px; padding: 20px 16px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .qr-ico { width: 96px; height: 96px; color: var(--blue); }
+    .qr-title { font-weight: 700; margin-top: 14px; font-size: 16px; letter-spacing: -.2px; }
+    .inkbtn { width: 100%; height: 44px; margin-top: 12px; background: var(--ink); color: #fff; border: 0; border-radius: 12px; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+    .strip { margin-top: 16px; background: #fff; border: 1px solid rgba(15,23,42,.08); border-radius: 14px; display: grid; grid-template-columns: 1fr 1fr 1fr; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,.04); flex-shrink: 0; }
+    .sc { padding: 14px 10px 14px 12px; display: flex; gap: 8px; align-items: center; min-width: 0; }
+    .sc + .sc { border-left: 1px solid var(--line); }
+    .sc i { width: 3px; height: 36px; border-radius: 99px; flex-shrink: 0; }
+    .sc.is-in i { background: #7ed957; }
+    .sc.is-out i { background: #d97706; }
+    .sc.is-hrs i { background: #43c2f3; }
+    .sc > div { min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+    .sc span {
+      display: block;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 14px;
+      height: 14px;
+      letter-spacing: 0;
+      text-transform: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sc strong {
+      display: block;
+      margin-top: 6px;
+      font-family: inherit;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.4px;
+      line-height: 20px;
+      height: 20px;
+      font-variant-numeric: tabular-nums;
+    }
+    .m-tabs { height: 72px; background: #fff; border-radius: 40px 40px 0 0; display: grid; grid-template-columns: repeat(5,1fr); padding: 8px 4px 10px; flex-shrink: 0; }
+    .m-tab { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #9ca3af; font-size: 11px; font-weight: 500; }
+    .m-tab svg { width: 24px; height: 24px; }
+    .m-tab.on { color: #43c2f3; font-weight: 600; }
+  </style>
+</head>
+<body>
+<script>
+  const page = new URLSearchParams(location.search).get('p') || 'dashboard'
+  document.body.classList.toggle('mobile', page === 'mobile')
+
+  const ico = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`
+  const icons = {
+    dash: ico('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'),
+    net: ico('<rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3M12 8v5"/>'),
+    tags: ico('<path d="M12 2H2v10l9.3 9.3a1 1 0 0 0 1.4 0L22 12.7a1 1 0 0 0 0-1.4z"/><circle cx="7" cy="7" r="1.2"/>'),
+    users: ico('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>'),
+    sliders: ico('<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>'),
+    userCog: ico('<circle cx="9" cy="7" r="3.2"/><path d="M3 20v-1.2A4.8 4.8 0 0 1 7.8 14h2.4"/><circle cx="18" cy="16" r="2.2"/><path d="M18 12.2v1.1M18 18.7v1.1M21.2 14.2l-.9.6M15.7 17.2l-.9.6M21.2 17.8l-.9-.6M15.7 14.8l-.9-.6"/>'),
+    cal: ico('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'),
+    off: ico('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l6 6M15 15l-6 6"/>'),
+    range: ico('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h8M8 18h5"/>'),
+    swap: ico('<path d="M8 7h13M17 3l4 4-4 4M16 17H3M7 21l-4-4 4-4"/>'),
+    clock: ico('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/>'),
+    pin: ico('<path d="M12 21s7-6.2 7-11.2A7 7 0 1 0 5 9.8C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.2"/>'),
+    qr: ico('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM21 14v7M14 21h4"/>'),
+    feet: ico('<path d="M4 16c0-2 1.2-3.5 2.6-3.5S9 14 9 16c0 2.4-1.2 4-2.4 4S4 18.4 4 16zM11 8.5c0-2 1.3-3.5 2.7-3.5S16.4 6.5 16.4 8.5c0 2.3-1.2 4-2.5 4s-2.9-1.7-2.9-4z"/><path d="M8.2 20.2c.4 1.2 1.5 2 2.6 1.6M15.6 13.2c.6 1.1 1.8 1.7 3 1.2"/>'),
+    inbox: ico('<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13l3.5 7v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7z"/>'),
+    history: ico('<path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5M12 7v5l3 2"/>'),
+    bell: ico('<path d="M6 8a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10 21a2 2 0 0 0 4 0"/>'),
+    chart: ico('<path d="M3 3v18h18"/><path d="M7 16v-5M12 16V8M17 16v-8"/>'),
+    calclock: ico('<rect x="3" y="4" width="14" height="14" rx="2"/><path d="M13 2v3M7 2v3M3 9h14M17.5 15.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M17.5 17.2v1.6l1.2.8"/>'),
+    circleUser: ico('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.8 18.2a6 6 0 0 1 10.4 0"/>'),
+    buoy: ico('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M4.9 4.9l3.2 3.2M15.9 15.9l3.2 3.2M19.1 4.9l-3.2 3.2M8.1 15.9l-3.2 3.2"/>'),
+  }
+
+  const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'tr'
+  const copy = {
+    tr: {
+      localeCode: 'TR', localeName: 'Türkçe',
+      user: 'Elif Kaya', email: 'elif.kaya@sirket.com', avatar: 'E',
+      people: {
+        elif: 'Elif Kaya', ahmet: 'Ahmet Demir', zeynep: 'Zeynep Aksoy',
+        mehmet: 'Mehmet Yılmaz', ayse: 'Ayşe Çelik', caner: 'Caner Arslan',
+        burak: 'Burak Şen', selin: 'Selin Acar', mert: 'Mert Koç',
+      },
+      emails: {
+        elif: 'elif.kaya@sirket.com', ahmet: 'ahmet.demir@sirket.com', zeynep: 'zeynep.aksoy@sirket.com',
+      },
+      groups: [
+        ['Genel', [['Özet', 'dash']]],
+        ['Organizasyon', [['Departmanlar', 'net'], ['Çalışan Tipleri', 'tags'], ['Çalışanlar', 'users'], ['Şirket Ayarları', 'sliders']]],
+        ['Yetkiler', [['Rol Atama', 'userCog']]],
+        ['Vardiya', [['Vardiya Takvimi', 'cal'], ['İzin Günü', 'off'], ['Vardiya Planı', 'range'], ['Toplu Değişiklik', 'swap'], ['Kullanıcı Vardiyası', 'clock']]],
+        ['Saha', [['Lokasyonlar', 'pin'], ['QR Kodları', 'qr']]],
+        ['Operasyon', [['Hareketlerim', 'feet'], ['Talepler', 'inbox'], ['İşlem Geçmişi', 'history'], ['Bildirimler', 'bell']]],
+        ['Raporlar', [['Puantaj Raporu', 'chart'], ['Aylık Puantaj', 'calclock']]],
+        ['Hesap', [['Hesabım', 'circleUser'], ['Destek', 'buoy']]],
+      ],
+      active: { dashboard: 'Özet', shift: 'Vardiya Planı', leave: 'Talepler', timesheet: 'Aylık Puantaj' },
+      days: [['Pzt', '31 Ağu'], ['Sal', '1 Eyl'], ['Çar', '2 Eyl'], ['Per', '3 Eyl'], ['Cum', '4 Eyl'], ['Cmt', '5 Eyl'], ['Paz', '6 Eyl']],
+      off: 'Hafta Tatili', leave: 'İzin', workShift: 'Gündüz', eveShift: 'Akşam',
+      dashTitle: 'Bugünün Özeti', dashSub: 'Saha durumunu tek bakışta görün.',
+      dashDate: '31 Ağustos 2026 Pazartesi', manual: 'Manuel Giriş / Çıkış',
+      live: 'Canlı', updated: 'Son Güncelleme 09:42',
+      present: 'İş Yerinde', late: 'Geç Kalan', onLeave: 'İzinli', absent: 'Gelmeyen',
+      planTitle: 'Haftalık Vardiya Planı', planWeek: '31 Ağu 2026 → 6 Eyl 2026',
+      employee: 'Çalışan', requests: 'Talepler',
+      tabEntry: 'Giriş-Çıkış Talepleri', tabLeave: 'İzin Talepleri', tabOther: 'Diğer Talepler', tabOt: 'Mesai',
+      createdBy: 'Oluşturan', location: 'Lokasyon', status: 'Durum',
+      locHq: 'Merkez Giriş', locWh: 'Depo', locSite: 'Şantiye',
+      pending: 'Bekliyor', approved: 'Onaylandı', rejected: 'Reddedildi',
+      notifTitle: 'Duyurular', search: 'Ara...',
+      n1t: 'Haftalık vardiya güncellendi', n1b: '1 Eylül haftası planı yayında. Değişiklikleri kontrol edin.', n1k: 'vardiya',
+      n2t: 'Yeni QR noktası', n2b: 'Depo girişi için QR kodu eklendi.', n2k: 'saha',
+      activity: 'Son İşlemler',
+      a1: 'Düzeltildi · Puantaj Günü', a1d: '2026-08-28 08:30–18:30 → 08:00–18:00', a1t: '29 Ağu 12:33',
+      a2: 'Düzeltildi · Puantaj Günü', a2d: '2026-08-28 → 08:30–18:30', a2t: '29 Ağu 12:32',
+      a3: 'Onaylandı · İzin Talebi', a3d: 'Yıllık İzin · 01.09.2026', a3t: '29 Ağu 11:18',
+      shiftTitle: 'Vardiya Planı',
+      shiftSub: 'Haftalık takvim. Gün hücresinin üzerine gelerek izin ekleyin veya vardiya değiştirin.',
+      export: "Excel'e Aktar", prevWeek: '← Hafta', nextWeek: 'Hafta →',
+      weekOpt: '31.08.2026 → 06.09.2026', searchEmp: 'Çalışan Ara...', fetch: 'Getir',
+      lgWork: 'İş', lgOff: 'Hafta Tatili', lgLeave: 'İzin', lgHol: 'Resmi Tatil',
+      hover: 'Düzenlemek için günün üzerine gelin', selectedWeek: 'Seçili Hafta: 31 Ağu 2026 → 6 Eyl 2026',
+      reqTitle: 'Talepler',
+      reqSub: 'İzin, mesai, giriş-çıkış istisna ve diğer çalışan taleplerini yönetin.',
+      newLeave: 'Yeni İzin Talebi', sicil: 'Sicil', leaveType: 'İzin Türü', start: 'Başlangıç', end: 'Bitiş', actions: 'İşlem', edit: 'Düzenle',
+      annual: 'Yıllık İzin', health: 'Sağlık İzni', adminLeave: 'İdari İzin', unpaid: 'Ücretsiz İzin',
+      hello: 'Merhaba, Elif Kaya', mobileSub: 'QR ile giriş veya çıkış yapın.',
+      mobileDate: '31 Ağustos 2026 · Pazartesi',
+      qrTitle: 'QR ile Giriş / Çıkış', qrSub: 'Kamerayı karekodun üzerine tutun.',
+      noQr: 'Karekodsuz Giriş / Çıkış', in: 'Giriş', out: 'Çıkış', dur: 'Çalışma Saati',
+      tabEvent: 'Hareket', tabNotice: 'Bildirim', tabHome: 'Anasayfa', tabReq: 'Talep', tabShift: 'Vardiya',
+      tsTitle: 'Aylık Puantaj', tsSub: 'Ayın giriş, çıkış ve çalışma özeti. Güne tıklayınca detay açılır.',
+      tsMonth: 'Ağustos 2026', dept: 'Departman', allDept: 'Tüm Departmanlar', allLoc: 'Tüm Lokasyonlar',
+      lateFilter: 'Geç kalanlar', lateOff: 'Tümü', fetch: 'Getir',
+      export: "Excel'e Aktar", payroll: 'Muhasebeye Aktar', lock: 'Ayı Kilitle',
+      stPeople: 'Çalışan', stWork: 'Toplam çalışma', stOt: 'Fazla mesai', stLeave: 'İzin günü', stLate: 'Geç kalma',
+      sheet: 'Aylık puantaj cetveli', company: 'Work24 Merkez',
+      colWork: 'İş Günü', colLeave: 'İzin', colLate: 'Geç', colOt: 'Fazla', colMiss: 'Eksik', colTot: 'Toplam',
+      lvShort: 'YIL', holShort: 'RT', absShort: 'Yok',
+      tsDays: [['Pzt','3'],['Sal','4'],['Çar','5'],['Per','6'],['Cum','7'],['Cmt','8'],['Paz','9'],['Pzt','10'],['Sal','11'],['Çar','12']],
+    },
+    en: {
+      localeCode: 'EN', localeName: 'English',
+      user: 'Emma Walker', email: 'emma.walker@company.com', avatar: 'E',
+      people: {
+        elif: 'Emma Walker', ahmet: 'James Carter', zeynep: 'Olivia Reed',
+        mehmet: 'Daniel Brooks', ayse: 'Sophia Lane', caner: 'Ryan Hughes',
+        burak: 'Michael Grant', selin: 'Ava Collins', mert: 'Liam Foster',
+      },
+      emails: {
+        elif: 'emma.walker@company.com', ahmet: 'james.carter@company.com', zeynep: 'olivia.reed@company.com',
+      },
+      groups: [
+        ['General', [['Overview', 'dash']]],
+        ['Organization', [['Departments', 'net'], ['Employee Types', 'tags'], ['Employees', 'users'], ['Company Settings', 'sliders']]],
+        ['Permissions', [['Assign Roles', 'userCog']]],
+        ['Shifts', [['Shift Calendar', 'cal'], ['Day Off', 'off'], ['Shift Plan', 'range'], ['Bulk Change', 'swap'], ['My Shift', 'clock']]],
+        ['Field', [['Locations', 'pin'], ['QR Codes', 'qr']]],
+        ['Operations', [['My Events', 'feet'], ['Requests', 'inbox'], ['Activity History', 'history'], ['Notifications', 'bell']]],
+        ['Reports', [['Timesheet Report', 'chart'], ['Monthly Timesheet', 'calclock']]],
+        ['Account', [['My Account', 'circleUser'], ['Support', 'buoy']]],
+      ],
+      active: { dashboard: 'Overview', shift: 'Shift Plan', leave: 'Requests', timesheet: 'Monthly Timesheet' },
+      days: [['Mon', '31 Aug'], ['Tue', '1 Sep'], ['Wed', '2 Sep'], ['Thu', '3 Sep'], ['Fri', '4 Sep'], ['Sat', '5 Sep'], ['Sun', '6 Sep']],
+      off: 'Week Leave', leave: 'Leave', workShift: 'Day', eveShift: 'Evening',
+      dashTitle: 'Today At A Glance', dashSub: 'See field status in one view.',
+      dashDate: '31 August 2026 Monday', manual: 'Manual Entry / Exit',
+      live: 'Live', updated: 'Updated 09:42',
+      present: 'On Site', late: 'Late', onLeave: 'On Leave', absent: 'Absent',
+      planTitle: 'Weekly Shift Plan', planWeek: '31 Aug 2026 → 6 Sep 2026',
+      employee: 'Employee', requests: 'Requests',
+      tabEntry: 'Entry-Exit Requests', tabLeave: 'Leave Requests', tabOther: 'Other Requests', tabOt: 'Overtime',
+      createdBy: 'Created By', location: 'Location', status: 'Status',
+      locHq: 'HQ Gate', locWh: 'Warehouse', locSite: 'Jobsite',
+      pending: 'Pending', approved: 'Approved', rejected: 'Rejected',
+      notifTitle: 'Announcements', search: 'Search...',
+      n1t: 'Weekly shift plan updated', n1b: 'The 1 September week plan is live. Please review changes.', n1k: 'shifts',
+      n2t: 'New QR point', n2b: 'A QR code was added at the warehouse entrance.', n2k: 'field',
+      activity: 'Recent Activity',
+      a1: 'Corrected · Timesheet Day', a1d: '2026-08-28 08:30–18:30 → 08:00–18:00', a1t: '29 Aug 12:33',
+      a2: 'Corrected · Timesheet Day', a2d: '2026-08-28 → 08:30–18:30', a2t: '29 Aug 12:32',
+      a3: 'Approved · Leave Request', a3d: 'Annual Leave · 01.09.2026', a3t: '29 Aug 11:18',
+      shiftTitle: 'Shift Plan',
+      shiftSub: 'Weekly calendar. Hover a day cell to add leave or change shift.',
+      export: 'Export To Excel', prevWeek: '← Week', nextWeek: 'Week →',
+      weekOpt: '31.08.2026 → 06.09.2026', searchEmp: 'Search Employee...', fetch: 'Load',
+      lgWork: 'Work', lgOff: 'Week Leave', lgLeave: 'Leave', lgHol: 'Public Holiday',
+      hover: 'Hover a day to edit', selectedWeek: 'Selected Week: 31 Aug 2026 → 6 Sep 2026',
+      reqTitle: 'Requests',
+      reqSub: 'Manage leave, overtime, entry-exit exception, and other employee requests.',
+      newLeave: 'New Leave Request', sicil: 'No.', leaveType: 'Leave Type', start: 'Start', end: 'End', actions: 'Actions', edit: 'Edit',
+      annual: 'Annual Leave', health: 'Health Leave', adminLeave: 'Administrative Leave', unpaid: 'Unpaid Leave',
+      hello: 'Hello, Emma Walker', mobileSub: 'Clock in or out with a QR code.',
+      mobileDate: '31 August 2026 · Monday',
+      qrTitle: 'Clock In / Out With QR', qrSub: 'Point the camera at the QR code.',
+      noQr: 'Clock In / Out Without QR', in: 'Entry', out: 'Exit', dur: 'Working Hours',
+      tabEvent: 'Event', tabNotice: 'Notice', tabHome: 'Home', tabReq: 'Request', tabShift: 'Shift',
+      tsTitle: 'Monthly Timesheet', tsSub: 'Entry, exit and work summary for the month. Click a day for details.',
+      tsMonth: 'August 2026', dept: 'Department', allDept: 'All Departments', allLoc: 'All Locations',
+      lateFilter: 'Late only', lateOff: 'Everyone', fetch: 'Load',
+      export: 'Export To Excel', payroll: 'Export For Payroll', lock: 'Lock Month',
+      stPeople: 'Employees', stWork: 'Total work', stOt: 'Overtime', stLeave: 'Leave days', stLate: 'Late',
+      sheet: 'Monthly timesheet', company: 'Work24 HQ',
+      colWork: 'Work days', colLeave: 'Leave', colLate: 'Late', colOt: 'OT', colMiss: 'Short', colTot: 'Total',
+      lvShort: 'ANN', holShort: 'PH', absShort: 'Abs',
+      tsDays: [['Mon','3'],['Tue','4'],['Wed','5'],['Thu','6'],['Fri','7'],['Sat','8'],['Sun','9'],['Mon','10'],['Tue','11'],['Wed','12']],
+    },
+  }[lang]
+
+  const groups = copy.groups
+  const active = copy.active[page] || copy.active.dashboard
+  const days = copy.days
+  const logo = `<img class="brand-logo" src="logo-work24.png" alt="Work24" />`
+
+  function sidebar() {
+    return `<aside class="sidebar">
+      <div class="sidebar-brand">${logo}</div>
+      <nav class="sidebar-nav">${groups.map(([g, items]) =>
+        `<section class="sidebar-group"><p class="g">${g}</p>${items.map(([n, k]) =>
+          `<div class="link${n===active?' active':''}">${icons[k]||''}<span>${n}</span></div>`
+        ).join('')}</section>`
+      ).join('')}</nav>
+    </aside>`
+  }
+
+  function topbar() {
+    return `<header class="topbar"><div class="topbar-inner">
+      <div class="top-l"><button class="menu-btn" type="button">☰</button></div>
+      <div class="top-r">
+        <div class="locale"><span class="locale-code">${copy.localeCode}</span><span class="locale-name">${copy.localeName}</span><span class="locale-chevron">▾</span></div>
+        <div class="bell">🔔</div>
+        <div class="profile">
+          <div class="topbar-user"><p>${copy.user}</p><span>${copy.email}</span></div>
+          <div class="avatar">${copy.avatar}</div>
+        </div>
+      </div>
+    </div></header>`
+  }
+
+  const work = `<div class="cell work">08:30–18:30</div>`
+  const off = `<div class="cell off">${copy.off}</div>`
+  const leave = `<div class="cell leave">${copy.leave}</div>`
+
+  const ppl = copy.people
+  const views = {
+    dashboard: `${sidebar()}<div class="main">${topbar()}<div class="content"><div class="dash">
+      <header class="dash-header">
+        <div>
+          <h1>${copy.dashTitle}</h1>
+          <p class="sub">${copy.dashSub}</p>
+          <p class="date">${copy.dashDate}</p>
+        </div>
+        <button class="btn btn-p btn-sm" type="button">${copy.manual}</button>
+      </header>
+      <div class="live"><span class="live-l"><i class="dot"></i>${copy.live}</span><span class="upd">${copy.updated}</span></div>
+      <div class="stats">
+        <div class="stat s1"><span>${copy.present}</span><strong>18 <small>/ 24</small></strong></div>
+        <div class="stat s2"><span>${copy.late}</span><strong>3 <small>/ 24</small></strong></div>
+        <div class="stat s3"><span>${copy.onLeave}</span><strong>2 <small>/ 24</small></strong></div>
+        <div class="stat s4"><span>${copy.absent}</span><strong>1 <small>/ 24</small></strong></div>
+      </div>
+      <div class="grid">
+        <section class="panel plan">
+          <div class="ph"><h3>${copy.planTitle}</h3><button class="expand" type="button">⤢</button></div>
+          <p class="muted">${copy.planWeek}</p>
+          <table class="plan-table">
+            <thead><tr><th>${copy.employee}</th>${days.map(d=>`<th>${d[0]}</th>`).join('')}</tr></thead>
+            <tbody>
+              <tr><td>${ppl.elif}</td><td>${work}</td><td>${work}</td><td>${work}</td><td>${work}</td><td>${work}</td><td>${off}</td><td>${off}</td></tr>
+              <tr><td>${ppl.ahmet}</td><td>${work}</td><td>${leave}</td><td>${work}</td><td>${work}</td><td>${work}</td><td>${off}</td><td>${off}</td></tr>
+              <tr><td>${ppl.zeynep}</td><td>${work}</td><td>${work}</td><td>${work}</td><td>${work}</td><td>${work}</td><td>${off}</td><td>${off}</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="panel">
+          <div class="ph"><h3>${copy.requests}</h3></div>
+          <div class="tabs">
+            <div class="tab on">${copy.tabEntry}</div>
+            <div class="tab">${copy.tabLeave}</div>
+            <div class="tab">${copy.tabOther}</div>
+          </div>
+          <div class="req-head"><span>${copy.createdBy}</span><span>${copy.location}</span><span>${copy.status}</span></div>
+          <div class="req-row"><span>${ppl.mehmet}</span><span>${copy.locHq}</span><span>${copy.pending}</span></div>
+          <div class="req-row ok"><span>${ppl.ayse}</span><span>${copy.locWh}</span><span>${copy.approved}</span></div>
+          <div class="req-row bad"><span>${ppl.caner}</span><span>${copy.locSite}</span><span>${copy.rejected}</span></div>
+        </section>
+        <section class="panel">
+          <div class="ph">
+            <div class="ph-title"><h3>${copy.notifTitle}</h3><button class="expand" type="button">+</button></div>
+            <input class="search" value="" placeholder="${copy.search}" />
+          </div>
+          <article class="notif"><div><strong>${copy.n1t}</strong><p>${copy.n1b}</p><em>${copy.n1k}</em></div></article>
+          <article class="notif"><div><strong>${copy.n2t}</strong><p>${copy.n2b}</p><em>${copy.n2k}</em></div></article>
+        </section>
+      </div>
+      <section class="panel activity">
+        <div class="ph"><h3>${copy.activity}</h3><button class="expand" type="button">⤢</button></div>
+        <article class="act-item">
+          <span class="act-dot"></span>
+          <div>
+            <strong>${copy.a1} · ${ppl.elif}</strong>
+            <p>${copy.emails.elif} · ${copy.a1d}</p>
+          </div>
+          <time>${copy.a1t}</time>
+        </article>
+        <article class="act-item">
+          <span class="act-dot"></span>
+          <div>
+            <strong>${copy.a2} · ${ppl.ahmet}</strong>
+            <p>${copy.emails.ahmet} · ${copy.a2d}</p>
+          </div>
+          <time>${copy.a2t}</time>
+        </article>
+        <article class="act-item">
+          <span class="act-dot ok"></span>
+          <div>
+            <strong>${copy.a3} · ${ppl.zeynep}</strong>
+            <p>${copy.emails.zeynep} · ${copy.a3d}</p>
+          </div>
+          <time>${copy.a3t}</time>
+        </article>
+      </section>
+    </div></div></div>`,
+
+    shift: `${sidebar()}<div class="main">${topbar()}<div class="content">
+      <div class="page-header">
+        <div>
+          <h2>${copy.shiftTitle}</h2>
+          <p class="sub">${copy.shiftSub}</p>
+        </div>
+        <button class="btn btn-p" type="button">${copy.export}</button>
+      </div>
+      <div class="toolbar">
+        <button class="btn btn-g" type="button">${copy.prevWeek}</button>
+        <select><option>${copy.weekOpt}</option></select>
+        <button class="btn btn-g" type="button">${copy.nextWeek}</button>
+        <input value="2026" style="width:88px" />
+        <input type="search" placeholder="${copy.searchEmp}" />
+        <button class="btn btn-p" type="button">${copy.fetch}</button>
+      </div>
+      <div class="legend">
+        <span class="lg work">${copy.lgWork}</span>
+        <span class="lg off">${copy.lgOff}</span>
+        <span class="lg leave">${copy.lgLeave}</span>
+        <span class="lg holiday">${copy.lgHol}</span>
+        <span class="hint" style="margin:0">${copy.hover}</span>
+      </div>
+      <p class="hint">${copy.selectedWeek}</p>
+      <div class="day-wrap">
+        <table class="day-table">
+          <thead><tr><th>${copy.employee}</th>${days.map(([n,d])=>`<th><span class="day-head">${n}<small>${d}</small></span></th>`).join('')}</tr></thead>
+          <tbody>${[
+            [ppl.elif, copy.workShift, work],
+            [ppl.ahmet, copy.workShift, leave],
+            [ppl.zeynep, copy.eveShift, work],
+            [ppl.burak, copy.workShift, work],
+            [ppl.selin, copy.workShift, work],
+          ].map(([n,s,tue])=>`<tr>
+            <td><div class="emp"><strong>${n}</strong><small>${s}</small></div></td>
+            <td>${work}</td><td>${tue}</td><td>${work}</td><td>${work}</td><td>${work}</td><td>${off}</td><td>${off}</td>
+          </tr>`).join('')}</tbody>
+        </table>
+      </div>
+    </div></div>`,
+
+    leave: `${sidebar()}<div class="main">${topbar()}<div class="content">
+      <div class="page-header">
+        <div>
+          <h2>${copy.reqTitle}</h2>
+          <p class="sub">${copy.reqSub}</p>
+        </div>
+      </div>
+      <div class="rtabs">
+        <div class="rtab on">${copy.tabLeave}</div>
+        <div class="rtab">${copy.tabEntry}</div>
+        <div class="rtab">${copy.tabOt}</div>
+        <div class="rtab">${copy.tabOther}</div>
+      </div>
+      <section class="card">
+        <div class="rtb"><h3>${copy.tabLeave}</h3><button class="btn btn-p" type="button">${copy.newLeave}</button></div>
+        <div class="filters">
+          <input placeholder="${copy.sicil}" />
+          <input placeholder="${copy.employee}" />
+          <select><option>${copy.leaveType}</option></select>
+          <select><option>${copy.status}</option></select>
+        </div>
+        <div class="lhead"><span>${copy.sicil}</span><span>${copy.employee}</span><span>${copy.leaveType}</span><span>${copy.start}</span><span>${copy.end}</span><span>${copy.status}</span><span>${copy.actions}</span></div>
+        <div class="lrow ok"><span>1001</span><span>${ppl.ahmet}</span><span>${copy.annual}</span><span>01.09.2026</span><span>01.09.2026</span><span class="badge ok">${copy.approved}</span><span><button class="ico-btn" type="button">${copy.edit}</button></span></div>
+        <div class="lrow"><span>1004</span><span>${ppl.selin}</span><span>${copy.health}</span><span>02.09.2026</span><span>03.09.2026</span><span class="badge wait">${copy.pending}</span><span><button class="ico-btn" type="button">${copy.edit}</button></span></div>
+        <div class="lrow ok"><span>1005</span><span>${ppl.mert}</span><span>${copy.adminLeave}</span><span>04.09.2026</span><span>04.09.2026</span><span class="badge ok">${copy.approved}</span><span><button class="ico-btn" type="button">${copy.edit}</button></span></div>
+        <div class="lrow bad"><span>1006</span><span>${ppl.caner}</span><span>${copy.unpaid}</span><span>08.09.2026</span><span>09.09.2026</span><span class="badge bad">${copy.rejected}</span><span><button class="ico-btn" type="button">${copy.edit}</button></span></div>
+        <div class="lrow"><span>1002</span><span>${ppl.elif}</span><span>${copy.annual}</span><span>14.09.2026</span><span>18.09.2026</span><span class="badge wait">${copy.pending}</span><span><button class="ico-btn" type="button">${copy.edit}</button></span></div>
+      </section>
+    </div></div>`,
+
+    timesheet: (() => {
+      const io = (a, b, cls = '') => `<td class="ts-cell ${cls}"><span class="ts-in">${a}</span><span class="ts-out">${b}</span></td>`
+      const mk = (txt, cls) => `<td class="ts-cell ${cls}">${txt}</td>`
+      const wk = `<td class="ts-cell wk"></td>`
+      const sums = (w, l, late, ot, miss, tot) =>
+        `<td class="sum">${w}</td><td class="sum">${l}</td><td class="sum">${late}</td><td class="sum">${ot}</td><td class="sum">${miss}</td><td class="sum">${tot}</td>`
+      const heads = copy.tsDays.map(([n, d], i) =>
+        `<th class="ts-day${i === 5 || i === 6 ? ' wk' : ''}"><small>${n}</small><span>${d}</span></th>`
+      ).join('')
+      const rows = [
+        [ppl.elif, `${io('08:31','18:32')}${io('08:29','18:30')}${io('08:47','18:31','late')}${io('08:30','18:30')}${io('08:28','19:12','ot')}${wk}${wk}${io('08:31','18:33')}${io('08:30','18:29')}${io('08:32','18:30')}${sums(22,0,1,'1:12','0:00','176:12')}`],
+        [ppl.ahmet, `${io('08:30','18:30')}${mk(copy.lvShort,'lv')}${io('08:30','18:31')}${io('08:33','18:30')}${io('08:30','18:28')}${wk}${wk}${io('08:31','18:30')}${io('08:29','18:32')}${io('08:30','18:30')}${sums(21,1,0,'0:00','0:00','168:00')}`],
+        [ppl.zeynep, `${io('16:02','00:04')}${io('16:00','00:01')}${io('16:11','00:03','late')}${io('16:00','00:02')}${io('16:01','00:00')}${wk}${wk}${io('16:00','00:05')}${io('16:03','00:01')}${mk(copy.absShort,'abs')}${sums(20,0,1,'0:18','8:00','160:18')}`],
+        [ppl.burak, `${io('08:30','18:31')}${io('08:28','18:30')}${io('08:30','18:33')}${io('08:31','18:29')}${io('08:30','18:30')}${wk}${wk}${io('08:29','18:32')}${io('08:30','18:30')}${io('08:32','18:31')}${sums(22,0,0,'0:00','0:00','176:00')}`],
+        [ppl.selin, `${io('08:30','18:30')}${io('08:31','18:29')}${io('08:30','18:31')}${mk(copy.lvShort,'lv')}${io('08:33','18:30')}${wk}${wk}${io('08:30','18:28')}${io('08:29','18:30')}${io('08:30','18:32')}${sums(21,1,0,'0:00','0:00','168:00')}`],
+      ]
+      return `${sidebar()}<div class="main">${topbar()}<div class="content">
+        <div class="page-header">
+          <div>
+            <h2>${copy.tsTitle}</h2>
+            <p class="sub">${copy.tsSub}</p>
+          </div>
+        </div>
+        <div class="ts-bar">
+          <div class="ts-field"><span>&nbsp;</span><div class="ts-month"><button class="ts-nav" type="button">‹</button><strong>${copy.tsMonth}</strong><button class="ts-nav" type="button">›</button></div></div>
+          <label class="ts-field"><span>${copy.dept}</span><select><option>${copy.allDept}</option></select></label>
+          <label class="ts-field"><span>${copy.location}</span><select><option>${copy.allLoc}</option></select></label>
+          <label class="ts-field"><span>${copy.employee}</span><input placeholder="${copy.search}" /></label>
+          <label class="ts-field"><span>${copy.lateFilter}</span><select><option>${copy.lateOff}</option></select></label>
+          <div class="ts-actions">
+            <button class="btn btn-p" type="button">${copy.fetch}</button>
+            <button class="btn btn-x" type="button">${copy.export}</button>
+            <button class="btn btn-x" type="button">${copy.payroll}</button>
+            <button class="btn btn-x" type="button">${copy.lock}</button>
+          </div>
+        </div>
+        <div class="ts-stats">
+          <article><span>${copy.stPeople}</span><strong>5</strong></article>
+          <article><span>${copy.stWork}</span><strong>848:30</strong></article>
+          <article><span>${copy.stOt}</span><strong>1:30</strong></article>
+          <article><span>${copy.stLeave}</span><strong>2</strong></article>
+          <article><span>${copy.stLate}</span><strong>2</strong></article>
+        </div>
+        <section class="ts-sheet">
+          <header class="ts-head">
+            <p>${copy.sheet}</p>
+            <div class="ts-meta"><h3>${copy.company}</h3><strong>${copy.tsMonth}</strong></div>
+          </header>
+          <table class="ts-table">
+            <thead>
+              <tr>
+                <th class="ts-sticky">${copy.employee}</th>
+                ${heads}
+                <th class="sum">${copy.colWork}</th><th class="sum">${copy.colLeave}</th><th class="sum">${copy.colLate}</th>
+                <th class="sum">${copy.colOt}</th><th class="sum">${copy.colMiss}</th><th class="sum">${copy.colTot}</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows.map(([n, cells]) => `<tr><td class="ts-sticky">${n}</td>${cells}</tr>`).join('')}
+            </tbody>
+          </table>
+        </section>
+      </div></div>`
+    })(),
+
+    mobile: (() => {
+      const qrSvg = `<svg class="qr-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm10-2h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm4 0h2v4h-4v-2h2v-2zm-4 4h2v2h-2v-2z"/></svg>`
+      const tab = (d, label, on = false) =>
+        `<div class="m-tab${on ? ' on' : ''}">${ico(d)}<span>${label}</span></div>`
+      return `<div class="phone">
+        <div class="m-status"><span>09:42</span><span>●●●●</span></div>
+        <header class="m-appbar">
+          <div class="menu">☰</div>
+          <img class="m-logo" src="logo-work24.png" alt="Work24" />
+          <div class="m-app-r">
+            <div class="m-lang">${copy.localeCode} ▾</div>
+            <div class="m-av">${copy.avatar}</div>
+          </div>
+        </header>
+        <div class="m-body">
+          <h1>${copy.hello}</h1>
+          <p class="m-sub">${copy.mobileSub}</p>
+          <p class="m-date">${copy.mobileDate}</p>
+          <div class="clock"><span class="live-l"><i class="dot"></i>${copy.live}</span><span class="t">09:42</span></div>
+          <div class="qr"><div class="qr-box">${qrSvg}<div class="qr-title">${copy.qrTitle}</div><p class="m-sub">${copy.qrSub}</p></div></div>
+          <button class="inkbtn">${copy.noQr}</button>
+          <div class="strip">
+            <div class="sc is-in"><i></i><div><span>${copy.in}</span><strong>08:31</strong></div></div>
+            <div class="sc is-out"><i></i><div><span>${copy.out}</span><strong>18:12</strong></div></div>
+            <div class="sc is-hrs"><i></i><div><span>${copy.dur}</span><strong>08:41</strong></div></div>
+          </div>
+        </div>
+        <nav class="m-tabs">
+          ${tab('<path d="M12 21s7-6.2 7-11.2A7 7 0 1 0 5 9.8C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.2"/>', copy.tabEvent)}
+          ${tab('<path d="M6 8a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/><path d="M10 21a2 2 0 0 0 4 0"/>', copy.tabNotice)}
+          ${tab('<path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/>', copy.tabHome, true)}
+          ${tab('<path d="M8 3h8a2 2 0 0 1 2 2v16l-6-3-6 3V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h4"/>', copy.tabReq)}
+          ${tab('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>', copy.tabShift)}
+        </nav>
+      </div>`
+    })()
+  }
+
+  const html = views[page] || views.dashboard
+  document.body.innerHTML = page === 'mobile' ? html : `<div class="shell">${html}</div>`
+</script>
+</body>
+</html>

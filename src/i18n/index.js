@@ -10,7 +10,7 @@ export function createI18nApp() {
     legacy: false,
     globalInjection: true,
     locale: detectLocale(),
-    fallbackLocale: 'en',
+    fallbackLocale: 'tr',
     messages: { tr, en },
     missingWarn: false,
     fallbackWarn: false,

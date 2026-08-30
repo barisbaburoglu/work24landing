@@ -1,28 +1,32 @@
-import { computed } from 'vue'
+import { computed, unref } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
+import { alternatePath, DEFAULT_LOCALE } from '@/i18n/paths'
+import { SUPPORTED_LOCALES } from '@/i18n/locale'
 
 const SITE = 'https://work24.io'
 
-function pageUrl(path) {
-  return `${SITE}${path === '/' ? '/' : path}`
-}
-
-function localeUrl(path, code) {
-  const base = pageUrl(path)
-  return `${base}${base.includes('?') ? '&' : '?'}lang=${code}`
+function absoluteUrl(path) {
+  return `${SITE}${path}`
 }
 
 export function useSeo(titleKey, descriptionKey) {
   const { t, locale } = useI18n()
   const route = useRoute()
-  const path = route.path === '/' ? '/' : route.path
-  const url = pageUrl(path)
-  const title = computed(() => t(titleKey))
-  const description = computed(() => t(descriptionKey))
-  const lang = computed(() => (locale.value === 'en' ? 'en' : 'tr'))
-  const ogLocale = computed(() => (locale.value === 'en' ? 'en_US' : 'tr_TR'))
+  const page = computed(() => route.meta?.page || 'home')
+  const activeLocale = computed(() =>
+    SUPPORTED_LOCALES.includes(route.meta?.locale) ? route.meta.locale : locale.value || DEFAULT_LOCALE,
+  )
+  const path = computed(() => alternatePath(page.value, activeLocale.value))
+  const url = computed(() => absoluteUrl(path.value))
+  const title = computed(() => t(unref(titleKey)))
+  const description = computed(() => t(unref(descriptionKey)))
+  const lang = computed(() => (activeLocale.value === 'en' ? 'en' : 'tr'))
+  const ogLocale = computed(() => (activeLocale.value === 'en' ? 'en_US' : 'tr_TR'))
+  const trUrl = computed(() => absoluteUrl(alternatePath(page.value, 'tr')))
+  const enUrl = computed(() => absoluteUrl(alternatePath(page.value, 'en')))
+  const defaultUrl = computed(() => absoluteUrl(alternatePath(page.value, DEFAULT_LOCALE)))
 
   useHead({
     title,
@@ -47,9 +51,9 @@ export function useSeo(titleKey, descriptionKey) {
     ],
     link: [
       { rel: 'canonical', href: url },
-      { rel: 'alternate', hreflang: 'tr', href: localeUrl(path, 'tr') },
-      { rel: 'alternate', hreflang: 'en', href: localeUrl(path, 'en') },
-      { rel: 'alternate', hreflang: 'x-default', href: url },
+      { rel: 'alternate', hreflang: 'tr', href: trUrl },
+      { rel: 'alternate', hreflang: 'en', href: enUrl },
+      { rel: 'alternate', hreflang: 'x-default', href: defaultUrl },
     ],
   })
 }

@@ -4,11 +4,13 @@ import { Menu, X } from '@lucide/vue'
 import BrandLogo from './BrandLogo.vue'
 import LocaleSwitcher from './LocaleSwitcher.vue'
 import { APP_SIGNIN, APP_SIGNUP } from '@/utils/links'
+import { useLocalePath } from '@/composables/useLocalePath'
 
 export default {
   components: { BrandLogo, LocaleSwitcher, Menu, X },
   setup() {
     const { t } = useI18n()
+    const { lp } = useLocalePath()
     const scrolled = ref(false)
     const menuOpen = ref(false)
     const supportOpen = ref(false)
@@ -52,6 +54,16 @@ export default {
       document.body.classList.remove('drawer-open')
     })
 
-    return { t, scrolled, menuOpen, supportOpen, APP_SIGNIN, APP_SIGNUP, openMenu, closeMenu }
+    return {
+      t,
+      lp,
+      scrolled,
+      menuOpen,
+      supportOpen,
+      APP_SIGNIN,
+      APP_SIGNUP,
+      openMenu,
+      closeMenu,
+    }
   },
 }

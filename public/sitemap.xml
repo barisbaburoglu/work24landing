@@ -1,11 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://work24.io/</loc></url>
-  <url><loc>https://work24.io/faq</loc></url>
-  <url><loc>https://work24.io/solutions</loc></url>
-  <url><loc>https://work24.io/contact</loc></url>
-  <url><loc>https://work24.io/privacy</loc></url>
-  <url><loc>https://work24.io/delete-account</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://work24.io/tr</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr"/>
+  </url>
+  <url>
+    <loc>https://work24.io/tr/ozellikler</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/ozellikler"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en/features</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/ozellikler"/>
+  </url>
+  <url>
+    <loc>https://work24.io/tr/nasil-calisir</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/nasil-calisir"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/nasil-calisir"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en/how-it-works</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/nasil-calisir"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/nasil-calisir"/>
+  </url>
+  <url>
+    <loc>https://work24.io/tr/fiyatlandirma</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/fiyatlandirma"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/fiyatlandirma"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/fiyatlandirma"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/fiyatlandirma"/>
+  </url>
+  <url>
+    <loc>https://work24.io/tr/sss</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/sss"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/sss"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en/faq</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/sss"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/sss"/>
+  </url>
+  <url>
+    <loc>https://work24.io/tr/cozumler</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/cozumler"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/solutions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/cozumler"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en/solutions</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/cozumler"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/solutions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/cozumler"/>
+  </url>
+  <url>
+    <loc>https://work24.io/tr/iletisim</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/iletisim"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/iletisim"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/iletisim"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/iletisim"/>
+  </url>
+  <url>
+    <loc>https://work24.io/tr/gizlilik</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/gizlilik"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/gizlilik"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/gizlilik"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/gizlilik"/>
+  </url>
+  <url>
+    <loc>https://work24.io/tr/hesap-silme</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/hesap-silme"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/hesap-silme"/>
+  </url>
+  <url>
+    <loc>https://work24.io/en/delete-account</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://work24.io/tr/hesap-silme"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://work24.io/en/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://work24.io/tr/hesap-silme"/>
+  </url>
   <url><loc>https://work24.io/kvkk-clarification-notice-corporate.html</loc></url>
   <url><loc>https://work24.io/kvkk-clarification-notice-employees.html</loc></url>
 </urlset>

@@ -25,7 +25,7 @@ export default {
   setup() {
     const { t, locale } = useI18n()
     const featuredBlocks = computed(() => featuredBlocksFor(locale.value))
-    const heroSrc = computed(() => shotSrc('hero', locale.value))
+    const heroSrc = computed(() => shotSrc('homepage', locale.value))
     const appSrc = computed(() => shotSrc('app', locale.value))
     const route = useRoute()
     const titleKey = computed(() => (SEO_BY_PAGE[route.meta?.page] || SEO_BY_PAGE.home)[0])

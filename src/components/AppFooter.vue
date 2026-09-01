@@ -42,12 +42,8 @@
           <li><RouterLink :to="lp('solutions')">{{ t('menu_solutions') }}</RouterLink></li>
           <li><RouterLink :to="lp('contact')">{{ t('menu_contact') }}</RouterLink></li>
           <li><RouterLink :to="lp('privacy')">{{ t('privacy_title') }}</RouterLink></li>
-          <li>
-            <a href="/kvkk-clarification-notice-corporate.html">{{ t('footer_kvkk_corporate') }}</a>
-          </li>
-          <li>
-            <a href="/kvkk-clarification-notice-employees.html">{{ t('footer_kvkk_employees') }}</a>
-          </li>
+          <li><RouterLink :to="lp('kvkk-corporate')">{{ t('footer_kvkk_corporate') }}</RouterLink></li>
+          <li><RouterLink :to="lp('kvkk-employees')">{{ t('footer_kvkk_employees') }}</RouterLink></li>
         </ul>
       </div>
 

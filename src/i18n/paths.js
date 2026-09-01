@@ -13,6 +13,8 @@ export const PAGE_SLUGS = {
   contact: { tr: 'iletisim', en: 'contact' },
   privacy: { tr: 'gizlilik', en: 'privacy' },
   'delete-account': { tr: 'hesap-silme', en: 'delete-account' },
+  'kvkk-corporate': { tr: 'kvkk-kurumsal', en: 'kvkk-corporate' },
+  'kvkk-employees': { tr: 'kvkk-calisanlar', en: 'kvkk-employees' },
 }
 
 /** Home sections share HomeView and scroll to these element ids */
@@ -38,6 +40,12 @@ const LEGACY_REDIRECTS = {
   '/iletisim': 'contact',
   '/gizlilik': 'privacy',
   '/hesap-silme': 'delete-account',
+  '/kvkk-clarification-notice-corporate.html': 'kvkk-corporate',
+  '/kvkk-clarification-notice-employees.html': 'kvkk-employees',
+  '/kvkk-kurumsal': 'kvkk-corporate',
+  '/kvkk-calisanlar': 'kvkk-employees',
+  '/kvkk-corporate': 'kvkk-corporate',
+  '/kvkk-employees': 'kvkk-employees',
   '/ozellikler': 'features',
   '/features': 'features',
   '/nasil-calisir': 'how-it-works',

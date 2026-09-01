@@ -1,11 +1,9 @@
 <script src="./HeroCompliance.js"></script>
 
 <template>
-  <a
+  <RouterLink
     class="hero-compliance"
-    href="/kvkk-clarification-notice-corporate.html"
-    target="_blank"
-    rel="noopener noreferrer"
+    :to="lp('kvkk-corporate')"
   >
     <span class="hero-compliance-ring" aria-hidden="true"></span>
     <span class="hero-compliance-shine" aria-hidden="true"></span>
@@ -19,5 +17,5 @@
       <span>{{ t('hero_compliance_desc') }}</span>
     </span>
     <span class="hero-compliance-cta" aria-hidden="true">→</span>
-  </a>
+  </RouterLink>
 </template>

@@ -197,3 +197,44 @@ fs.writeFileSync(
 )
 
 console.log('extracted locales and privacy html')
+
+const kvkkFiles = {
+  corporate: 'kvkk-clarification-notice-corporate.html',
+  employees: 'kvkk-clarification-notice-employees.html',
+}
+
+function extractKvkkLang(html, lang) {
+  const re = new RegExp(
+    `<div data-tr="${lang}"[^>]*>([\\s\\S]*?)</div>\\s*(?:<div data-tr=|</div>\\s*</div>\\s*</div>)`,
+  )
+  const found = html.match(re)
+  if (!found) throw new Error(`kvkk ${lang} not found`)
+  return found[1].trim()
+}
+
+const kvkkHtml = {}
+for (const [key, filename] of Object.entries(kvkkFiles)) {
+  const source = fs.existsSync(path.join(root, filename))
+    ? path.join(root, filename)
+    : path.join(root, 'public', filename)
+  if (!fs.existsSync(source)) continue
+  const html = fs.readFileSync(source, 'utf8')
+  kvkkHtml[key] = {
+    tr: extractKvkkLang(html, 'tr'),
+    en: extractKvkkLang(html, 'en'),
+  }
+}
+
+if (Object.keys(kvkkHtml).length) {
+  fs.writeFileSync(
+    path.join(privacyDir, 'kvkkHtml.js'),
+    `export const kvkkHtml = {\n${Object.entries(kvkkHtml)
+      .map(
+        ([key, langs]) =>
+          `  ${key}: {\n    tr: ${JSON.stringify(langs.tr)},\n    en: ${JSON.stringify(langs.en)},\n  },`,
+      )
+      .join('\n')}\n}\n`,
+  )
+  console.log('extracted kvkk html')
+}
+

@@ -4,6 +4,8 @@ import SolutionsView from '@/views/SolutionsView.vue'
 import ContactView from '@/views/ContactView.vue'
 import PrivacyView from '@/views/PrivacyView.vue'
 import DeleteAccountView from '@/views/DeleteAccountView.vue'
+import KvkkCorporateView from '@/views/KvkkCorporateView.vue'
+import KvkkEmployeesView from '@/views/KvkkEmployeesView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import { SUPPORTED_LOCALES } from '@/i18n/locale'
 import { DEFAULT_LOCALE, isHomePage, legacyRedirectTarget, localizedPath, PAGE_NAMES } from '@/i18n/paths'
@@ -18,6 +20,8 @@ const PAGE_COMPONENTS = {
   contact: ContactView,
   privacy: PrivacyView,
   'delete-account': DeleteAccountView,
+  'kvkk-corporate': KvkkCorporateView,
+  'kvkk-employees': KvkkEmployeesView,
 }
 
 const LEGACY_PATHS = [
@@ -31,6 +35,12 @@ const LEGACY_PATHS = [
   '/iletisim',
   '/gizlilik',
   '/hesap-silme',
+  '/kvkk-clarification-notice-corporate.html',
+  '/kvkk-clarification-notice-employees.html',
+  '/kvkk-kurumsal',
+  '/kvkk-calisanlar',
+  '/kvkk-corporate',
+  '/kvkk-employees',
   '/ozellikler',
   '/features',
   '/nasil-calisir',

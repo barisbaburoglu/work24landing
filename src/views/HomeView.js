@@ -2,6 +2,7 @@ import { computed, nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { BarChart3, Bell, CalendarClock, CheckSquare, Layers, LayoutGrid, QrCode, Smartphone, Timer } from '@lucide/vue'
 import { useI18n } from 'vue-i18n'
+import HeroCompliance from '@/components/HeroCompliance.vue'
 import PricingSection from '@/components/PricingSection.vue'
 import Reveal from '@/components/Reveal.vue'
 import ZoomableImage from '@/components/ZoomableImage.vue'
@@ -20,7 +21,7 @@ const SEO_BY_PAGE = {
 const HEADER_OFFSET = 88
 
 export default {
-  components: { PricingSection, Reveal, ZoomableImage },
+  components: { HeroCompliance, PricingSection, Reveal, ZoomableImage },
   setup() {
     const { t, locale } = useI18n()
     const featuredBlocks = computed(() => featuredBlocksFor(locale.value))

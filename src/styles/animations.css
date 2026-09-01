@@ -117,3 +117,41 @@
     opacity: 0.62;
   }
 }
+
+@keyframes compliance-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes compliance-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes compliance-shine {
+  0%,
+  72%,
+  100% {
+    transform: translateX(-120%);
+  }
+  18% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes compliance-ring {
+  to {
+    filter: hue-rotate(8deg);
+  }
+}

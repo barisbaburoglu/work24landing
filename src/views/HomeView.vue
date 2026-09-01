@@ -8,6 +8,7 @@
           <p class="badge">{{ t('hero_badge') }}</p>
           <h1>{{ t('banner_title') }}</h1>
           <p class="lead">{{ t('banner_description') }}</p>
+          <HeroCompliance />
           <div class="hero-actions">
             <a class="btn btn-primary" :href="APP_SIGNUP">{{ t('get_started') }}</a>
             <a class="btn btn-ghost" :href="APP_SIGNIN">{{ t('go_to_signin') }}</a>

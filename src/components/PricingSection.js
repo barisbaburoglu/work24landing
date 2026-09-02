@@ -51,10 +51,10 @@ export default {
     }
 
     const cards = computed(() => {
-      const paid = plans.value.filter((plan) => parseFloat(plan?.perPrice ?? plan?.PerPrice || 0) > 0)
+      const paid = plans.value.filter((plan) => parseFloat(plan?.perPrice ?? plan?.PerPrice ?? 0) > 0)
       return paid.map((plan, index) => {
-        const perPrice = parseFloat(plan.perPrice ?? plan.PerPrice || 0)
-        const discountPercent = parseFloat(plan.discountPercent ?? plan.DiscountPercent || 0) || 0
+        const perPrice = parseFloat(plan.perPrice ?? plan.PerPrice ?? 0)
+        const discountPercent = parseFloat(plan.discountPercent ?? plan.DiscountPercent ?? 0) || 0
         const discount = Math.max(0, discountPercent) / 100
         const yearlyTotal = userCount.value * perPrice * 12
         const discountedTotal = yearlyTotal * (1 - discount)

@@ -35,8 +35,8 @@
           <article class="pricing-card" :class="{ featured: card.featured, hidden: !card.visible }">
             <p v-if="card.discountText" class="pricing-discount">{{ card.discountText }}</p>
             <p v-if="card.featured" class="pricing-badge">{{ t('pricing_popular') }}</p>
-            <h3>{{ t(card.titleKey) }}</h3>
-            <p class="pricing-sub">{{ t(card.subtitleKey) }}</p>
+            <h3>{{ card.title }}</h3>
+            <p v-if="card.subtitle" class="pricing-sub">{{ card.subtitle }}</p>
             <p class="pricing-amount">
               <span>₺</span>
               <s v-if="card.original">{{ card.original }}</s>

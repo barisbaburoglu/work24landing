@@ -582,6 +582,15 @@
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.04);
   color: #fff;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.pricing-stepper input::-webkit-outer-spin-button,
+.pricing-stepper input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .pricing-stepper button {

@@ -477,6 +477,11 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.store-apple {
+  flex-shrink: 0;
+  display: block;
+}
+
 .store-btn small,
 .store-btn strong {
   display: block;

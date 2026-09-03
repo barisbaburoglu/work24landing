@@ -57,7 +57,9 @@
             <p>{{ t('mobile_description_2') }}</p>
             <div class="store-row">
               <a class="store-btn" :href="APP_STORE" target="_blank" rel="noopener noreferrer">
-                <img src="/images/app-store.png" alt="App Store" width="32" height="32" />
+                <svg class="store-apple" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
+                  <path fill="#fff" d="M16.37 12.86c.03 3.24 2.84 4.32 2.87 4.33-.02.08-.45 1.54-1.48 3.05-.89 1.3-1.82 2.6-3.28 2.63-1.43.03-1.89-.85-3.53-.85-1.63 0-2.14.82-3.5.87-1.4.05-2.47-1.41-3.37-2.71-1.84-2.66-3.25-7.52-1.36-10.8 1.04-1.63 2.9-2.66 4.92-2.69 1.37-.03 2.66.92 3.53.92.86 0 2.48-1.14 4.18-.97.71.03 2.71.29 4 2.18-.1.06-2.39 1.4-2.36 4.17-.02.33 0 .66.04 1.01zM14.32 4.3c.74-.9 1.24-2.15 1.1-3.4-1.07.04-2.36.71-3.13 1.61-.69.8-1.29 2.08-1.13 3.3 1.19.09 2.41-.61 3.16-1.51z"/>
+                </svg>
                 <span>
                   <small>{{ t('store_label_apple') }}</small>
                   <strong>{{ t('store_name_apple') }}</strong>

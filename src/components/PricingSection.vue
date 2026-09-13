@@ -56,7 +56,7 @@
               <li>{{ card.range }}</li>
               <li v-if="trialText" class="pricing-trial">{{ trialText }}</li>
             </ul>
-            <a class="btn btn-primary btn-block" :href="APP_SIGNUP">{{ t('get_started') }}</a>
+            <a class="btn btn-primary btn-block" :class="{ 'btn-trial': hasTrial }" :href="APP_SIGNUP">{{ trialCtaShort }}</a>
           </article>
         </Reveal>
       </div>

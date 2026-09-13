@@ -25,7 +25,7 @@ export default {
     const { t, locale } = useI18n()
     const userCount = ref(1)
     const plans = ref([])
-    const { trialText } = useDemoSettings()
+    const { trialText, hasTrial, trialCtaShort } = useDemoSettings()
     const sectionRef = ref(null)
     const lit = ref(false)
     let glowObserver
@@ -142,6 +142,8 @@ export default {
       cards,
       APP_SIGNUP,
       trialText,
+      hasTrial,
+      trialCtaShort,
       changeUsers,
       normalizeUsers,
       sectionRef,

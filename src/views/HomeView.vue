@@ -8,15 +8,7 @@
           <p class="badge">{{ t('hero_badge') }}</p>
           <h1>{{ t('banner_title') }}</h1>
           <p class="lead">{{ t('banner_description') }}</p>
-          <div class="hero-offers">
-            <HeroCompliance />
-            <a v-if="hasTrial" class="hero-trial-badge" :href="APP_SIGNUP">
-              <Gift class="hero-trial-gift" />
-              <small>{{ t('hero_trial_nocard') }}</small>
-              <strong>{{ trialDays }} {{ t('hero_trial_unit') }}</strong>
-              <em>{{ t('hero_trial_action') }}</em>
-            </a>
-          </div>
+          <HeroCompliance />
           <div class="hero-actions">
             <a class="btn btn-primary" :class="{ 'btn-trial': hasTrial }" :href="APP_SIGNUP">{{ trialCta }}</a>
             <a class="btn btn-ghost" :href="APP_SIGNIN">{{ t('go_to_signin') }}</a>
@@ -29,6 +21,12 @@
             width="640"
             height="480"
           />
+          <a v-if="hasTrial" class="hero-trial-badge" :href="APP_SIGNUP">
+            <Gift class="hero-trial-gift" />
+            <small>{{ t('hero_trial_nocard') }}</small>
+            <strong>{{ trialDays }} {{ t('hero_trial_unit') }}</strong>
+            <em>{{ t('hero_trial_action') }}</em>
+          </a>
         </div>
       </div>
     </section>

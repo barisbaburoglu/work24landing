@@ -27,7 +27,7 @@
       <div class="header-actions">
         <LocaleSwitcher />
         <a class="btn btn-ghost" :href="APP_SIGNIN">{{ t('go_to_signin') }}</a>
-        <a class="btn btn-primary" :href="APP_SIGNUP">{{ t('get_started') }}</a>
+        <a class="btn btn-primary" :class="{ 'btn-trial': hasTrial }" :href="APP_SIGNUP">{{ trialCtaShort }}</a>
         <button class="menu-btn" type="button" :aria-expanded="menuOpen" @click="openMenu">
           <Menu class="icon-md" />
         </button>
@@ -59,7 +59,7 @@
         <div class="drawer-bottom">
           <LocaleSwitcher />
           <a class="btn btn-ghost btn-block" :href="APP_SIGNIN">{{ t('go_to_signin') }}</a>
-          <a class="btn btn-primary btn-block" :href="APP_SIGNUP">{{ t('get_started') }}</a>
+          <a class="btn btn-primary btn-block" :class="{ 'btn-trial': hasTrial }" :href="APP_SIGNUP">{{ trialCtaShort }}</a>
         </div>
       </aside>
     </div>

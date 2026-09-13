@@ -11,7 +11,10 @@ async function loadDemoSettings() {
   loadPromise = (async () => {
     try {
       const response = await fetch(DEMO_SETTINGS_API)
-      if (!response.ok) return
+      if (!response.ok) {
+        loadPromise = null
+        return
+      }
       const data = await response.json()
       const payload = data?.data ?? data
       const enabled = Boolean(payload.isEnabled ?? payload.IsEnabled)
@@ -19,6 +22,7 @@ async function loadDemoSettings() {
       trialDays.value = enabled && days > 0 ? days : 0
     } catch {
       trialDays.value = 0
+      loadPromise = null
     }
   })()
 
@@ -39,6 +43,9 @@ export function useDemoSettings() {
   const trialCta = computed(() =>
     hasTrial.value ? t('hero_trial_cta', { days: trialDays.value }) : t('get_started'),
   )
+  const trialCtaShort = computed(() =>
+    hasTrial.value ? t('header_trial_cta') : t('get_started'),
+  )
 
-  return { trialDays, hasTrial, trialText, trialCta }
+  return { trialDays, hasTrial, trialText, trialCta, trialCtaShort }
 }

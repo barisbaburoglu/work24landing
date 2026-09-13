@@ -1,6 +1,6 @@
 import { computed, nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { BarChart3, Bell, CalendarClock, CheckSquare, Layers, LayoutGrid, QrCode, Smartphone, Timer } from '@lucide/vue'
+import { BarChart3, Bell, CalendarClock, CheckSquare, Gift, Layers, LayoutGrid, QrCode, Smartphone, Timer } from '@lucide/vue'
 import { useI18n } from 'vue-i18n'
 import HeroCompliance from '@/components/HeroCompliance.vue'
 import PricingSection from '@/components/PricingSection.vue'
@@ -22,7 +22,7 @@ const SEO_BY_PAGE = {
 const HEADER_OFFSET = 88
 
 export default {
-  components: { HeroCompliance, PricingSection, Reveal, ZoomableImage },
+  components: { Gift, HeroCompliance, PricingSection, Reveal, ZoomableImage },
   setup() {
     const { t, locale } = useI18n()
     const { trialDays, hasTrial, trialCta } = useDemoSettings()

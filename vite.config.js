@@ -12,6 +12,12 @@ export default defineConfig({
   },
   server: {
     port: 5174,
+    proxy: {
+      '/api': {
+        target: 'https://api.work24.io',
+        changeOrigin: true,
+      },
+    },
   },
   ssgOptions: {
     script: 'async',

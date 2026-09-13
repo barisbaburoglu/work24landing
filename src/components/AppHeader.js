@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { Menu, X } from '@lucide/vue'
 import BrandLogo from './BrandLogo.vue'
 import LocaleSwitcher from './LocaleSwitcher.vue'
+import { useDemoSettings } from '@/composables/useDemoSettings'
 import { APP_SIGNIN, APP_SIGNUP } from '@/utils/links'
 import { useLocalePath } from '@/composables/useLocalePath'
 
@@ -11,6 +12,7 @@ export default {
   setup() {
     const { t } = useI18n()
     const { lp } = useLocalePath()
+    const { hasTrial, trialCtaShort } = useDemoSettings()
     const scrolled = ref(false)
     const menuOpen = ref(false)
     const supportOpen = ref(false)
@@ -60,6 +62,8 @@ export default {
       scrolled,
       menuOpen,
       supportOpen,
+      hasTrial,
+      trialCtaShort,
       APP_SIGNIN,
       APP_SIGNUP,
       openMenu,

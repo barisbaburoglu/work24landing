@@ -1,4 +1,10 @@
-const API_BASE = String(import.meta.env.VITE_API_BASE_URL || 'https://api.work24.io').replace(/\/$/, '')
+const rawApiBase = import.meta.env.VITE_API_BASE_URL
+const API_BASE = (rawApiBase == null || String(rawApiBase).trim() === ''
+  ? import.meta.env.DEV
+    ? ''
+    : 'https://api.work24.io'
+  : String(rawApiBase)
+).replace(/\/$/, '')
 
 export const APP_SIGNIN = 'https://app.work24.io/signin'
 export const APP_SIGNUP = 'https://app.work24.io/signup'

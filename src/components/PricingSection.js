@@ -1,7 +1,8 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Reveal from './Reveal.vue'
-import { APP_SIGNUP, DEMO_SETTINGS_API, PLANS_API } from '@/utils/links'
+import { useDemoSettings } from '@/composables/useDemoSettings'
+import { APP_SIGNUP, PLANS_API } from '@/utils/links'
 
 function textOf(plan, ...keys) {
   for (const key of keys) {
@@ -24,15 +25,10 @@ export default {
     const { t, locale } = useI18n()
     const userCount = ref(1)
     const plans = ref([])
-    const trialDays = ref(0)
+    const { trialText } = useDemoSettings()
     const sectionRef = ref(null)
     const lit = ref(false)
     let glowObserver
-
-    const trialText = computed(() => {
-      if (!trialDays.value) return ''
-      return t('pricing_trial', { days: trialDays.value })
-    })
 
     function formatCurrency(amount) {
       return amount.toLocaleString(locale.value === 'en' ? 'en-US' : 'tr-TR', {
@@ -116,23 +112,8 @@ export default {
       }
     }
 
-    async function fetchDemoSettings() {
-      try {
-        const response = await fetch(DEMO_SETTINGS_API)
-        if (!response.ok) return
-        const data = await response.json()
-        const payload = data?.data ?? data
-        const enabled = Boolean(payload.isEnabled ?? payload.IsEnabled)
-        const days = Number(payload.durationDays ?? payload.DurationDays ?? 0)
-        trialDays.value = enabled && days > 0 ? days : 0
-      } catch {
-        trialDays.value = 0
-      }
-    }
-
     onMounted(() => {
       fetchPlans()
-      fetchDemoSettings()
 
       const el = sectionRef.value
       if (!el || typeof IntersectionObserver === 'undefined') {

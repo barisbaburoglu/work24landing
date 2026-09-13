@@ -8,6 +8,7 @@ import Reveal from '@/components/Reveal.vue'
 import ZoomableImage from '@/components/ZoomableImage.vue'
 import { featureCards, featuredBlocksFor, shotSrc } from '@/data/features'
 import { sectionIdForPage } from '@/i18n/paths'
+import { useDemoSettings } from '@/composables/useDemoSettings'
 import { APP_SIGNIN, APP_SIGNUP, APP_STORE, PLAY_STORE } from '@/utils/links'
 import { useSeo } from '@/utils/seo'
 
@@ -24,6 +25,7 @@ export default {
   components: { HeroCompliance, PricingSection, Reveal, ZoomableImage },
   setup() {
     const { t, locale } = useI18n()
+    const { trialDays, hasTrial, trialCta } = useDemoSettings()
     const featuredBlocks = computed(() => featuredBlocksFor(locale.value))
     const heroSrc = computed(() => shotSrc('homepage', locale.value))
     const appSrc = computed(() => shotSrc('app', locale.value))
@@ -78,6 +80,9 @@ export default {
         { titleKey: 'how_step2_title', descKey: 'how_step2_desc' },
         { titleKey: 'how_step3_title', descKey: 'how_step3_desc' },
       ],
+      trialDays,
+      hasTrial,
+      trialCta,
       APP_SIGNIN,
       APP_SIGNUP,
       APP_STORE,
